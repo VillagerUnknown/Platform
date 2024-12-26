@@ -1,0 +1,24 @@
+{
+  "text.autoconfig.villagerunknown-platform.title": "VillagerUnknown's Platform",
+
+  "text.autoconfig.villagerunknown-platform.category.General": "General",
+
+  "text.autoconfig.villagerunknown-platform.option.enableVillagerComments": "Enable Villager Comments",
+
+  "text.autoconfig.villagerunknown-platform.category.Commands": "Commands",
+
+  "text.autoconfig.villagerunknown-platform.option.enableCommands": "Enable Commands",
+  "text.autoconfig.villagerunknown-platform.option.enableCommandFeedbackSounds": "Enable Command Feedback Sounds",
+
+  "text.autoconfig.villagerunknown-platform.category.Greeting": "Greeting",
+
+  "text.autoconfig.villagerunknown-platform.option.enableWelcomeMessage": "Enable Welcome Message",
+  "text.autoconfig.villagerunknown-platform.option.welcomeMessageNew": "Welcome Message for New Players",
+  "text.autoconfig.villagerunknown-platform.option.welcomeMessageReturning": "Welcome Message for Returning Players",
+
+  "text.autoconfig.villagerunknown-platform.category.Notices": "Notices",
+
+  "text.autoconfig.villagerunknown-platform.option.enableSleepNotice": "Enable Sleep Notice",
+  "text.autoconfig.villagerunknown-platform.option.sleepNoticeMessage": "Sleep Notice Message",
+  "text.autoconfig.villagerunknown-platform.option.enableDeathCoordinateNotice": "Enable Death Coordinate Notice"
+}

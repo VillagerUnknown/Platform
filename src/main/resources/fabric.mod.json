@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "id": "villagerunknown-platform",
+  "version": "${version}",
+  "name": "VillagerUnknown's Platform",
+  "description": "Hrm.. A dependency library for VillagerUnknown mods.",
+  "authors": ["VillagerUnknown"],
+  "contact": {
+    "homepage":"https://discord.gg/PXjXh6M38H"
+  },
+  "license": "CC-BY-4.0",
+  "icon": "assets/platform/villagerunknown-platform.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "me.villagerunknown.platform.client.PlatformClient"
+    ],
+    "main": [
+      "me.villagerunknown.platform.Platform"
+    ],
+    "modmenu": [
+      "me.villagerunknown.platform.client.ModMenuIntegration"
+    ]
+  },
+  "mixins": [
+    "platform.mixins.json",
+    {
+      "config": "platform.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "https://discord.gg/PXjXh6M38H"
+      }
+    }
+  }
+}
