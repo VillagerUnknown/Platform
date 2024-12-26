@@ -8,6 +8,9 @@ remappedSrc/
 # Minecraft
 run/
 
+# Gradle
+.gradle/
+
 # Idea
 .idea/
 
