@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.1]
+
+### Added
+
+- Added `define` method to Platform class to allow mod developers to change the "villagerunknown-" prefix.
+
+### Fixed
+
+- Set pretty printing in Gson to correct formatting of files created by list.StringsList class. 
+
 ## [1.1.0]
 
 ### Added
