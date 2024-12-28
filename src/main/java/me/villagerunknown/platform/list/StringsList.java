@@ -1,6 +1,7 @@
 package me.villagerunknown.platform.list;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 import me.villagerunknown.platform.Platform;
@@ -69,7 +70,7 @@ public class StringsList {
 				jsonArray.add( str );
 			} // for
 			
-			Gson gson = new Gson();
+			Gson gson = new GsonBuilder().setPrettyPrinting().create();
 			String json = gson.toJson( jsonArray );
 			
 			try{
