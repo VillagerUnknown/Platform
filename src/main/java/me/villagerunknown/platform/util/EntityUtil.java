@@ -72,6 +72,17 @@ public class EntityUtil {
 		} // if
 	}
 	
+	public static void reportConversionToLog( Logger logger, Entity entity, Entity damageSourceEntity ) {
+		logger.info( formActionMessage( entity, damageSourceEntity, "converted" ) );
+	}
+	
+	public static void reportConversionToChat( ServerPlayerEntity entity, Entity damageSourceEntity ) {
+		MinecraftServer server = entity.getServer();
+		if( null != server) {
+			MessageUtil.broadcastChatMessage(server, formActionMessage(entity, damageSourceEntity, "converted"));
+		} // if
+	}
+	
 	public static void setHealthToMax(LivingEntity entity) {
 		entity.setHealth(entity.getMaxHealth());
 	}
