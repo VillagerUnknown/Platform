@@ -21,6 +21,8 @@ public class Platform implements ModInitializer {
 	public static Logger LOGGER = null;
 	public static PlatformConfigData CONFIG = null;
 	
+	public static Map<String, PlatformMod<? extends ConfigData>> MODS = new HashMap<>();
+	
 	public static List<Runnable> LOAD = new ArrayList<>();
 	public static List<Runnable> UNLOAD = new ArrayList<>();
 	
@@ -82,7 +84,20 @@ public class Platform implements ModInitializer {
 		
 		mod.getLogger().info("Registering: {}", mod.getModIdVersion());
 		
+		return register( mod.getModId(), mod );
+	}
+	
+	public static <T extends ConfigData> PlatformMod<T> register( String id, PlatformMod<T> mod ) {
+		MODS.put( id, mod );
 		return mod;
+	}
+	
+	public static boolean registered( String id ) {
+		return MODS.containsKey( id );
+	}
+	
+	public static PlatformMod<? extends ConfigData> registration( String id ) {
+		return MODS.get( id );
 	}
 	
 	public static void load() {
