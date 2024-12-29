@@ -6,7 +6,12 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
-- Added `define` method to Platform class to allow mod developers to change the "villagerunknown-" prefix.
+- Added `define` method to `Platform` class to allow mod developers to change the "villagerunknown-" prefix.
+- Added `register` method to `Platform` class to allow mod developers to insert a `PlatformMod` object directly into the registered mods list. 
+- Added `registered` method to `Platform` class to allow mod developers to check if a mod is registered.
+- Added `registration` method to `Platform` class to allow mod developers to retrieve a mod's `PlatformMod` object.
+- Added `reportConversionToLog` method to `EntityUtil` class.
+- Added `reportConversionToChat` method to `EntityUtil` class.
 
 ### Fixed
 
