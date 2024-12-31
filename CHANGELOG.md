@@ -12,6 +12,12 @@ All notable changes to this project will be documented in this file.
 - Added `registration` method to `Platform` class to allow mod developers to retrieve a mod's `PlatformMod` object.
 - Added `reportConversionToLog` method to `EntityUtil` class.
 - Added `reportConversionToChat` method to `EntityUtil` class.
+- Added `registerEntity` method to `RegistryUtil` class.
+- Added `getItemGroup` method to `RegistryUtil` class.
+- Added `registerItemGroup` method to `RegistryUtil` class.
+- Added `addItemToGroup` method to `RegistryUtil` class.
+- Added `capitalizeAll` method to `RegistryUtil` class.
+- Added `LocatorUtil` class to provide methods for locating structures and biomes.
 
 ### Fixed
 
