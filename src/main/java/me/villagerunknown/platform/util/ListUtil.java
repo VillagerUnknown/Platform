@@ -5,9 +5,14 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.village.VillagerProfession;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.structure.Structure;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -420,6 +425,33 @@ public class ListUtil {
 		} else {
 			return list.get(rand.nextInt(list.size()));
 		} // if, else
+	}
+	
+	@SafeVarargs
+	public static List<RegistryKey<Biome>> buildRegistryKeyBiomeList(List<RegistryKey<Biome>> primary, List<RegistryKey<Biome>>... secondary ) {
+		ArrayList<RegistryKey<Biome>> arrayList = new ArrayList<>(primary);
+		for (List<RegistryKey<Biome>> list : secondary) {
+			arrayList.addAll( list );
+		} // for
+		return Collections.unmodifiableList( arrayList );
+	}
+	
+	@SafeVarargs
+	public static List<RegistryKey<Structure>> buildRegistryKeyStructureList(List<RegistryKey<Structure>> primary, List<RegistryKey<Structure>>... secondary ) {
+		ArrayList<RegistryKey<Structure>> arrayList = new ArrayList<>(primary);
+		for (List<RegistryKey<Structure>> list : secondary) {
+			arrayList.addAll( list );
+		} // for
+		return Collections.unmodifiableList( arrayList );
+	}
+	
+	@SafeVarargs
+	public static List<String> buildStringList(List<String> primary, List<String>... secondary ) {
+		ArrayList<String> arrayList = new ArrayList<>(primary);
+		for (List<String> list : secondary) {
+			arrayList.addAll( list );
+		} // for
+		return Collections.unmodifiableList( arrayList );
 	}
 	
 }
