@@ -3,7 +3,7 @@
   "id": "villagerunknown-platform",
   "version": "${version}",
   "name": "VillagerUnknown's Platform",
-  "description": "Hrm.. A dependency library for VillagerUnknown mods.",
+  "description": "A dependency library for VillagerUnknown mods.",
   "authors": ["VillagerUnknown"],
   "contact": {
     "homepage":"https://discord.gg/PXjXh6M38H"

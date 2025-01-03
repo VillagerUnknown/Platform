@@ -13,21 +13,28 @@ import java.util.*;
 
 public class Platform implements ModInitializer {
 	
-	public static final String PLATFORM_ID = "villagerunknown";
-	public static final String PLATFORM_PREFIX = PLATFORM_ID + "-";
+	public static String PLATFORM_ID = "villagerunknown";
+	public static String PLATFORM_PREFIX = PLATFORM_ID + "-";
 	
 	public static PlatformMod<PlatformConfigData> MOD = null;
 	public static String MOD_ID = null;
 	public static Logger LOGGER = null;
 	public static PlatformConfigData CONFIG = null;
 	
-	public static List<Runnable> LOAD = new ArrayList<Runnable>();
-	public static List<Runnable> UNLOAD = new ArrayList<Runnable>();
+	public static Map<String, PlatformMod<? extends ConfigData>> MODS = new HashMap<>();
+	
+	public static List<Runnable> LOAD = new ArrayList<>();
+	public static List<Runnable> UNLOAD = new ArrayList<>();
 	
 	@Override
 	public void onInitialize() {
 		// # Initialize Platform
 		init_platform();
+	}
+	
+	public static void define( String id ) {
+		PLATFORM_ID = id;
+		PLATFORM_PREFIX = PLATFORM_ID + "-";
 	}
 	
 	public static void init_platform() {
@@ -77,7 +84,20 @@ public class Platform implements ModInitializer {
 		
 		mod.getLogger().info("Registering: {}", mod.getModIdVersion());
 		
+		return register( mod.getModId(), mod );
+	}
+	
+	public static <T extends ConfigData> PlatformMod<T> register( String id, PlatformMod<T> mod ) {
+		MODS.put( id, mod );
 		return mod;
+	}
+	
+	public static boolean registered( String id ) {
+		return MODS.containsKey( id );
+	}
+	
+	public static PlatformMod<? extends ConfigData> registration( String id ) {
+		return MODS.get( id );
 	}
 	
 	public static void load() {

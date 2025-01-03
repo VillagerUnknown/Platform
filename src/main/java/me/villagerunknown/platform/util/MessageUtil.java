@@ -1,6 +1,7 @@
 package me.villagerunknown.platform.util;
 
 import me.villagerunknown.platform.Platform;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.ClickEvent;
@@ -46,7 +47,15 @@ public class MessageUtil {
 		player.sendMessageToClient( Text.of( message ), true );
 	}
 	
+	public static void showActionBarMessage(PlayerEntity player, String message) {
+		player.sendMessage( Text.of( message ), true );
+	}
+	
 	public static void sendChatMessage(ServerPlayerEntity player, String message) {
+		player.sendMessage( Text.of( message ), false );
+	}
+	
+	public static void sendChatMessage(PlayerEntity player, String message) {
 		player.sendMessage( Text.of( message ), false );
 	}
 	

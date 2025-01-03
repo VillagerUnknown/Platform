@@ -1,12 +1,18 @@
 package me.villagerunknown.platform.util;
 
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.FabricBrewingRecipeRegistryBuilder;
 import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemGroups;
 import net.minecraft.potion.Potion;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.stat.StatFormatter;
@@ -20,6 +26,18 @@ public class RegistryUtil {
 		modId = PlatformUtil.getModIdOrDefault( modId );
 		
 		return Identifier.of( modId, value );
+	}
+	
+	public static RegistryKey<ItemGroup> getItemGroup( Identifier identifier ) {
+		return RegistryKey.of(Registries.ITEM_GROUP.getKey(), identifier);
+	}
+	
+	public static ItemGroup registerItemGroup(RegistryKey<ItemGroup> groupRegistry, ItemGroup group ) {
+		return Registry.register(Registries.ITEM_GROUP, groupRegistry, group);
+	}
+	
+	public static void addItemToGroup( RegistryKey<ItemGroup> group, Item item ) {
+		ItemGroupEvents.modifyEntriesEvent( group ).register(fabricItemGroupEntries -> fabricItemGroupEntries.add( item ));
 	}
 	
 	public static Identifier registerStat(String id, @Nullable String modId, StatFormatter statFormatter) {
@@ -61,6 +79,10 @@ public class RegistryUtil {
 					potionResult
 			);
 		});
+	}
+	
+	public static EntityType<? extends Entity> registerEntity(String id, EntityType<? extends Entity> entity, @Nullable String modId ) {
+		return Registry.register( Registries.ENTITY_TYPE, identifier( modId, id ), entity );
 	}
 	
 }

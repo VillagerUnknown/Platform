@@ -1,6 +1,7 @@
-package me.villagerunknown.platform.list;
+package me.villagerunknown.platform.builder;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 import me.villagerunknown.platform.Platform;
@@ -15,19 +16,19 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
-public class StringsList {
+public class StringsListBuilder {
 	
-	private static String fileName;
-	private static List<String> defaultList;
-	private static List<String> STRINGS;
+	private String fileName;
+	private List<String> defaultList;
+	private List<String> STRINGS;
 	
-	public StringsList(List<String> strings ) {
+	public StringsListBuilder(List<String> strings ) {
 		this.defaultList = strings;
 		
 		load();
 	}
 	
-	public StringsList(String fileName, List<String> defaultList ) {
+	public StringsListBuilder(String fileName, List<String> defaultList ) {
 		this.fileName = fileName;
 		this.defaultList = defaultList;
 		
@@ -69,7 +70,7 @@ public class StringsList {
 				jsonArray.add( str );
 			} // for
 			
-			Gson gson = new Gson();
+			Gson gson = new GsonBuilder().setPrettyPrinting().create();
 			String json = gson.toJson( jsonArray );
 			
 			try{
@@ -80,6 +81,10 @@ public class StringsList {
 			} // try, catch
 		} // if, else
 		
+		return STRINGS;
+	}
+	
+	public List<String> getList() {
 		return STRINGS;
 	}
 	
