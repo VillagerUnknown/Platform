@@ -18,9 +18,9 @@ import java.util.List;
 
 public class StringsListBuilder {
 	
-	private static String fileName;
-	private static List<String> defaultList;
-	private static List<String> STRINGS;
+	private String fileName;
+	private List<String> defaultList;
+	private List<String> STRINGS;
 	
 	public StringsListBuilder(List<String> strings ) {
 		this.defaultList = strings;

@@ -19,9 +19,9 @@ import java.util.Map;
 
 public class StringsMapBuilder {
 	
-	private static String fileName;
-	private static List<String> defaultList;
-	private static Map<String, String> STRINGS;
+	private String fileName;
+	private List<String> defaultList;
+	private Map<String, String> STRINGS;
 	
 	public StringsMapBuilder(List<String> strings ) {
 		this.defaultList = strings;

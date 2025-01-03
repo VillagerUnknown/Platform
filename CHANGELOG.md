@@ -22,6 +22,7 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 - Set pretty printing in Gson to correct formatting of files created by list.StringsList class. 
+- Resolved an issue causing an incompatibility with Custom Villager Names and Healthy Habits.
 
 ## [1.1.0]
 
