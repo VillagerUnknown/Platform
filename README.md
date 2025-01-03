@@ -1,6 +1,6 @@
 # VillagerUnknown's Platform
 
-Adds commands and simple features. A dependency containing the core library for VillagerUnknown mods.
+Adds commands and simple features. A core library for VillagerUnknown mods.
 
 **Optional Features:**
 
