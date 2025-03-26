@@ -5,8 +5,10 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleEffect;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -139,6 +141,14 @@ public class EntityUtil {
 	
 	public static void removeStatusEffect(LivingEntity entity, RegistryEntry statusEffect) {
 		entity.removeStatusEffect( statusEffect );
+	}
+	
+	public static void simulateDeath(LivingEntity entity) {
+		// Make the villager invisible (dead)
+		EntityUtil.addStatusEffect(entity, StatusEffects.INVISIBILITY, 7, 1, false, false, false);
+		
+		// Add particles to the world simulating death
+		EntityUtil.spawnParticles( entity, 1, ParticleTypes.CLOUD.getType(), 20, 0.1, 0.1, 0.1, 0.005 );
 	}
 	
 }
