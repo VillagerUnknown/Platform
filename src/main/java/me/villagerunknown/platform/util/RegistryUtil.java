@@ -1,24 +1,32 @@
 package me.villagerunknown.platform.util;
 
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
 import net.fabricmc.fabric.api.registry.FabricBrewingRecipeRegistryBuilder;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemGroups;
 import net.minecraft.potion.Potion;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.stat.StatFormatter;
 import net.minecraft.stat.Stats;
 import net.minecraft.util.Identifier;
+import net.minecraft.village.VillagerProfession;
+import net.minecraft.world.poi.PointOfInterestType;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.function.Predicate;
 
 public class RegistryUtil {
 	
@@ -83,6 +91,36 @@ public class RegistryUtil {
 	
 	public static EntityType<? extends Entity> registerEntity(String id, EntityType<? extends Entity> entity, @Nullable String modId ) {
 		return Registry.register( Registries.ENTITY_TYPE, identifier( modId, id ), entity );
+	}
+	
+	public static RegistryEntry<VillagerProfession> registerVillager(Identifier id, ImmutableList<BlockState> workstations, String professionKey, SoundEvent workSound ) {
+		registerPointOfInterest( id, workstations, 1, 1 );
+		return registerVillagerProfession( id, professionKey, workSound );
+	}
+	
+	public static RegistryEntry<VillagerProfession> registerVillager(Identifier id, ImmutableList<BlockState> workstations, String professionKey, SoundEvent workSound, int ticketCount, int searchDistance ) {
+		registerPointOfInterest( id, workstations, ticketCount, searchDistance );
+		return registerVillagerProfession( id, professionKey, workSound );
+	}
+	
+	public static RegistryEntry<PointOfInterestType> registerPointOfInterest(Identifier id, ImmutableList<BlockState> workstations, int ticketCount, int searchDistance ) {
+		PointOfInterestType poiType = PointOfInterestHelper.register( id, ticketCount, searchDistance, workstations );
+		
+		Registry.register( Registries.POINT_OF_INTEREST_TYPE, id, poiType );
+		
+		return Registries.POINT_OF_INTEREST_TYPE.getEntry( poiType );
+	}
+	
+	public static RegistryEntry<VillagerProfession> registerVillagerProfession(Identifier id, String professionKey, SoundEvent workSound ) {
+		RegistryKey<PointOfInterestType> poiRegistryKey = RegistryKey.of( RegistryKeys.POINT_OF_INTEREST_TYPE, id );
+		
+		Predicate<RegistryEntry<PointOfInterestType>> predicate = (entry) -> entry.matchesKey( poiRegistryKey );
+		
+		VillagerProfession profession = new VillagerProfession( professionKey, predicate, predicate, ImmutableSet.of(), ImmutableSet.of(), workSound );
+		
+		Registry.register( Registries.VILLAGER_PROFESSION, id, profession );
+		
+		return Registries.VILLAGER_PROFESSION.getEntry( profession );
 	}
 	
 }

@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.0]
+
+### Added
+
+- Added `HeadUtil` class.
+- Added `PotionsUtil` class.
+- Added `ProfileUtil` class.
+- Added `VillagerUtil` class.
+- Added `simulateDeath` method to `EntityUtil` class.
+- Added `createPotionStack` to `ItemStackUtil` class.
+- Added `createWaterBottleStack` to `ItemStackUtil` class.
+- Added `registerVillager` to `RegistryUtil` class.
+- Added `registerPointOfInterest` to `RegistryUtil` class.
+- Added `registerVillagerProfession` to `RegistryUtil` class.
+
+### Changed
+
+- Changed Minecraft version requirement to allow the mod to run on versions past 1.21.1.
+
 ## [1.1.1]
 
 ### Added

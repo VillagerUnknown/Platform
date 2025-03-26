@@ -4,7 +4,9 @@ import net.minecraft.entity.passive.MerchantEntity;
 import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.village.TradeOffer;
+import net.minecraft.village.TradeOfferList;
 import net.minecraft.village.TradedItem;
+import net.minecraft.village.VillagerData;
 
 import java.util.Optional;
 
@@ -22,8 +24,8 @@ public class MerchantEntityUtil {
 		return customTrade;
 	}
 	
-	public static void clearTrades( VillagerEntity villager ) {
-		villager.getOffers().clear();
+	public static void clearTrades( MerchantEntity entity ) {
+		entity.getOffers().clear();
 	}
 	
 }
