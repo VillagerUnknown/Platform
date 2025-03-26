@@ -28,6 +28,5 @@ Adds commands and simple features. A core library for VillagerUnknown mods.
 
 ## Support
 
-* Get support and share feedback at https://discord.gg/PXjXh6M38H
 * Request features and report bugs at https://github.com/VillagerUnknown/Platform/issues
 * View the changelog at https://github.com/VillagerUnknown/Platform/blob/main/CHANGELOG.md

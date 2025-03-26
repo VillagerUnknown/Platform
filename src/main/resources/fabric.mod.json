@@ -6,7 +6,8 @@
   "description": "Adds commands and simple features. A core library for VillagerUnknown mods.",
   "authors": ["VillagerUnknown"],
   "contact": {
-    "homepage":"https://discord.gg/PXjXh6M38H"
+    "sources":"https://github.com/VillagerUnknown/Platform",
+    "issues":"https://github.com/VillagerUnknown/Platform/issues"
   },
   "license": "CC-BY-4.0",
   "icon": "assets/platform/villagerunknown-platform.png",
@@ -32,13 +33,6 @@
   "depends": {
     "fabricloader": ">=${loader_version}",
     "fabric": "*",
-    "minecraft": "${minecraft_version}"
-  },
-  "custom": {
-    "modmenu": {
-      "links": {
-        "modmenu.discord": "https://discord.gg/PXjXh6M38H"
-      }
-    }
+    "minecraft": ">=${minecraft_version}"
   }
 }
