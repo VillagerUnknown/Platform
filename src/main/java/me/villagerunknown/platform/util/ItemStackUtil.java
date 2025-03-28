@@ -21,7 +21,7 @@ public class ItemStackUtil {
 	public static ItemStack createPotionStack( Text name, RegistryEntry<Potion> potionEffect ) {
 		ItemStack potion = new ItemStack( Items.POTION );
 		
-		potion.set(DataComponentTypes.ITEM_NAME, name );
+		potion.set(DataComponentTypes.CUSTOM_NAME, name );
 		potion.set(DataComponentTypes.POTION_CONTENTS, new PotionContentsComponent(potionEffect));
 		
 		return potion;
@@ -29,7 +29,7 @@ public class ItemStackUtil {
 	
 	public static ItemStack createWaterBottleStack() {
 		ItemStack water = new ItemStack( Items.POTION, 1 );
-		water.set(DataComponentTypes.ITEM_NAME, Text.translatable( "item.minecraft.potion.effect.water" ) );
+		water.set(DataComponentTypes.CUSTOM_NAME, Text.translatable( "item.minecraft.potion.effect.water" ) );
 		return water;
 	}
 	

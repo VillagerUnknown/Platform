@@ -106,8 +106,6 @@ public class RegistryUtil {
 	public static RegistryEntry<PointOfInterestType> registerPointOfInterest(Identifier id, ImmutableList<BlockState> workstations, int ticketCount, int searchDistance ) {
 		PointOfInterestType poiType = PointOfInterestHelper.register( id, ticketCount, searchDistance, workstations );
 		
-		Registry.register( Registries.POINT_OF_INTEREST_TYPE, id, poiType );
-		
 		return Registries.POINT_OF_INTEREST_TYPE.getEntry( poiType );
 	}
 	
