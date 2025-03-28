@@ -323,7 +323,7 @@ public class HeadUtil {
 	public static ItemStack getPlayerHeadStack( MinecraftServer server, UUID uuid ) {
 		ItemStack headStack = new ItemStack( Blocks.PLAYER_HEAD, 1 );
 		headStack.set(DataComponentTypes.MAX_STACK_SIZE, 64);
-		headStack.set(DataComponentTypes.NOTE_BLOCK_SOUND, SoundEvents.ENTITY_PLAYER_BURP.getId());
+		headStack.set(DataComponentTypes.NOTE_BLOCK_SOUND, SoundEvents.ENTITY_PLAYER_BURP.id());
 		
 		if( null != server ) {
 			MinecraftSessionService sessionService = server.getSessionService();
@@ -402,7 +402,7 @@ public class HeadUtil {
 		
 		ItemStack headStack = new ItemStack(Items.PLAYER_HEAD, 1);
 		headStack.set(DataComponentTypes.MAX_STACK_SIZE, 64);
-		headStack.set(DataComponentTypes.NOTE_BLOCK_SOUND, sound.getId());
+		headStack.set(DataComponentTypes.NOTE_BLOCK_SOUND, sound.id());
 		
 		if( !texture.isEmpty() ) {
 			GameProfile gameProfile = new GameProfile( attackerUuid, entityType );
@@ -415,7 +415,7 @@ public class HeadUtil {
 			headStack.set(DataComponentTypes.PROFILE, profile);
 		} // if
 		
-		headStack.set(DataComponentTypes.ITEM_NAME, Text.of( formatEntityName( entityName ) + " Head" ));
+		headStack.set(DataComponentTypes.CUSTOM_NAME, Text.of( formatEntityName( entityName ) + " Head" ));
 		
 		return headStack;
 	}
@@ -511,8 +511,8 @@ public class HeadUtil {
 	public static String getCatVariant(@NotNull CatEntity entity ) {
 		String entityName = getEntityName( entity );
 		
-		if( !entity.getTexture().getPath().isEmpty() ) {
-			return formatEntityId( entity.getTexture().getPath().replace("textures/entity/cat/","").replace(".png",""), entityName );
+		if( !entity.getVariant().value().texture().getPath().isEmpty() ) {
+			return formatEntityId( entity.getVariant().value().texture().getPath().replace("textures/entity/cat/","").replace(".png",""), entityName );
 		} // if
 		
 		return entityName;
@@ -521,7 +521,7 @@ public class HeadUtil {
 	public static String getCreeperVariant(@NotNull CreeperEntity entity ) {
 		String entityName = getEntityName( entity );
 		
-		if( entity.shouldRenderOverlay() ) {
+		if( entity.isCharged() ) {
 			return formatEntityId( "charged", entityName );
 		} // if
 		
