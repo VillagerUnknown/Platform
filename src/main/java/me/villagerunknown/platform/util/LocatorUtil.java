@@ -21,7 +21,7 @@ public class LocatorUtil {
 	}
 	
 	public static Pair<BlockPos, RegistryEntry<Biome>> locateBiome( ServerWorld serverWorld, BlockPos blockPos, RegistryKey<Biome> registryKey, int searchRadius, int horizontalBlockCheckInterval, int verticalBlockCheckInterval ) {
-		Registry<Biome> registry = serverWorld.getRegistryManager().get(RegistryKeys.BIOME);
+		Registry<Biome> registry = serverWorld.getRegistryManager().getOrThrow(RegistryKeys.BIOME);
 		
 		RegistryEntry<Biome> biome = registry.getEntry( registry.get( registryKey ) );
 		
@@ -41,9 +41,9 @@ public class LocatorUtil {
 	}
 	
 	public static Pair<BlockPos, RegistryEntry<Structure>> locateStructure( ServerWorld serverWorld, BlockPos blockPos, RegistryKey<Structure> registryKey, int searchRadius ) {
-		Registry<Structure> registry = serverWorld.getRegistryManager().get(RegistryKeys.STRUCTURE);
+		Registry<Structure> registry = serverWorld.getRegistryManager().getOrThrow(RegistryKeys.STRUCTURE);
 		
-		Optional<RegistryEntry.Reference<Structure>> structure = registry.getEntry( registryKey );
+		Optional<RegistryEntry.Reference<Structure>> structure = registry.getEntry( registryKey.getValue() );
 		
 		if( structure.isPresent() ) {
 			RegistryEntryList<Structure> registryEntryList = RegistryEntryList.of(structure.get());

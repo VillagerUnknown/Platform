@@ -2,9 +2,11 @@ package me.villagerunknown.platform.util;
 
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 
 import java.util.List;
+import java.util.Optional;
 
 public class ItemUtil {
 	
@@ -16,7 +18,8 @@ public class ItemUtil {
 	public static Item getItemFromString(String string ){
 		String[] parts = string.split(":");
 		Identifier id = Identifier.of( parts[0], parts[1] );
-		return Registries.ITEM.get( id );
+		Optional<RegistryEntry.Reference<Item>> entry = Registries.ITEM.getEntry(id);
+		return entry.map(RegistryEntry.Reference::value).orElse(null);
 	}
 	
 }
