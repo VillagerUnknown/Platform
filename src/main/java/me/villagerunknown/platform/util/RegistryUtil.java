@@ -21,6 +21,7 @@ import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.stat.StatFormatter;
 import net.minecraft.stat.Stats;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.village.VillagerProfession;
 import net.minecraft.world.poi.PointOfInterestType;
@@ -114,7 +115,7 @@ public class RegistryUtil {
 		
 		Predicate<RegistryEntry<PointOfInterestType>> predicate = (entry) -> entry.matchesKey( poiRegistryKey );
 		
-		VillagerProfession profession = new VillagerProfession( professionKey, predicate, predicate, ImmutableSet.of(), ImmutableSet.of(), workSound );
+		VillagerProfession profession = new VillagerProfession( Text.of(professionKey), predicate, predicate, ImmutableSet.of(), ImmutableSet.of(), workSound );
 		
 		Registry.register( Registries.VILLAGER_PROFESSION, id, profession );
 		

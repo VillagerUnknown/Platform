@@ -6,7 +6,7 @@
   "description": "Adds commands and simple features. A core library for VillagerUnknown mods.",
   "authors": ["VillagerUnknown"],
   "contact": {
-    "homepage":"https://modrinth.com/mod/villagerunknown-platform",
+    "homepage":"https://github.com/VillagerUnknown",
     "sources":"https://github.com/VillagerUnknown/Platform",
     "issues":"https://github.com/VillagerUnknown/Platform/issues"
   },
