@@ -45,7 +45,7 @@ public class PlatformClientPayloads {
 		ClientPlayNetworking.registerGlobalReceiver(NarratorMessagePayload.ID, (payload, context) -> {
 			context.client().execute(() -> {
 				if( context.client().options.getNarrator().getValue().shouldNarrateSystem() ) {
-					Narrator.getNarrator().say(payload.message(), false);
+					Narrator.getNarrator().say(payload.message(), false, 0.5F);
 				} // if
 			});
 		});
