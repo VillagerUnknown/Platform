@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.1+1.21.5]
+
+### Added
+
+- Added variations for Chickens to `HeadUtil`.
+- Added variations for Cows to `HeadUtil`.
+- Added variations for Pigs to `HeadUtil`.
+
 ## [1.2.0+1.21.5]
 
 ### Changed

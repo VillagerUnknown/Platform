@@ -68,9 +68,19 @@ public class HeadUtil {
 		put( "black_cat", new Head( SoundEvents.ENTITY_CAT_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjJjMWU4MWZmMDNlODJhM2U3MWUwY2Q1ZmJlYzYwN2UxMTM2MTA4OWFhNDdmMjkwZDQ2YzhhMmMwNzQ2MGQ5MiJ9fX0=" ) );
 		
 		put( "cave_spider", new Head( SoundEvents.ENTITY_SPIDER_STEP, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTZhMWMyNTk5ZmM5MTIwM2E2NWEwM2Q0NzljOGRjODdmNjYyZGVhYzM2NjNjMTZjNWUwNGQ2MjViMzk3OGEyNSJ9fX0=" ) );
+		
 		put( "chicken", new Head( SoundEvents.ENTITY_CHICKEN_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDJhZjZlNTg0N2VlYTA5OWUxYjBhYjhjMjBhOWU1ZjNjNzE5MDE1OGJkYTU0ZTI4MTMzZDliMjcxZWMwY2I0YiJ9fX0=" ) );
+		put( "cold_chicken", new Head( SoundEvents.ENTITY_CHICKEN_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTkxMWZjZDhiMjI2YTk4ZjhiNmQ2MDVmZjI3YTg4ZWQ5NzIzMGJiNzE2NzhlNGEwMDY2OTA5NWQ2OWQzZjJiNCJ9fX0=" ) );
+		put( "temperate_chicken", new Head( SoundEvents.ENTITY_CHICKEN_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTYzODQ2OWE1OTljZWVmNzIwNzUzNzYwMzI0OGE5YWIxMWZmNTkxZmQzNzhiZWE0NzM1YjM0NmE3ZmFlODkzIn19fQ==" ) );
+		put( "warm_chicken", new Head( SoundEvents.ENTITY_CHICKEN_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNThjMjMxYmY0NjRmOWE2YzY3ODZhMjJhNGQxMTllYTVlNTA1NzYyNGM1YTM5MTQ3MGQzNWZhMmI2ZmZhNTE4MyJ9fX0=" ) );
+		
 		put( "cod", new Head( SoundEvents.ENTITY_COD_FLOP, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjI0NmUxOWIzMmNmNzg0NTQ5NDQ3ZTA3Yjk2MDcyZTFmNjU2ZDc4ZTkzY2NjYTU2Mzc0ODVlNjc0OTczNDY1MiJ9fX0=" ) );
+		
 		put( "cow", new Head( SoundEvents.ENTITY_COW_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjNkNjIxMTAwZmVhNTg4MzkyMmU3OGJiNDQ4MDU2NDQ4Yzk4M2UzZjk3ODQxOTQ4YTJkYTc0N2Q2YjA4YjhhYiJ9fX0=" ) );
+		put( "cold_cow", new Head( SoundEvents.ENTITY_COW_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTMzMjIxNDg0ZDM5ZjBkNGVjZGZmYTcyOTU2N2NlNzdmYThjZTA1YjA5MWRiNzZkZDViMDc5YTIwZjdiZjMzOSJ9fX0=" ) );
+		put( "temperate_cow", new Head( SoundEvents.ENTITY_COW_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWQ2YzZlZGE5NDJmN2Y1ZjcxYzMxNjFjNzMwNmY0YWVkMzA3ZDgyODk1ZjlkMmIwN2FiNDUyNTcxOGVkYzUifX19" ) );
+		put( "warm_cow", new Head( SoundEvents.ENTITY_COW_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjNiMzM3NmZhZjI4MWMxNGJhNDcyZDJlN2Y2YjZkMDE2OWU0YmMyMzc0ODM1YTlmOGQwNzg4ZTA0ZDgxMzQzZCJ9fX0=" ) );
+		
 		put( "creaking", new Head( SoundEvents.ENTITY_CREAKING_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmMwNzdjOTc1ZjEzZGJkYWVkYTVmMGQyMDE2ZWIzYWY1MWU0YzI3ZDk3MTRhMTIzYzQxMjg5MDE1MDVjNzg4YyJ9fX0=" ) );
 		
 		put( "creeper", new Head( SoundEvents.ENTITY_GENERIC_EXPLODE.value(), "" ) );
@@ -149,7 +159,12 @@ public class HeadUtil {
 		put( "gray_parrot", new Head( SoundEvents.ENTITY_PARROT_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzFiZTcyM2FhMTczOTNkOTlkYWRkYzExOWM5OGIyYzc5YzU0YjM1ZGViZTA1YzcxMzhlZGViOGQwMjU2ZGM0NiJ9fX0=" ) );
 		
 		put( "phantom", new Head( SoundEvents.ENTITY_PHANTOM_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2U5NTE1M2VjMjMyODRiMjgzZjAwZDE5ZDI5NzU2ZjI0NDMxM2EwNjFiNzBhYzAzYjk3ZDIzNmVlNTdiZDk4MiJ9fX0=" ) );
+		
 		put( "pig", new Head( SoundEvents.ENTITY_PIG_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDFlZTc2ODFhZGYwMDA2N2YwNGJmNDI2MTFjOTc2NDEwNzVhNDRhZTJiMWMwMzgxZDVhYzZiMzI0NjIxMWJmZSJ9fX0=" ) );
+		put( "cold_pig", new Head( SoundEvents.ENTITY_PIG_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmExOGQ0MDQzY2Q2YzkwMzg2Njc4ODkxNGZkNTM0MzE1MjgxYWY5ZjI1OWUzNDgzN2UzZTE3NWU1NDVjMmVkZSJ9fX0=" ) );
+		put( "temperate_pig", new Head( SoundEvents.ENTITY_PIG_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjIxNjY4ZWY3Y2I3OWRkOWMyMmNlM2QxZjNmNGNiNmUyNTU5ODkzYjZkZjRhNDY5NTE0ZTY2N2MxNmFhNCJ9fX0=" ) );
+		put( "warm_pig", new Head( SoundEvents.ENTITY_PIG_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2JlYmExYTJkNTZlODRmOGU1MWZlZDY2NTlmMmNiN2MxNGZlZDQzODU5YWY1ODQ3Mzc4OTdiZjcwYzAzOTQ3NSJ9fX0=" ) );
+		
 		put( "piglin", new Head( SoundEvents.ENTITY_PIGLIN_AMBIENT, "" ) );
 		put( "piglin_brute", new Head( SoundEvents.ENTITY_PIGLIN_BRUTE_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjQ4ODc5OWM4M2VjYjI5NDUyY2ViYTg5YzNjMDA5OTIxOTI3NGNlNWIyYmZiOGFkMGIzZWE0YzY1ZmFjNDYzMCJ9fX0=" ) );
 		put( "pillager", new Head( SoundEvents.ENTITY_PILLAGER_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzIyNWYwYjQ5YzUyOTUwNDhhNDA5YzljNjAxY2NhNzlhYThlYjUyYWZmNWUyMDMzZWJiODY1ZjQzNjdlZjQzZSJ9fX0=" ) );
@@ -288,6 +303,7 @@ public class HeadUtil {
 			"axolotl",
 			"bee",
 			"cat",
+			"chicken",
 			"cow",
 			"creeper",
 			"fox",
@@ -298,6 +314,7 @@ public class HeadUtil {
 			"mooshroom",
 			"panda",
 			"parrot",
+			"pig",
 			"rabbit",
 			"sheep",
 			"strider",
@@ -441,6 +458,8 @@ public class HeadUtil {
 			case "axolotl" -> getAxolotlVariant((AxolotlEntity) entity);
 			case "bee" -> getBeeVariant((BeeEntity) entity);
 			case "cat" -> getCatVariant((CatEntity) entity);
+			case "chicken" -> getChickenVariant((ChickenEntity) entity);
+			case "cow" -> getCowVariant((CowEntity) entity);
 			case "creeper" -> getCreeperVariant((CreeperEntity) entity);
 			case "fox" -> getFoxVariant((FoxEntity) entity);
 			case "frog" -> getFrogVariant((FrogEntity) entity);
@@ -450,6 +469,7 @@ public class HeadUtil {
 			case "mooshroom" -> getMooshroomVariant((MooshroomEntity) entity);
 			case "panda" -> getPandaVariant((PandaEntity) entity);
 			case "parrot" -> getParrotVariant((ParrotEntity) entity);
+			case "pig" -> getPigVariant((PigEntity) entity);
 			case "rabbit" -> getRabbitVariant((RabbitEntity) entity);
 			case "sheep" -> getSheepVariant((SheepEntity) entity);
 			case "strider" -> getStriderVariant((StriderEntity) entity);
@@ -514,6 +534,26 @@ public class HeadUtil {
 		
 		if( !entity.getVariant().value().assetInfo().texturePath().getPath().isEmpty() ) {
 			return formatEntityId( entity.getVariant().value().assetInfo().texturePath().getPath().replace("textures/entity/cat/","").replace(".png",""), entityName );
+		} // if
+		
+		return entityName;
+	}
+	
+	public static String getChickenVariant(@NotNull ChickenEntity entity ) {
+		String entityName = getEntityName( entity );
+		
+		if( !entity.getVariant().value().modelAndTexture().asset().texturePath().getPath().isEmpty() ) {
+			return entity.getVariant().value().modelAndTexture().asset().texturePath().getPath().replace("textures/entity/chicken/","").replace(".png","");
+		} // if
+		
+		return entityName;
+	}
+	
+	public static String getCowVariant(@NotNull CowEntity entity ) {
+		String entityName = getEntityName( entity );
+		
+		if( !entity.getVariant().value().modelAndTexture().asset().texturePath().getPath().isEmpty() ) {
+			return entity.getVariant().value().modelAndTexture().asset().texturePath().getPath().replace("textures/entity/cow/","").replace(".png","");
 		} // if
 		
 		return entityName;
@@ -604,6 +644,16 @@ public class HeadUtil {
 		
 		if( !entity.getVariant().name().isEmpty() ) {
 			return formatEntityId( entity.getVariant().name(), entityName );
+		} // if
+		
+		return entityName;
+	}
+	
+	public static String getPigVariant(@NotNull PigEntity entity ) {
+		String entityName = getEntityName( entity );
+		
+		if( !entity.getVariant().value().modelAndTexture().asset().texturePath().getPath().isEmpty() ) {
+			return entity.getVariant().value().modelAndTexture().asset().texturePath().getPath().replace("textures/entity/pig/","").replace(".png","");
 		} // if
 		
 		return entityName;
