@@ -4,8 +4,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.village.VillagerProfession;
 import net.minecraft.world.biome.Biome;
@@ -266,37 +268,37 @@ public class ListUtil {
 	);
 	
 	public static List<VillagerProfession> VILLAGER_PROFESSIONS = List.of(
-			VillagerProfession.ARMORER,
-			VillagerProfession.BUTCHER,
-			VillagerProfession.CARTOGRAPHER,
-			VillagerProfession.CLERIC,
-			VillagerProfession.FARMER,
-			VillagerProfession.FISHERMAN,
-			VillagerProfession.FLETCHER,
-			VillagerProfession.LEATHERWORKER,
-			VillagerProfession.LIBRARIAN,
-			VillagerProfession.MASON,
-			VillagerProfession.NITWIT,
-			VillagerProfession.SHEPHERD,
-			VillagerProfession.TOOLSMITH,
-			VillagerProfession.WEAPONSMITH
+			Registries.VILLAGER_PROFESSION.get( VillagerProfession.ARMORER ),
+			Registries.VILLAGER_PROFESSION.get( VillagerProfession.BUTCHER ),
+			Registries.VILLAGER_PROFESSION.get( VillagerProfession.CARTOGRAPHER ),
+			Registries.VILLAGER_PROFESSION.get( VillagerProfession.CLERIC ),
+			Registries.VILLAGER_PROFESSION.get( VillagerProfession.FARMER ),
+			Registries.VILLAGER_PROFESSION.get( VillagerProfession.FISHERMAN ),
+			Registries.VILLAGER_PROFESSION.get( VillagerProfession.FLETCHER ),
+			Registries.VILLAGER_PROFESSION.get( VillagerProfession.LEATHERWORKER ),
+			Registries.VILLAGER_PROFESSION.get( VillagerProfession.LIBRARIAN ),
+			Registries.VILLAGER_PROFESSION.get( VillagerProfession.MASON ),
+			Registries.VILLAGER_PROFESSION.get( VillagerProfession.NITWIT ),
+			Registries.VILLAGER_PROFESSION.get( VillagerProfession.SHEPHERD ),
+			Registries.VILLAGER_PROFESSION.get( VillagerProfession.TOOLSMITH ),
+			Registries.VILLAGER_PROFESSION.get( VillagerProfession.WEAPONSMITH )
 	);
 	
 	public static List<String> VILLAGER_PROFESSION_STRINGS = List.of(
-			VillagerProfession.ARMORER.id().toLowerCase().replace("minecraft:",""),
-			VillagerProfession.BUTCHER.id().toLowerCase().replace("minecraft:",""),
-			VillagerProfession.CARTOGRAPHER.id().toLowerCase().replace("minecraft:",""),
-			VillagerProfession.CLERIC.id().toLowerCase().replace("minecraft:",""),
-			VillagerProfession.FARMER.id().toLowerCase().replace("minecraft:",""),
-			VillagerProfession.FISHERMAN.id().toLowerCase().replace("minecraft:",""),
-			VillagerProfession.FLETCHER.id().toLowerCase().replace("minecraft:",""),
-			VillagerProfession.LEATHERWORKER.id().toLowerCase().replace("minecraft:",""),
-			VillagerProfession.LIBRARIAN.id().toLowerCase().replace("minecraft:",""),
-			VillagerProfession.MASON.id().toLowerCase().replace("minecraft:",""),
-			VillagerProfession.NITWIT.id().toLowerCase().replace("minecraft:",""),
-			VillagerProfession.SHEPHERD.id().toLowerCase().replace("minecraft:",""),
-			VillagerProfession.TOOLSMITH.id().toLowerCase().replace("minecraft:",""),
-			VillagerProfession.WEAPONSMITH.id().toLowerCase().replace("minecraft:","")
+			VillagerProfession.ARMORER.getValue().getPath().toLowerCase(),
+			VillagerProfession.BUTCHER.getValue().getPath().toLowerCase(),
+			VillagerProfession.CARTOGRAPHER.getValue().getPath().toLowerCase(),
+			VillagerProfession.CLERIC.getValue().getPath().toLowerCase(),
+			VillagerProfession.FARMER.getValue().getPath().toLowerCase(),
+			VillagerProfession.FISHERMAN.getValue().getPath().toLowerCase(),
+			VillagerProfession.FLETCHER.getValue().getPath().toLowerCase(),
+			VillagerProfession.LEATHERWORKER.getValue().getPath().toLowerCase(),
+			VillagerProfession.LIBRARIAN.getValue().getPath().toLowerCase(),
+			VillagerProfession.MASON.getValue().getPath().toLowerCase(),
+			VillagerProfession.NITWIT.getValue().getPath().toLowerCase(),
+			VillagerProfession.SHEPHERD.getValue().getPath().toLowerCase(),
+			VillagerProfession.TOOLSMITH.getValue().getPath().toLowerCase(),
+			VillagerProfession.WEAPONSMITH.getValue().getPath().toLowerCase()
 	);
 	
 	public static final List<Block> BEDS = List.of(

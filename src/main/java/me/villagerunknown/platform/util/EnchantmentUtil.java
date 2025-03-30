@@ -23,7 +23,7 @@ public class EnchantmentUtil {
 		RegistryEntry<Enchantment> regEntry = reg.getEntry( enchantmentEntryValue );
 		
 		ItemEnchantmentsComponent.Builder IECBuilder = new ItemEnchantmentsComponent.Builder(
-				ItemEnchantmentsComponent.DEFAULT.withShowInTooltip(true)
+				ItemEnchantmentsComponent.DEFAULT
 		);
 		IECBuilder.set(regEntry, skillLevel);
 		

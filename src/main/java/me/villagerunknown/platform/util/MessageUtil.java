@@ -8,6 +8,7 @@ import net.minecraft.text.ClickEvent;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 
+import java.net.URI;
 import java.util.List;
 
 public class MessageUtil {
@@ -40,7 +41,7 @@ public class MessageUtil {
 	
 	public static Text formClickableMessage(String message, String url ) {
 		return Text.literal( message )
-				.setStyle(Style.EMPTY.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, url)));
+				.setStyle(Style.EMPTY.withClickEvent(new ClickEvent.OpenUrl(URI.create( url ))));
 	}
 	
 	public static void showActionBarMessage(ServerPlayerEntity player, String message) {

@@ -156,7 +156,7 @@ public class VillagerUtil {
 	public static void resetTrades( VillagerEntity villager ) {
 		villager.setOffers(null);
 		
-		int level = villager.getVillagerData().getLevel();
+		int level = villager.getVillagerData().level();
 		TradeOfferList offers = new TradeOfferList();
 		
 		for (int i = VillagerData.MIN_LEVEL; i <= level; i++) {
