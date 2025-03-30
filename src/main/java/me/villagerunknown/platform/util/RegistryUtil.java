@@ -115,7 +115,7 @@ public class RegistryUtil {
 		
 		Predicate<RegistryEntry<PointOfInterestType>> predicate = (entry) -> entry.matchesKey( poiRegistryKey );
 		
-		VillagerProfession profession = new VillagerProfession( Text.of(professionKey), predicate, predicate, ImmutableSet.of(), ImmutableSet.of(), workSound );
+		VillagerProfession profession = new VillagerProfession( Text.translatable("entity.minecraft.villager." + professionKey ), predicate, predicate, ImmutableSet.of(), ImmutableSet.of(), workSound );
 		
 		Registry.register( Registries.VILLAGER_PROFESSION, id, profession );
 		
