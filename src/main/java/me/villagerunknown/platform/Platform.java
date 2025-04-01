@@ -1,12 +1,14 @@
 package me.villagerunknown.platform;
 
+import com.mojang.authlib.minecraft.client.MinecraftClient;
 import me.shedaniel.autoconfig.ConfigData;
-import me.villagerunknown.platform.feature.commandsFeature;
-import me.villagerunknown.platform.feature.deathCoordinateNoticeFeature;
-import me.villagerunknown.platform.feature.sleepNoticeFeature;
-import me.villagerunknown.platform.feature.welcomeMessageFeature;
+import me.villagerunknown.platform.feature.*;
 import me.villagerunknown.platform.manager.featureManager;
+import me.villagerunknown.platform.util.PlatformUtil;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.loader.api.FabricLoader;
+import net.fabricmc.loader.impl.launch.server.FabricServerLauncher;
+import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
 import java.util.*;
@@ -25,6 +27,8 @@ public class Platform implements ModInitializer {
 	
 	public static List<Runnable> LOAD = new ArrayList<>();
 	public static List<Runnable> UNLOAD = new ArrayList<>();
+	
+	public static final boolean IS_DEV_ENV = FabricLoader.getInstance().isDevelopmentEnvironment();
 	
 	@Override
 	public void onInitialize() {
@@ -48,6 +52,12 @@ public class Platform implements ModInitializer {
 		LOGGER = MOD.getLogger();
 		CONFIG = MOD.getConfig();
 		
+		LOGGER.info("Loading {} mod(s).", PlatformUtil.getLoadedMods().size());
+		
+		if( IS_DEV_ENV ) {
+			LOGGER.info("Development environment detected.");
+		} // if
+		
 		init();
 	}
 	
@@ -57,22 +67,26 @@ public class Platform implements ModInitializer {
 		} // if
 		
 		LOGGER.info("Initializing {} ({})", mod.getName(), mod.getModIdVersion());
+		LOGGER.info("For support visit: {}", mod.getIssuesURL());
 	}
 	
 	private static void init() {
 		init_mod( MOD );
-		LOGGER.info("For support visit: {}", MOD.getHomepage());
 		
 		// # Register Network Payloads
 		PlatformPayloads.registerPayloads();
 		
 		// # Activate Features
-		featureManager.addFeature( "commands", commandsFeature::execute );
+		featureManager.addFeatureFirst( "commands", commandsFeature::execute );
+		featureManager.addFeatureFirst( "playerCache", playerCacheFeature::execute );
 		
 		featureManager.addFeature( "welcomeMessage", welcomeMessageFeature::execute );
 		
 		featureManager.addFeature( "sleepNotice", sleepNoticeFeature::execute );
 		featureManager.addFeature( "deathCoordinateNotice", deathCoordinateNoticeFeature::execute );
+		
+		// # Load Features
+		featureManager.loadFeatures();
 	}
 	
 	public static <T extends ConfigData> PlatformMod<T> register(String modId, Class<?> loggerClass, Class<T> configClass) {
