@@ -4,6 +4,7 @@ Adds commands and simple features. A core library for VillagerUnknown mods.
 
 **Optional Features:**
 
+* Persistent player profile caching. (Enabled by default.)
 * Welcome messages for new and returning players. (Disabled by default.)
 * Notice in chat when players can sleep. (Disabled by default.)
 * Notice in chat with death coordinates for players. (Disabled by default.)
@@ -13,6 +14,7 @@ Adds commands and simple features. A core library for VillagerUnknown mods.
 * /villagerunknown-platform-help - Reveals Discord Link
 * /villagerunknown-platform-reload - Reloads VU Mods
 * /villagerunknown-platform-worldspawn - Reveals World Spawn Location and Radius
+* /villagerunknown-platform-flushcaches - Empties caches
 
 **Options:**
 
