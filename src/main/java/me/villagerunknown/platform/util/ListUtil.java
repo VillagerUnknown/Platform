@@ -284,22 +284,22 @@ public class ListUtil {
 			Registries.VILLAGER_PROFESSION.get( VillagerProfession.WEAPONSMITH )
 	);
 	
-	public static List<String> VILLAGER_PROFESSION_STRINGS = List.of(
-			VillagerProfession.ARMORER.getValue().getPath().toLowerCase(),
-			VillagerProfession.BUTCHER.getValue().getPath().toLowerCase(),
-			VillagerProfession.CARTOGRAPHER.getValue().getPath().toLowerCase(),
-			VillagerProfession.CLERIC.getValue().getPath().toLowerCase(),
-			VillagerProfession.FARMER.getValue().getPath().toLowerCase(),
-			VillagerProfession.FISHERMAN.getValue().getPath().toLowerCase(),
-			VillagerProfession.FLETCHER.getValue().getPath().toLowerCase(),
-			VillagerProfession.LEATHERWORKER.getValue().getPath().toLowerCase(),
-			VillagerProfession.LIBRARIAN.getValue().getPath().toLowerCase(),
-			VillagerProfession.MASON.getValue().getPath().toLowerCase(),
-			VillagerProfession.NITWIT.getValue().getPath().toLowerCase(),
-			VillagerProfession.SHEPHERD.getValue().getPath().toLowerCase(),
-			VillagerProfession.TOOLSMITH.getValue().getPath().toLowerCase(),
-			VillagerProfession.WEAPONSMITH.getValue().getPath().toLowerCase()
-	);
+	public static List<String> VILLAGER_PROFESSION_STRINGS = new ArrayList<String>(){{
+			add( VillagerProfession.ARMORER.getValue().getPath().toLowerCase() );
+			add( VillagerProfession.BUTCHER.getValue().getPath().toLowerCase() );
+			add( VillagerProfession.CARTOGRAPHER.getValue().getPath().toLowerCase() );
+			add( VillagerProfession.CLERIC.getValue().getPath().toLowerCase() );
+			add( VillagerProfession.FARMER.getValue().getPath().toLowerCase() );
+			add( VillagerProfession.FISHERMAN.getValue().getPath().toLowerCase() );
+			add( VillagerProfession.FLETCHER.getValue().getPath().toLowerCase() );
+			add( VillagerProfession.LEATHERWORKER.getValue().getPath().toLowerCase() );
+			add( VillagerProfession.LIBRARIAN.getValue().getPath().toLowerCase() );
+			add( VillagerProfession.MASON.getValue().getPath().toLowerCase() );
+			add( VillagerProfession.NITWIT.getValue().getPath().toLowerCase() );
+			add( VillagerProfession.SHEPHERD.getValue().getPath().toLowerCase() );
+			add( VillagerProfession.TOOLSMITH.getValue().getPath().toLowerCase() );
+			add( VillagerProfession.WEAPONSMITH.getValue().getPath().toLowerCase() );
+	}};
 	
 	public static final List<Block> BEDS = List.of(
 			Blocks.BLACK_BED,
