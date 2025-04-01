@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.2+1.21.5]
+
+### Added
+
+- Added persistent player profile caching system.
+- Added `villagerunknown-platform-flushcaches` command to empty caches.
+- Added RegistryKey property to `VillagerUtil.CustomVillager` to adapt to changes from MC1.21.5.
+
+### Changed
+
+- Changed `featureManager` to use a queuing system. This allows controlled loading of features in mods registered with Platform.
+
 ## [1.2.1+1.21.5]
 
 ### Added

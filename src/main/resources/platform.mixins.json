@@ -4,6 +4,7 @@
   "package": "me.villagerunknown.platform.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "YggdrasilMinecraftSessionServiceMixin"
   ],
   "injectors": {
     "defaultRequire": 1

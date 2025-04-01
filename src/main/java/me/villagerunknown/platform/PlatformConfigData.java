@@ -24,6 +24,13 @@ public class PlatformConfigData implements me.shedaniel.autoconfig.ConfigData {
 	public boolean enableCommandFeedbackSounds = true;
 	
 	/**
+	 * Caching
+	 */
+	
+	@ConfigEntry.Category("Caching")
+	public boolean enablePlayerCaching = true;
+	
+	/**
 	 * Greeting
 	 */
 	
