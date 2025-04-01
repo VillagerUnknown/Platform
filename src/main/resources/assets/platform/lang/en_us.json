@@ -10,6 +10,10 @@
   "text.autoconfig.villagerunknown-platform.option.enableCommands": "Enable Commands",
   "text.autoconfig.villagerunknown-platform.option.enableCommandFeedbackSounds": "Enable Command Feedback Sounds",
 
+  "text.autoconfig.villagerunknown-platform.category.Caching": "Caching",
+
+  "text.autoconfig.villagerunknown-platform.option.enablePlayerCaching": "Enable Player Caching",
+
   "text.autoconfig.villagerunknown-platform.category.Greeting": "Greeting",
 
   "text.autoconfig.villagerunknown-platform.option.enableWelcomeMessage": "Enable Welcome Message",

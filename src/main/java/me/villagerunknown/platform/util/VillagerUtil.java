@@ -5,6 +5,8 @@ import net.minecraft.block.BlockState;
 import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
@@ -29,6 +31,18 @@ public class VillagerUtil {
 	public static final int MASTER_TRADE_XP = 30;
 	public static final float LOW_PRICE_MULTIPLIER = 0.05F;
 	public static final float HIGH_PRICE_MULTIPLIER = 0.2F;
+	
+	public static VillagerProfession getProfession( RegistryKey<VillagerProfession> key ) {
+		return Registries.VILLAGER_PROFESSION.get( key );
+	}
+	
+	public static String getProfessionName( RegistryKey<VillagerProfession> key ) {
+		return key.getValue().getPath().toLowerCase();
+	}
+	
+	public static RegistryKey<VillagerProfession> getProfessionRegistryKey( Identifier id ) {
+		return RegistryKey.of( Registries.VILLAGER_PROFESSION.getKey(), id );
+	}
 	
 	public static TradeOffer buyTradeOffer( int level, TradedItem demand, ItemStack supply ) {
 		return new TradeOffer(
@@ -179,6 +193,8 @@ public class VillagerUtil {
 		
 		public RegistryEntry<VillagerProfession> REGISTRY_ENTRY;
 		
+		public RegistryKey<VillagerProfession> REGISTRY_KEY;
+		
 		public VillagerProfession PROFESSION;
 	
 		public CustomVillager( Identifier id, ImmutableList<BlockState> workstations, String professionKey, SoundEvent workSound ) {
@@ -186,7 +202,10 @@ public class VillagerUtil {
 			WORKSTATIONS = workstations;
 			SOUND = workSound;
 			REGISTRY_ENTRY = RegistryUtil.registerVillager( id, workstations, professionKey, workSound );
+			REGISTRY_KEY = RegistryKey.of( Registries.VILLAGER_PROFESSION.getKey(), id );
 			PROFESSION = REGISTRY_ENTRY.value();
+			
+			ListUtil.VILLAGER_PROFESSION_STRINGS.add( professionKey );
 		}
 		
 	}
