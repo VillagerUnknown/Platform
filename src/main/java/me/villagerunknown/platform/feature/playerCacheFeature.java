@@ -1,25 +1,21 @@
 package me.villagerunknown.platform.feature;
 
-import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.yggdrasil.ProfileResult;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import me.villagerunknown.platform.Platform;
-import me.villagerunknown.platform.PlatformPersistentData;
+import me.villagerunknown.platform.data.ProfileResultData;
+import me.villagerunknown.platform.data.persistent.PersistentProfileResultData;
 import me.villagerunknown.platform.util.ProfileUtil;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.util.Uuids;
-import net.minecraft.util.dynamic.Codecs;
 
 import java.util.*;
 
 public class playerCacheFeature {
 	
-	public static Map<UUID, PlayerData> PLAYERS = new HashMap<>();
+	public static Map<UUID, ProfileResultData> PLAYERS = new HashMap<>();
 	
 	public static void execute() {
 		registerServerStartedEvent();
@@ -31,14 +27,16 @@ public class playerCacheFeature {
 			if( Platform.CONFIG.enablePlayerCaching ) {
 				Platform.LOGGER.info("Player caching enabled.");
 				
-				PlatformPersistentData serverState = PlatformPersistentData.getServerState(server);
+				PersistentProfileResultData serverState = PersistentProfileResultData.getServerState(server);
 				
 				Platform.LOGGER.info("{} player(s) cached.", serverState.players.size() );
 				
 				if( !serverState.players.isEmpty() ) {
 					PLAYERS = serverState.players;
 				} // if
-			} // if
+			} else {
+				emptyCache();
+			} // if, else
 		});
 	}
 	
@@ -49,10 +47,10 @@ public class playerCacheFeature {
 				UUID playerUuid = player.getUuid();
 				
 				if( !isCached(playerUuid) ) {
-					PlayerData playerState = PlatformPersistentData.getPlayerState( player );
+					ProfileResultData playerState = PersistentProfileResultData.getPlayerState( player );
 					
 					if( null != playerState ) {
-						PLAYERS.put( playerState.uuid, new PlayerData( playerState.name, playerState.uuid, playerState.result ) );
+						PLAYERS.put( playerState.uuid, new ProfileResultData( playerState.name, playerState.uuid, playerState.result ) );
 						
 						Platform.LOGGER.info( "Player cache loaded from server: {} ({})", playerState.name, playerState.uuid.toString() );
 					} else {
@@ -77,7 +75,7 @@ public class playerCacheFeature {
 		return PLAYERS.containsKey( uuid );
 	}
 	
-	public static PlayerData cachePlayer( MinecraftServer minecraftServer, String playerName, UUID playerUuid ) {
+	public static ProfileResultData cachePlayer( MinecraftServer minecraftServer, String playerName, UUID playerUuid ) {
 		ProfileResult profileResult = getUncachedProfileResult(minecraftServer, playerUuid, minecraftServer.shouldEnforceSecureProfile());
 		if( null != profileResult ) {
 			return cachePlayer( playerName, playerUuid, profileResult );
@@ -86,16 +84,16 @@ public class playerCacheFeature {
 		return null;
 	}
 	
-	public static PlayerData cachePlayer( String playerName, UUID playerUuid, ProfileResult profileResult ) {
+	public static ProfileResultData cachePlayer( String playerName, UUID playerUuid, ProfileResult profileResult ) {
 		if( null != profileResult ) {
-			PlayerData playerData = new PlayerData(playerName, playerUuid, profileResult);
+			ProfileResultData playerData = new ProfileResultData(playerName, playerUuid, profileResult);
 			return addToCache(playerUuid, playerData);
 		} // if
 		
 		return null;
 	}
 	
-	public static PlayerData cachePlayer( PlayerEntity player ) {
+	public static ProfileResultData cachePlayer( PlayerEntity player ) {
 		MinecraftServer server = player.getServer();
 		
 		if( null != server ) {
@@ -107,7 +105,7 @@ public class playerCacheFeature {
 		return null;
 	}
 	
-	public static PlayerData addToCache( UUID uuid, PlayerData data ) {
+	public static ProfileResultData addToCache(UUID uuid, ProfileResultData data ) {
 		if( null == data.result ) {
 			return data;
 		} // if
@@ -119,34 +117,8 @@ public class playerCacheFeature {
 		return data;
 	}
 	
-	public static class PlayerData {
-		
-		public static final Codec<ProfileResult> PROFILE_RESULT_CODEC = RecordCodecBuilder.create(instance -> instance.group(
-				Codecs.GAME_PROFILE_WITH_PROPERTIES.fieldOf("profile").forGetter(ProfileResult::profile)
-		).apply(instance, playerCacheFeature.PlayerData::newProfileResult));
-		
-		public static final Codec<PlayerData> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-				Codec.STRING.fieldOf("name").forGetter(player -> player.name),
-				Uuids.CODEC.fieldOf("uuid").forGetter(player -> player.uuid),
-				PROFILE_RESULT_CODEC.fieldOf("profile").forGetter( p -> p.result )
-		).apply(instance, playerCacheFeature.PlayerData::new));
-		
-		public String name;
-		
-		public UUID uuid;
-		
-		public ProfileResult result;
-		
-		public PlayerData(String playerName, UUID playerUuid, ProfileResult profileResult) {
-			name = playerName;
-			uuid = playerUuid;
-			result = profileResult;
-		}
-		
-		public static ProfileResult newProfileResult(GameProfile profile) {
-			return new ProfileResult( profile );
-		}
-		
+	public static void emptyCache() {
+		PLAYERS.clear();
 	}
 	
 }

@@ -204,8 +204,6 @@ public class VillagerUtil {
 			REGISTRY_ENTRY = RegistryUtil.registerVillager( id, workstations, professionKey, workSound );
 			REGISTRY_KEY = RegistryKey.of( Registries.VILLAGER_PROFESSION.getKey(), id );
 			PROFESSION = REGISTRY_ENTRY.value();
-			
-			ListUtil.VILLAGER_PROFESSION_STRINGS.add( professionKey );
 		}
 		
 	}

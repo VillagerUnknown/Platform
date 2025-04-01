@@ -17,9 +17,13 @@ public abstract class YggdrasilMinecraftSessionServiceMixin implements Minecraft
 	
 	@Inject(method = "fetchProfile(Ljava/util/UUID;Z)Lcom/mojang/authlib/yggdrasil/ProfileResult;", at = @At("HEAD"), cancellable = true, remap = false)
 	public void fetchProfile(UUID profileId, boolean requireSecure, CallbackInfoReturnable<ProfileResult> cir) {
-		if( null != Platform.CONFIG && Platform.CONFIG.enablePlayerCaching && playerCacheFeature.isCached( profileId ) ) {
-			Platform.LOGGER.info("MinecraftSessionService loaded profile from cache: {}", profileId);
-			cir.setReturnValue( playerCacheFeature.getCachedProfileResult( profileId ) );
+		if( null != Platform.CONFIG && Platform.CONFIG.enablePlayerCaching ) {
+			if (playerCacheFeature.isCached(profileId)) {
+				Platform.LOGGER.info("MinecraftSessionService loaded profile from cache: {}", profileId);
+				cir.setReturnValue(playerCacheFeature.getCachedProfileResult(profileId));
+			} else {
+				Platform.LOGGER.info("MinecraftSessionService requested profile from service: {}", profileId);
+			} // if, else
 		} // if
 	}
 
