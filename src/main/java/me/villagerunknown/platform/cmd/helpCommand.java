@@ -9,8 +9,8 @@ public class helpCommand {
 	
 	public static void execute() {
 		Text message = MessageUtil.formClickableMessage(
-				"Click here to join VillagerUnknown's Discord Server for help!",
-				"https://discord.gg/PXjXh6M38H"
+				"Click here to goto Github for help!",
+				"https://github.com/VillagerUnknown/Platform/issues"
 		);
 		
 		commandsFeature.COMMAND_SOURCE.sendMessage( message );
