@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.0.1]
+
+_This update resolves conflicts with another Platform mod._
+
+### Fixed
+
+- Fixed conflicting mixin name with another Platform mod.
+- Fixed help command providing wrong URL.
+
 ## [1.2.0]
 
 ### Added
