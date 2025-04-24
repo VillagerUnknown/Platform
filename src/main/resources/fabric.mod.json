@@ -25,9 +25,9 @@
     ]
   },
   "mixins": [
-    "platform.mixins.json",
+    "villagerunknown-platform.mixins.json",
     {
-      "config": "platform.client.mixins.json",
+      "config": "villagerunknown-platform.client.mixins.json",
       "environment": "client"
     }
   ],
