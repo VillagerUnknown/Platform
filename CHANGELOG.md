@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.4+1.21.1]
+
+_This update backports functionality and features from version 1.2.3+1.21.5. 
+It also corrects the location of the language files. It purposefully skips version numbers._
+
+### Added
+
+- Added persistent player profile caching system.
+- Added `ItemCountMapTypeAdapter` and `ProfileResultMapTypeAdapter` for `GsonUtil`.
+- Added `villagerunknown-platform-flushcaches` command to empty caches.
+- Added `enablePlayerCaching` option.
+- Added `flushCacheOnServerRestart` option.
+- Added `bedClearsWeatherFeature`.
+- Added `bedInteractionsAlwaysClearWeather` option.
+- Added `bedInteractionsClearWeatherAtNight` option.
+- Added `hideNametagsFeature` and corresponding `NametagVisibilityPayload`.
+- Added `hideNametags` option.
+- Added `hidePlayerNametags` option.
+
+### Changed
+
+- Changed location of translation files from `resources/assets/platform` to `resources/assets/villagerunknown-platform`.
+- Changed `featureManager` to use a queuing system. This allows controlled loading of features in mods registered with Platform.
+
 ## [1.2.0.1]
 
 _This update resolves conflicts with another Platform mod._
