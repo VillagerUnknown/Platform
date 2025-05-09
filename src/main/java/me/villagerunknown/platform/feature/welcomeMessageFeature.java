@@ -4,7 +4,10 @@ import me.villagerunknown.platform.Platform;
 import me.villagerunknown.platform.util.MessageUtil;
 import me.villagerunknown.platform.util.PlayerUtil;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.world.World;
 
 public class welcomeMessageFeature {
 	
