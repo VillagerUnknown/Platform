@@ -10,6 +10,11 @@
   "text.autoconfig.villagerunknown-platform.option.enableCommands": "Enable Commands",
   "text.autoconfig.villagerunknown-platform.option.enableCommandFeedbackSounds": "Enable Command Feedback Sounds",
 
+  "text.autoconfig.villagerunknown-platform.category.Caching": "Caching",
+
+  "text.autoconfig.villagerunknown-platform.option.enablePlayerCaching": "Enable Player Caching",
+  "text.autoconfig.villagerunknown-platform.option.flushCacheOnServerRestart": "Flush Cache On Server Restart",
+
   "text.autoconfig.villagerunknown-platform.category.Greeting": "Greeting",
 
   "text.autoconfig.villagerunknown-platform.option.enableWelcomeMessage": "Enable Welcome Message",
@@ -20,5 +25,15 @@
 
   "text.autoconfig.villagerunknown-platform.option.enableSleepNotice": "Enable Sleep Notice",
   "text.autoconfig.villagerunknown-platform.option.sleepNoticeMessage": "Sleep Notice Message",
-  "text.autoconfig.villagerunknown-platform.option.enableDeathCoordinateNotice": "Enable Death Coordinate Notice"
+  "text.autoconfig.villagerunknown-platform.option.enableDeathCoordinateNotice": "Enable Death Coordinate Notice",
+
+  "text.autoconfig.villagerunknown-platform.category.Weather": "Weather",
+
+  "text.autoconfig.villagerunknown-platform.option.bedInteractionsAlwaysClearWeather": "Bed Interactions Always Clear Weather",
+  "text.autoconfig.villagerunknown-platform.option.bedInteractionsClearWeatherAtNight": "Bed Interactions Clear Weather At Night",
+
+  "text.autoconfig.villagerunknown-platform.category.Nametags": "Nametags",
+
+  "text.autoconfig.villagerunknown-platform.option.hideNametags": "Hide All Nametags",
+  "text.autoconfig.villagerunknown-platform.option.hidePlayerNametags": "Hide Player Nametags"
 }

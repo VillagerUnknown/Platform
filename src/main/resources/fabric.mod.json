@@ -11,7 +11,7 @@
     "issues":"https://github.com/VillagerUnknown/Platform/issues"
   },
   "license": "CC-BY-4.0",
-  "icon": "assets/platform/villagerunknown-platform.png",
+  "icon": "assets/villagerunknown-platform/villagerunknown-platform.png",
   "environment": "*",
   "entrypoints": {
     "client": [
