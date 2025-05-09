@@ -24,6 +24,16 @@ public class PlatformConfigData implements me.shedaniel.autoconfig.ConfigData {
 	public boolean enableCommandFeedbackSounds = true;
 	
 	/**
+	 * Caching
+	 */
+	
+	@ConfigEntry.Category("Caching")
+	public boolean enablePlayerCaching = true;
+	
+	@ConfigEntry.Category("Caching")
+	public boolean flushCacheOnServerRestart = false;
+	
+	/**
 	 * Greeting
 	 */
 	
@@ -48,5 +58,26 @@ public class PlatformConfigData implements me.shedaniel.autoconfig.ConfigData {
 	
 	@ConfigEntry.Category("Notices")
 	public boolean enableDeathCoordinateNotice = false;
+	
+	/**
+	 * Weather
+	 */
+	
+	@ConfigEntry.Category("Weather")
+	public boolean bedInteractionsAlwaysClearWeather = false;
+	
+	@ConfigEntry.Category("Weather")
+	public boolean bedInteractionsClearWeatherAtNight = false;
+	
+	/**
+	 * Nametags
+	 */
+	
+	@ConfigEntry.Category("Nametags")
+	public boolean hideNametags = false;
+	
+	@ConfigEntry.Category("Nametags")
+	public boolean hidePlayerNametags = false;
+	
 	
 }
