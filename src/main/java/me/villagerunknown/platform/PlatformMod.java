@@ -14,12 +14,17 @@ import java.util.Collection;
 import java.util.Optional;
 
 public class PlatformMod <T extends ConfigData> {
-
+	
 	private String MOD_ID = null;
 	
 	private Logger LOGGER = null;
 	
 	private T CONFIG = null;
+	
+	public PlatformMod(String modId, Class<?> loggerClass) {
+		MOD_ID = PlatformUtil.formModId( modId );
+		LOGGER = LoggerFactory.getLogger( loggerClass );
+	}
 	
 	public PlatformMod(String modId, Class<?> loggerClass, Class<T> configClass) {
 		MOD_ID = PlatformUtil.formModId( modId );
@@ -75,18 +80,30 @@ public class PlatformMod <T extends ConfigData> {
 				.map(modContainer -> modContainer.getMetadata().getContact());
 	}
 	
-	public String getHomepage() {
+	public String getContact( String type ) {
 		Optional<ContactInformation> contact = getContact();
-		String homepage = "";
+		String url = "";
 		
 		if( contact.isPresent() ) {
-			Optional<String> property = contact.get().get("homepage");
+			Optional<String> property = contact.get().get(type);
 			if( property.isPresent() ) {
-				homepage = property.get();
+				url = property.get();
 			}
 		}
 		
-		return homepage;
+		return url;
+	}
+	
+	public String getHomepage() {
+		return getContact( "homepage" );
+	}
+	
+	public String getSourcesURL() {
+		return getContact( "sources" );
+	}
+	
+	public String getIssuesURL() {
+		return getContact( "issues" );
 	}
 	
 }

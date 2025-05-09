@@ -1,12 +1,11 @@
 package me.villagerunknown.platform;
 
 import me.shedaniel.autoconfig.ConfigData;
-import me.villagerunknown.platform.feature.commandsFeature;
-import me.villagerunknown.platform.feature.deathCoordinateNoticeFeature;
-import me.villagerunknown.platform.feature.sleepNoticeFeature;
-import me.villagerunknown.platform.feature.welcomeMessageFeature;
+import me.villagerunknown.platform.feature.*;
 import me.villagerunknown.platform.manager.featureManager;
+import me.villagerunknown.platform.util.PlatformUtil;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.loader.api.FabricLoader;
 import org.slf4j.Logger;
 
 import java.util.*;
@@ -19,17 +18,23 @@ public class Platform implements ModInitializer {
 	public static PlatformMod<PlatformConfigData> MOD = null;
 	public static String MOD_ID = null;
 	public static Logger LOGGER = null;
-	public static PlatformConfigData CONFIG = null;
+	public static PlatformConfigData CONFIG;
 	
 	public static Map<String, PlatformMod<? extends ConfigData>> MODS = new HashMap<>();
 	
 	public static List<Runnable> LOAD = new ArrayList<>();
 	public static List<Runnable> UNLOAD = new ArrayList<>();
 	
+	public static final boolean IS_DEV_ENV = FabricLoader.getInstance().isDevelopmentEnvironment();
+	
 	@Override
 	public void onInitialize() {
 		// # Initialize Platform
 		init_platform();
+	}
+	
+	public static boolean isDevEnv() {
+		return IS_DEV_ENV;
 	}
 	
 	public static void define( String id ) {
@@ -48,7 +53,30 @@ public class Platform implements ModInitializer {
 		LOGGER = MOD.getLogger();
 		CONFIG = MOD.getConfig();
 		
-		init();
+		LOGGER.info("Loading {} mod(s).", PlatformUtil.getLoadedMods().size());
+		
+		if( isDevEnv() ) {
+			LOGGER.info("Development environment detected.");
+		} // if
+		
+		init_mod( MOD );
+		
+		// # Register Network Payloads
+		PlatformPayloads.registerPayloads();
+		
+		// # Activate Primary Features
+		featureManager.addFeatureFirst( "commands", commandsFeature::execute );
+		featureManager.addFeatureFirst( "playerCache", playerCacheFeature::execute );
+		
+		// # Activate Extra Features
+		featureManager.addFeature( "welcomeMessage", welcomeMessageFeature::execute );
+		featureManager.addFeature( "sleepNotice", sleepNoticeFeature::execute );
+		featureManager.addFeature( "deathCoordinateNotice", deathCoordinateNoticeFeature::execute );
+		featureManager.addFeature( "bedClearsWeather", bedClearsWeatherFeature::execute );
+		featureManager.addFeature( "hideNametags", hideNametagsFeature::execute );
+		
+		// # Load Features
+		featureManager.loadFeatures();
 	}
 	
 	public static <T extends ConfigData> void init_mod( PlatformMod<T> mod ) {
@@ -56,40 +84,28 @@ public class Platform implements ModInitializer {
 			init_platform();
 		} // if
 		
+		MODS.put( mod.getModIdVersion(), mod );
+		
 		LOGGER.info("Initializing {} ({})", mod.getName(), mod.getModIdVersion());
+		LOGGER.info("For support visit: {}", mod.getIssuesURL());
 	}
 	
-	private static void init() {
-		init_mod( MOD );
-		LOGGER.info("For support visit: {}", MOD.getHomepage());
+	public static <T extends ConfigData> PlatformMod<T> register( PlatformMod<T> mod ) {
+		mod.getLogger().info("Registering: {}", mod.getModIdVersion());
 		
-		// # Register Network Payloads
-		PlatformPayloads.registerPayloads();
+		return mod;
+	}
+	
+	public static <T extends ConfigData> PlatformMod<T> register(String modId, Class<?> loggerClass) {
+		PlatformMod<T> mod = new PlatformMod<>( modId, loggerClass );
 		
-		// # Activate Features
-		featureManager.addFeature( "commands", commandsFeature::execute );
-		
-		featureManager.addFeature( "welcomeMessage", welcomeMessageFeature::execute );
-		
-		featureManager.addFeature( "sleepNotice", sleepNoticeFeature::execute );
-		featureManager.addFeature( "deathCoordinateNotice", deathCoordinateNoticeFeature::execute );
+		return register( mod );
 	}
 	
 	public static <T extends ConfigData> PlatformMod<T> register(String modId, Class<?> loggerClass, Class<T> configClass) {
-		if( null == MOD ) {
-			init_platform();
-		} // if
-		
 		PlatformMod<T> mod = new PlatformMod<>( modId, loggerClass, configClass );
 		
-		mod.getLogger().info("Registering: {}", mod.getModIdVersion());
-		
-		return register( mod.getModId(), mod );
-	}
-	
-	public static <T extends ConfigData> PlatformMod<T> register( String id, PlatformMod<T> mod ) {
-		MODS.put( id, mod );
-		return mod;
+		return register( mod );
 	}
 	
 	public static boolean registered( String id ) {
