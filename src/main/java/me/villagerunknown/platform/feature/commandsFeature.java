@@ -2,6 +2,7 @@ package me.villagerunknown.platform.feature;
 
 import com.mojang.brigadier.CommandDispatcher;
 import me.villagerunknown.platform.Platform;
+import me.villagerunknown.platform.cmd.flushcachesCommand;
 import me.villagerunknown.platform.cmd.helpCommand;
 import me.villagerunknown.platform.cmd.reloadCommand;
 import me.villagerunknown.platform.cmd.worldspawnCommand;
@@ -30,6 +31,7 @@ public class commandsFeature {
 		addCommand("help", helpCommand::execute );
 		addCommand("reload", reloadCommand::execute);
 		addCommand("worldspawn", worldspawnCommand::execute );
+		addCommand("flushcaches", flushcachesCommand::execute );
 		
 		CommandRegistrationCallback.EVENT.register(commandsFeature::registerCommands);
 	}
