@@ -1,53 +1,55 @@
 package me.villagerunknown.platform.timer;
 
+import net.minecraft.server.MinecraftServer;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class TickTimer {
 	
-	private boolean ALARM_ACTIVATED = false;
-	private int ALARM_INTERVAL_TICKS = 72000;
+	private boolean alarmActivated = false;
+	private int alarmIntervalTicks = 0;
 	private int tickCounter = 0;
 	
 	private Map<String, Object> dataset = new HashMap<>();
 	
 	public TickTimer(int minutes, int seconds) {
-		minutes = minutes * 60 * 20;
-		seconds = seconds * 20;
-		ALARM_INTERVAL_TICKS = minutes + seconds;
+		setAlarm( minutes, seconds );
 	}
 	
 	public TickTimer(int minutes) {
-		ALARM_INTERVAL_TICKS = minutes * 60 * 20;
+		setAlarm( minutes, 0 );
 	}
 	
 	public void tick() {
 		tickCounter++;
 		
-		if( tickCounter >= ALARM_INTERVAL_TICKS) {
+		if( alarmIntervalTicks > 0 && tickCounter >= alarmIntervalTicks ) {
 			tickCounter = 0;
-			ALARM_ACTIVATED = true;
+			alarmActivated = true;
 		} // if
+	}
+	
+	public void setAlarm( int minutes, int seconds ) {
+		minutes = minutes * 60 * 20;
+		seconds = seconds * 20;
+		alarmIntervalTicks = minutes + seconds;
 	}
 	
 	public boolean isAlarmActivated() {
-		if( ALARM_ACTIVATED ) {
-			return true;
-		} // if
-		
-		return false;
+		return alarmActivated;
 	}
 	
 	public void resetAlarmActivation() {
-		ALARM_ACTIVATED = false;
+		alarmActivated = false;
 	}
 	
 	public int getDuration() {
-		return ALARM_INTERVAL_TICKS;
+		return alarmIntervalTicks;
 	}
 	
 	public int getTicksUntilAlarm() {
-		return ALARM_INTERVAL_TICKS - tickCounter;
+		return alarmIntervalTicks - tickCounter;
 	}
 	
 	public int getMinutesUntilAlarm() {
