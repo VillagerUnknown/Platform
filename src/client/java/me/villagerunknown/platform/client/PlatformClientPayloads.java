@@ -1,10 +1,7 @@
 package me.villagerunknown.platform.client;
 
 import com.mojang.text2speech.Narrator;
-import me.villagerunknown.platform.network.NarratorMessagePayload;
-import me.villagerunknown.platform.network.SendPlayerToMainMenuPayload;
-import me.villagerunknown.platform.network.ShowPlayerGameMenuPayload;
-import me.villagerunknown.platform.network.ToastMessagePayload;
+import me.villagerunknown.platform.network.*;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.GameMenuScreen;
@@ -22,6 +19,7 @@ public class PlatformClientPayloads {
 		registerNarratorMessagePayload();
 		registerShowGameMenuPayload();
 		registerShowMainMenuPayload();
+		registerNametagVisibilityPayload();
 	}
 	
 	public static void registerToastMessagePayload() {
@@ -71,6 +69,15 @@ public class PlatformClientPayloads {
 					client.disconnect(new MessageScreen(Text.of("Saving world")));
 					client.setScreen(new TitleScreen(true));
 				}
+			});
+		});
+	}
+	
+	public static void registerNametagVisibilityPayload() {
+		ClientPlayNetworking.registerGlobalReceiver(NametagVisibilityPayload.ID, (payload, context) -> {
+			context.client().execute(() -> {
+				PlatformClient.nametagsVisible = payload.visible();
+				PlatformClient.playerNametagsVisible = payload.playersVisible();
 			});
 		});
 	}
