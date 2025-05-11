@@ -4,8 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## [1.2.4+1.21.1]
 
-_This update backports functionality and features from version 1.2.3+1.21.5. 
-It also corrects the location of the language files. It purposefully skips version numbers._
+This update backports functionality and features from version 1.2.3+1.21.5. 
+It also corrects the location of the language files. It purposefully skips version numbers.
+
+_This update changes the feature loader and breaks older versions. 
+Users are encouraged to wait to update Platform until updates are available for all of their Platform dependent mods._
 
 ### Added
 

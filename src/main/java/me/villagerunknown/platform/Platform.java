@@ -18,9 +18,10 @@ public class Platform implements ModInitializer {
 	public static PlatformMod<PlatformConfigData> MOD = null;
 	public static String MOD_ID = null;
 	public static Logger LOGGER = null;
-	public static PlatformConfigData CONFIG;
+	public static PlatformConfigData CONFIG = null;
 	
-	public static Map<String, PlatformMod<? extends ConfigData>> MODS = new HashMap<>();
+	public static Map<String, PlatformMod<? extends ConfigData>> REGISTERED_MODS = new HashMap<>();
+	public static Map<String, PlatformMod<? extends ConfigData>> LOADED_MODS = new HashMap<>();
 	
 	public static List<Runnable> LOAD = new ArrayList<>();
 	public static List<Runnable> UNLOAD = new ArrayList<>();
@@ -47,7 +48,7 @@ public class Platform implements ModInitializer {
 			return;
 		} // if
 		
-		MOD = new PlatformMod<>( "platform", Platform.class, PlatformConfigData.class );
+		MOD = register( "platform", Platform.class, PlatformConfigData.class );
 		
 		MOD_ID = MOD.getModId();
 		LOGGER = MOD.getLogger();
@@ -84,7 +85,7 @@ public class Platform implements ModInitializer {
 			init_platform();
 		} // if
 		
-		MODS.put( mod.getModIdVersion(), mod );
+		LOADED_MODS.put( mod.getModIdVersion(), mod );
 		
 		LOGGER.info("Initializing {} ({})", mod.getName(), mod.getModIdVersion());
 		LOGGER.info("For support visit: {}", mod.getIssuesURL());
@@ -93,27 +94,33 @@ public class Platform implements ModInitializer {
 	public static <T extends ConfigData> PlatformMod<T> register( PlatformMod<T> mod ) {
 		mod.getLogger().info("Registering: {}", mod.getModIdVersion());
 		
+		REGISTERED_MODS.put( mod.getModIdVersion(), mod );
+		
 		return mod;
 	}
 	
 	public static <T extends ConfigData> PlatformMod<T> register(String modId, Class<?> loggerClass) {
-		PlatformMod<T> mod = new PlatformMod<>( modId, loggerClass );
+		PlatformMod<T> mod = new PlatformMod<>( PlatformUtil.formModId( modId ), loggerClass );
 		
 		return register( mod );
 	}
 	
 	public static <T extends ConfigData> PlatformMod<T> register(String modId, Class<?> loggerClass, Class<T> configClass) {
-		PlatformMod<T> mod = new PlatformMod<>( modId, loggerClass, configClass );
+		PlatformMod<T> mod = new PlatformMod<>( PlatformUtil.formModId( modId ), loggerClass, configClass );
 		
 		return register( mod );
 	}
 	
 	public static boolean registered( String id ) {
-		return MODS.containsKey( id );
+		return REGISTERED_MODS.containsKey( id );
+	}
+	
+	public static boolean loaded( String id ) {
+		return LOADED_MODS.containsKey( id );
 	}
 	
 	public static PlatformMod<? extends ConfigData> registration( String id ) {
-		return MODS.get( id );
+		return LOADED_MODS.get( id );
 	}
 	
 	public static void load() {

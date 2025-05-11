@@ -22,12 +22,12 @@ public class PlatformMod <T extends ConfigData> {
 	private T CONFIG = null;
 	
 	public PlatformMod(String modId, Class<?> loggerClass) {
-		MOD_ID = PlatformUtil.formModId( modId );
+		MOD_ID = modId;
 		LOGGER = LoggerFactory.getLogger( loggerClass );
 	}
 	
 	public PlatformMod(String modId, Class<?> loggerClass, Class<T> configClass) {
-		MOD_ID = PlatformUtil.formModId( modId );
+		MOD_ID = modId;
 		LOGGER = LoggerFactory.getLogger( loggerClass );
 		CONFIG = ConfigUtil.registerConfig( configClass );
 	}
