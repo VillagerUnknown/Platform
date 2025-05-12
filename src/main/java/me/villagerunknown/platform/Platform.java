@@ -67,14 +67,14 @@ public class Platform implements ModInitializer {
 		
 		// # Activate Primary Features
 		featureManager.addFeatureFirst( "commands", commandsFeature::execute );
-		featureManager.addFeatureFirst( "playerCache", playerCacheFeature::execute );
+		featureManager.addFeatureFirst( "player-cache", playerCacheFeature::execute );
 		
 		// # Activate Extra Features
-		featureManager.addFeature( "welcomeMessage", welcomeMessageFeature::execute );
-		featureManager.addFeature( "sleepNotice", sleepNoticeFeature::execute );
-		featureManager.addFeature( "deathCoordinateNotice", deathCoordinateNoticeFeature::execute );
-		featureManager.addFeature( "bedClearsWeather", bedClearsWeatherFeature::execute );
-		featureManager.addFeature( "hideNametags", hideNametagsFeature::execute );
+		featureManager.addFeature( "welcome-message", welcomeMessageFeature::execute );
+		featureManager.addFeature( "sleep-notice", sleepNoticeFeature::execute );
+		featureManager.addFeature( "death-coordinate-notice", deathCoordinateNoticeFeature::execute );
+		featureManager.addFeature( "bed-clears-weather", bedClearsWeatherFeature::execute );
+		featureManager.addFeature( "hide-nametags", hideNametagsFeature::execute );
 		
 		// # Load Features
 		featureManager.loadFeatures();
