@@ -10,7 +10,7 @@ Adds commands and simple features. A core library for VillagerUnknown mods.
 
 **Commands:**
 
-* /villagerunknown-platform-help - Reveals Discord Link
+* /villagerunknown-platform-help - Reveals Support Link
 * /villagerunknown-platform-reload - Reloads VU Mods
 * /villagerunknown-platform-worldspawn - Reveals World Spawn Location and Radius
 
