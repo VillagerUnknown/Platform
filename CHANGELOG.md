@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.2.4+1.21.1]
+## [1.3.0+1.21.1]
 
 This update backports functionality and features from version 1.2.3+1.21.5. 
 It also corrects the location of the language files. It purposefully skips version numbers.
