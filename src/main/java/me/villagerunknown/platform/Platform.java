@@ -40,7 +40,11 @@ public class Platform implements ModInitializer {
 	
 	public static void define( String id ) {
 		PLATFORM_ID = id;
-		PLATFORM_PREFIX = PLATFORM_ID + "-";
+		definePrefix( PLATFORM_ID + "-" );
+	}
+	
+	public static void definePrefix( String prefix ) {
+		PLATFORM_PREFIX = prefix;
 	}
 	
 	public static void init_platform() {
