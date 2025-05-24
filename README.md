@@ -4,27 +4,22 @@ Adds commands and simple features. A core library for VillagerUnknown mods.
 
 **Optional Features:**
 
+* Enable player profile caching. (Enabled by default.)
+* Flush cache on server restart. (Enabled by default.)
 * Welcome messages for new and returning players. (Disabled by default.)
 * Notice in chat when players can sleep. (Disabled by default.)
 * Notice in chat with death coordinates for players. (Disabled by default.)
+* Bed interactions always clear weather. (Disabled by default.)
+* Bed interactions clear weather at night. (Disabled by default.)
+* Hide nametags. (Disabled by default.)
+* Hide player nametags. (Disabled by default.)
 
 **Commands:**
 
-* /villagerunknown-platform-help - Reveals Support Link
-* /villagerunknown-platform-reload - Reloads VU Mods
-* /villagerunknown-platform-worldspawn - Reveals World Spawn Location and Radius
-
-**Options:**
-
-* Enable Villager Comments
-* Enable Commands
-* Enable Command Feedback Sounds
-* Enable Welcome Message
-* Welcome Message New (for New Players)
-* Welcome Message Returning (for Returning Players)
-* Enable Sleep Notice
-* Sleep Notice Message
-* Enable Death Coordinate Notice
+* `/villagerunknown-platform-help` - Reveals Support Link
+* `/villagerunknown-platform-reload` - Reloads VU Mods
+* `/villagerunknown-platform-worldspawn` - Reveals World Spawn Location and Radius
+* `/villagerunknown-platform-flushcaches` - Empties caches (player profile caching, etc.)
 
 ## Support
 
