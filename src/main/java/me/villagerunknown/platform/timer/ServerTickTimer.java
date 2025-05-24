@@ -45,6 +45,10 @@ public class ServerTickTimer {
 	
 	public void setTriggerTick( long currentTick, long alarmIntervalTicks ) {
 		triggerTick = currentTick + alarmIntervalTicks;
+		
+		if( Integer.MAX_VALUE == triggerTick ) {
+			triggerTick = alarmIntervalTicks;
+		} // if
 	}
 	
 	public boolean isAlarmActivated() {
@@ -57,7 +61,7 @@ public class ServerTickTimer {
 	
 	public void resetAlarmActivation( long currentTick ) {
 		alarmActivated = false;
-		triggerTick = currentTick + alarmIntervalTicks;
+		setTriggerTick( currentTick, alarmIntervalTicks );
 	}
 	
 	public long getTicksUntilAlarm( long currentTick ) {
