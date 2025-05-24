@@ -153,20 +153,33 @@ public class VillagerUtil {
 		};
 	}
 	
-	public static void resetTrades( VillagerEntity villager ) {
-		villager.setOffers(null);
-		
+	public static void resetTrades( VillagerEntity villager, int minLevel ) {
 		int level = villager.getVillagerData().getLevel();
 		TradeOfferList offers = new TradeOfferList();
 		
-		for (int i = VillagerData.MIN_LEVEL; i <= level; i++) {
+		if( minLevel == level ) {
+			TradeOfferList villagerOffers = villager.getOffers().copy();
+			villagerOffers.removeLast();
+			villagerOffers.removeLast();
+			
+			offers.addAll( villagerOffers );
+		} // if
+		
+		villager.setOffers(null);
+		
+		for (int i = minLevel; i <= level; i++) {
 			villager.setVillagerData( villager.getVillagerData().withLevel( i ) );
 			
 			offers.addAll( villager.getOffers() );
+			
 			villager.setOffers(null);
 		} // for
 		
 		villager.setOffers( offers );
+	}
+	
+	public static void resetAllTrades( VillagerEntity villager ) {
+		resetTrades( villager, VillagerData.MIN_LEVEL );
 	}
 	
 	public static class CustomVillager {
