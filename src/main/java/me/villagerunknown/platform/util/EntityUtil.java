@@ -15,6 +15,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.slf4j.Logger;
@@ -149,6 +150,14 @@ public class EntityUtil {
 		
 		// Add particles to the world simulating death
 		EntityUtil.spawnParticles( entity, 1, ParticleTypes.CLOUD.getType(), 20, 0.1, 0.1, 0.1, 0.005 );
+	}
+	
+	public static void simulateTotemDeath(LivingEntity entity) {
+		// Play totem sound
+		EntityUtil.playSound( entity, SoundEvents.ITEM_TOTEM_USE, SoundCategory.NEUTRAL, 1.0F, 1.0F, false );
+		
+		// Add particles to the world simulating death
+		EntityUtil.spawnParticles( entity, 1, ParticleTypes.TOTEM_OF_UNDYING, 20, 0.5, 1, 0.5, 0.5 );
 	}
 	
 }
