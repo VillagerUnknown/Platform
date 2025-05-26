@@ -46,11 +46,11 @@ public class featureManager {
 	public static void loadFeatures() {
 		int loadedMods = PlatformUtil.getLoadedMods().size();
 		
-		Platform.LOGGER.info("Mods loaded: {}/{}", Platform.LOADED_MODS.size(), loadedMods);
+		Platform.LOGGER.info("Platform mods loaded: {}/{}", Platform.LOADED_MODS.size(), loadedMods);
 		
 		if( Platform.LOADED_MODS.size() == loadedMods ) {
 			if( Platform.LOADED_MODS.size() != Platform.REGISTERED_MODS.size() ) {
-				Platform.LOGGER.warn("Loaded mods does not equal registered mods. This may cause irregularities.");
+				Platform.LOGGER.warn("Loaded mods does not equal registered mods. This may cause unusual behavior.");
 			} // if
 			
 			Platform.LOGGER.info("Loaded {} mod(s). Loading {} feature(s)...", loadedMods, FEATURES.size() );
