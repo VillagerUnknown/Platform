@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.1+1.21.1]
+
+_This update resolves a fatal crash with some world generation and villager trading mods._
+
+### Fixed
+
+- Fixed an issue with Platform's logger not being present when creating config files.
+
 ## [1.3.0+1.21.1]
 
 This update backports functionality and features from version 1.2.3+1.21.5. 

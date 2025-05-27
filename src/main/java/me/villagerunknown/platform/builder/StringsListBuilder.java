@@ -47,22 +47,22 @@ public class StringsListBuilder {
 		Path filePath = FileUtil.getConfigPath( fileName );
 		File file = filePath.toFile();
 		
+		String message = "";
+		
 		if( file.exists() ) {
 			try(FileReader reader = new FileReader(file)){
 				Gson gson = GsonUtil.gsonForFiles();
 				STRINGS = gson.fromJson( reader, new TypeToken<List<String>>(){}.getType() );
 				
 				if( STRINGS == null || STRINGS.isEmpty() ) {
-					Platform.LOGGER.info( Platform.MOD_ID + " no strings found in: " + fileName );
+					message = "No strings found in: " + fileName;
 				} else {
-					Platform.LOGGER.info( STRINGS.size() + " strings found in: " + fileName );
+					message = STRINGS.size() + " strings found in: " + fileName;
 				} // if, else
 			} catch (Exception e) {
-				Platform.LOGGER.error( Platform.MOD_ID + " Error: " + e.getMessage(), e );
+				message = "Error: " + e.getMessage();
 			} // try, catch
 		} else {
-			Platform.LOGGER.info( Platform.MOD_ID + " failed to load file: " + fileName );
-			
 			STRINGS = defaultList;
 			
 			JsonArray jsonArray = new JsonArray();
@@ -75,11 +75,15 @@ public class StringsListBuilder {
 			
 			try{
 				Files.write( filePath, json.getBytes() );
-				Platform.LOGGER.info( Platform.MOD_ID + " created file: " + fileName );
+				message = "Created file: " + fileName;
 			} catch( IOException e ) {
-				Platform.LOGGER.error( Platform.MOD_ID + " Error: " + e.getMessage(), e );
+				message = "Error: " + e.getMessage();
 			} // try, catch
 		} // if, else
+		
+		if( null != Platform.LOGGER && !message.isEmpty() ) {
+			Platform.LOGGER.info( message );
+		} // if
 		
 		return STRINGS;
 	}
