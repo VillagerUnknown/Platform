@@ -65,8 +65,16 @@ public class PlatformUtil {
 	public static Set<String> getLoadedMods() {
 		return FabricLoader.getInstance().getAllMods().stream()
 				.map(modContainer -> modContainer.getMetadata().getId())
-				.filter(modId -> modId.startsWith( Platform.PLATFORM_PREFIX ))
+				.filter(PlatformUtil::isPlatformDependent)
 				.collect(Collectors.toSet());
+	}
+	
+	public static boolean isPlatformDependent( String modId ) {
+		if( PLATFORM_ID.equals( "villagerunknown" ) ) {
+			return modId.startsWith(PLATFORM_PREFIX) || modId.contains("villagercoin");
+		} // if
+		
+		return modId.startsWith(PLATFORM_PREFIX);
 	}
 	
 }

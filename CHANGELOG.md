@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.2+1.21.1]
+
+### Changed
+
+- In addition to the Platform Prefix, Platform now also recognizes mod ID's containing "villagercoin". 
+_This allows Platform to recognize and load Villager Coin add-ons without the need for the Platform Prefix._
+
 ## [1.3.1+1.21.1]
 
 _This update resolves a fatal crash with some world generation and villager trading mods._
