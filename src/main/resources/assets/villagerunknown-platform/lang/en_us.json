@@ -35,5 +35,9 @@
   "text.autoconfig.villagerunknown-platform.category.Nametags": "Nametags",
 
   "text.autoconfig.villagerunknown-platform.option.hideNametags": "Hide All Nametags",
-  "text.autoconfig.villagerunknown-platform.option.hidePlayerNametags": "Hide Player Nametags"
+  "text.autoconfig.villagerunknown-platform.option.hidePlayerNametags": "Hide Player Nametags",
+
+  "text.autoconfig.villagerunknown-platform.category.Heads": "Heads",
+
+  "text.autoconfig.villagerunknown-platform.option.headVariationChance": "Head Variation Chance"
 }

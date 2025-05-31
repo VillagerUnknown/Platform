@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.3+1.21.1]
+
+### Added
+
+- Added chance roll for Screaming Goat head variation.
+- Added `headVariationChance` config option. 
+_This chance is used when variations can't be determined programmatically. 
+E.g. The Wither variants and Screaming goats._
+
 ## [1.3.2+1.21.1]
 
 ### Changed

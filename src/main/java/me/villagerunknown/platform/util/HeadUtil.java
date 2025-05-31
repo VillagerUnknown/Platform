@@ -16,6 +16,7 @@ import net.minecraft.entity.mob.VexEntity;
 import net.minecraft.entity.mob.ZombieVillagerEntity;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.server.MinecraftServer;
@@ -401,7 +402,7 @@ public class HeadUtil {
 		} // if
 		
 		ItemStack headStack = new ItemStack(Items.PLAYER_HEAD, 1);
-		headStack.set(DataComponentTypes.MAX_STACK_SIZE, 64);
+		headStack.set(DataComponentTypes.MAX_STACK_SIZE, Item.DEFAULT_MAX_COUNT);
 		headStack.set(DataComponentTypes.NOTE_BLOCK_SOUND, sound.getId());
 		
 		if( !texture.isEmpty() ) {
@@ -551,7 +552,7 @@ public class HeadUtil {
 	public static String getGoatVariant(@NotNull GoatEntity entity ) {
 		String entityName = getEntityName( entity );
 		
-		if( !entity.isScreaming() ) {
+		if( MathUtil.hasChance( Platform.CONFIG.headVariationChance ) ) {
 			return formatEntityId( "screaming", entityName );
 		} // if
 		
@@ -673,11 +674,19 @@ public class HeadUtil {
 	public static String getWitherVariant(@NotNull WitherEntity entity ) {
 		String entityName = getEntityName( entity );
 		
-		if( MathUtil.hasChance( 0.5F ) ) {
-			return formatEntityId( "wither_projectile", entityName );
-		} else if( MathUtil.hasChance( 0.5F ) ) {
-			return formatEntityId( "blue_wither_projectile", entityName );
-		} // if, else if
+		if( Platform.CONFIG.headVariationChance >= 1 ) {
+			if( MathUtil.hasChance( 0.5F ) ) {
+				return formatEntityId( "wither_projectile", entityName );
+			} else {
+				return formatEntityId( "blue_wither_projectile", entityName );
+			} // if, else
+		} else {
+			if( MathUtil.hasChance( Platform.CONFIG.headVariationChance ) ) {
+				return formatEntityId( "wither_projectile", entityName );
+			} else if( MathUtil.hasChance( Platform.CONFIG.headVariationChance ) ) {
+				return formatEntityId( "blue_wither_projectile", entityName );
+			} // if, else if
+		} // if, else
 		
 		return entityName;
 	}

@@ -79,5 +79,12 @@ public class PlatformConfigData implements me.shedaniel.autoconfig.ConfigData {
 	@ConfigEntry.Category("Nametags")
 	public boolean hidePlayerNametags = false;
 	
+	/**
+	 * Heads
+	 */
+	
+	@ConfigEntry.Category("Heads")
+	public float headVariationChance = 0.5F;
+	
 	
 }
