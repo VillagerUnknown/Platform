@@ -16,6 +16,7 @@ import net.minecraft.entity.mob.VexEntity;
 import net.minecraft.entity.mob.ZombieVillagerEntity;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.server.MinecraftServer;
@@ -176,7 +177,7 @@ public class HeadUtil {
 		put( "brown_rabbit", new Head( SoundEvents.ENTITY_RABBIT_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2ZkNGY4NmNmNzQ3M2ZiYWU5M2IxZTA5MDQ4OWI2NGMwYmUxMjZjN2JiMTZmZmM4OGMwMDI0NDdkNWM3Mjc5NSJ9fX0=" ) );
 		put( "white_rabbit", new Head( SoundEvents.ENTITY_RABBIT_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTU0MmQ3MTYwOTg3MTQ4YTVkOGUyMGU0NjliZDliM2MyYTM5NDZjN2ZiNTkyM2Y1NWI5YmVhZTk5MTg1ZiJ9fX0=" ) );
 		put( "black_rabbit", new Head( SoundEvents.ENTITY_RABBIT_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjJiNDI1ZmYyYTIzNmFiMTljYzkzOTcxOTVkYjQwZjhmMTg1YjE5MWM0MGJmNDRiMjZlOTVlYWM5ZmI1ZWZhMyJ9fX0=" ) );
-		put( "black_and_white_rabbit", new Head( SoundEvents.ENTITY_RABBIT_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzVmNzJhMjE5NWViZjQxMTdjNTA1NmNmZTJiNzM1N2VjNWJmODMyZWRlMTg1NmE3NzczZWU0MmEwZDBmYjNmMCJ9fX0=" ) );
+		put( "white_splotched_rabbit", new Head( SoundEvents.ENTITY_RABBIT_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzVmNzJhMjE5NWViZjQxMTdjNTA1NmNmZTJiNzM1N2VjNWJmODMyZWRlMTg1NmE3NzczZWU0MmEwZDBmYjNmMCJ9fX0=" ) );
 		put( "gold_rabbit", new Head( SoundEvents.ENTITY_RABBIT_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzY3YjcyMjY1NmZkZWVjMzk5NzRkMzM5NWM1ZTE4YjQ3YzVlMjM3YmNlNWJiY2VkOWI3NTUzYWExNGI1NDU4NyJ9fX0=" ) );
 		put( "salt_and_pepper_rabbit", new Head( SoundEvents.ENTITY_RABBIT_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTIzODUxOWZmMzk4MTViMTZjNDA2MjgyM2U0MzE2MWZmYWFjOTY4OTRmZTA4OGIwMThlNmEyNGMyNmUxODFlYyJ9fX0=" ) );
 		put( "killer_rabbit", new Head( SoundEvents.ENTITY_RABBIT_ATTACK, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzFkZDc2NzkyOWVmMmZkMmQ0M2U4NmU4NzQ0YzRiMGQ4MTA4NTM0NzEyMDFmMmRmYTE4Zjk2YTY3ZGU1NmUyZiJ9fX0=" ) );
@@ -419,7 +420,7 @@ public class HeadUtil {
 		} // if
 		
 		ItemStack headStack = new ItemStack(Items.PLAYER_HEAD, 1);
-		headStack.set(DataComponentTypes.MAX_STACK_SIZE, 64);
+		headStack.set(DataComponentTypes.MAX_STACK_SIZE, Item.DEFAULT_MAX_COUNT);
 		headStack.set(DataComponentTypes.NOTE_BLOCK_SOUND, sound.id());
 		
 		if( !texture.isEmpty() ) {
@@ -582,8 +583,8 @@ public class HeadUtil {
 	public static String getFrogVariant(@NotNull FrogEntity entity ) {
 		String entityName = getEntityName( entity );
 		
-		if( !entity.getVariant().value().assetInfo().texturePath().getPath().isEmpty() ) {
-			return formatEntityId( entity.getVariant().value().assetInfo().texturePath().getPath().replace("textures/entity/frog/","").replace(".png",""), entityName );
+		if( !entity.getVariant().value().assetInfo().id().getPath().isEmpty() ) {
+			return entity.getVariant().value().assetInfo().id().getPath().replace("entity/frog/","");
 		} // if
 		
 		return entityName;
@@ -592,7 +593,7 @@ public class HeadUtil {
 	public static String getGoatVariant(@NotNull GoatEntity entity ) {
 		String entityName = getEntityName( entity );
 		
-		if( !entity.isScreaming() ) {
+		if( MathUtil.hasChance( 0.5F ) ) {
 			return formatEntityId( "screaming", entityName );
 		} // if
 		
@@ -735,16 +736,17 @@ public class HeadUtil {
 	
 	public static String getWolfVariant(@NotNull WolfEntity entity ) {
 		String entityName = getEntityName( entity );
+		String variantName;
 		
-		if( !entity.getType().getUntranslatedName().isEmpty() ) {
-			if( entity.hasAngerTime() ) {
-				return formatEntityId( "angry_" + entity.getType().getUntranslatedName(), entityName );
-			} // if
-			
-			return formatEntityId( entity.getType().getUntranslatedName(), entityName );
-		} // if
+		String variant = entity.getTextureId().getPath().split("wolf/")[1].replace("wolf_", "").replace(".png", "");
 		
-		return entityName;
+		if( entity.hasAngerTime() ) {
+			variantName = formatEntityId( "angry_" + variant, entityName );
+		} else {
+			variantName = formatEntityId( variant, entityName );
+		} // if, else
+		
+		return variantName;
 	}
 	
 	public static String getZombieVillagerVariant(@NotNull ZombieVillagerEntity entity ) {
