@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.4+1.21.5]
+
+_This update fixes an issue reported for the Head Hunters mod._
+
+### Fixed
+
+- Fixed issues with HeadUtil providing Steve heads for some mobs with variants (Wolves, Frogs, Rabbits).
+
 ## [1.2.3+1.21.5]
 
 _This update resolves conflicts with another Platform mod._
