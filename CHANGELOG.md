@@ -11,6 +11,12 @@ All notable changes to this project will be documented in this file.
 _This chance is used when variations can't be determined programmatically. 
 E.g. The Wither variants and Screaming goats._
 
+### Fixed
+
+- Fixed name for White Splotched Rabbit head.
+- Fixed name for Spotted Wolf head.
+- Fixed variation selection for Frog heads.
+
 ## [1.3.2+1.21.1]
 
 ### Changed
