@@ -9,7 +9,9 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.chunk.Chunk;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,12 +21,13 @@ public class PositionUtil {
 	
 	private static final Random rand = new Random();
 	
-	// Check a 3x3x3 area around the given position for a safe spawn
-	// You can adjust the range (1 means a 3x3x3 cube centered around startPos)
 	public static BlockPos findSafeSpawnPosition(World world, BlockPos startPos, int range) {
 		List<BlockPos> safePositions = new ArrayList<>();
 		
-		// Check positions in a 3x3x3 cube centered around the startPos
+		if( isSafeSpawnLocation( world, startPos ) && hasSafeBlockBelow( world, startPos ) ) {
+			return startPos;
+		} // if
+		
 		for (int dx = -range; dx <= range; dx++) {
 			for (int dy = -range; dy <= range; dy++) {
 				for (int dz = -range; dz <= range; dz++) {
@@ -43,38 +46,25 @@ public class PositionUtil {
 			return safePositions.get( rand.nextInt( safePositions.size() ) );
 		} // if
 		
-		// If no safe position is found, return the original position
 		return startPos;
 	}
 	
-	// Checks if a position is a valid spawn location
 	private static boolean isSafeSpawnLocation(World world, BlockPos pos) {
-		// Check if the area around the position is clear (3x3x3 space)
 		return isClearSpace(world, pos) && !isDangerousPosition(world, pos);
 	}
 	
-	// Check if the space around the position is clear (3x3x3 area)
 	private static boolean isClearSpace(World world, BlockPos pos) {
-		// Check the area above and around the position for air or walkable space
-		for (int dx = -1; dx <= 1; dx++) {
-			for (int dy = 0; dy <= 1; dy++) { // We check for the space 2 blocks high to avoid suffocation
-				for (int dz = -1; dz <= 1; dz++) {
-					BlockPos checkPos = pos.add(dx, dy, dz);
-					if (!world.getBlockState(checkPos).isAir()) {
-						return false; // Found a non-air block, not a safe position
-					}
-				}
-			}
-		}
-		return true; // The area is clear
+		Chunk chunk = world.getChunk( pos );
+		BlockView blockView = world.getChunkAsView( chunk.getPos().x, chunk.getPos().z );
+		
+		return !world.getBlockState( pos ).shouldSuffocate( blockView, pos )
+				&& !world.getBlockState( pos.up() ).shouldSuffocate( blockView, pos.up() );
 	}
 	
-	// Check if the position is dangerous (contains lava, fire, etc.)
 	private static boolean isDangerousPosition(World world, BlockPos pos) {
 		return world.getBlockState(pos).isOf(Blocks.LAVA) || world.getBlockState(pos).isOf(Blocks.FIRE);
 	}
 	
-	// Method to find a solid block below a given BlockPos
 	public static BlockPos findSolidBlockBelow(World world, BlockPos startPos, int bottomYLimit) {
 		BlockPos currentPos = startPos.down();
 		
@@ -129,7 +119,6 @@ public class PositionUtil {
 		BlockPos closestBlockPos = null;
 		double closestDistance = Double.MAX_VALUE;
 		
-		// Search for the closest bed in a radius around the entity
 		for (int x = entityPos.getX() - radius; x <= entityPos.getX() + radius; x++) {
 			for (int z = entityPos.getZ() - radius; z <= entityPos.getZ() + radius; z++) {
 				for (int y = entityPos.getY() - 2; y <= entityPos.getY() + 2; y++) {
@@ -164,7 +153,6 @@ public class PositionUtil {
 		BlockPos closestBedPos = null;
 		double closestDistance = Double.MAX_VALUE;
 		
-		// Search for the closest bed in a radius around the entity
 		for (int x = entityPos.getX() - radius; x <= entityPos.getX() + radius; x++) {
 			for (int z = entityPos.getZ() - radius; z <= entityPos.getZ() + radius; z++) {
 				for (int y = entityPos.getY() - 2; y <= entityPos.getY() + 2; y++) {
