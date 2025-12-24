@@ -11,8 +11,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(LivingEntityRenderer.class)
 public abstract class LivingEntityRendererMixin<T extends LivingEntity> {
 	
-	@Inject(method = "hasLabel(Lnet/minecraft/entity/LivingEntity;)Z", at = @At("HEAD"), cancellable = true)
-	private void hasLabel(T livingEntity, CallbackInfoReturnable<Boolean> cir) {
+	@Inject(method = "hasLabel(Lnet/minecraft/entity/LivingEntity;D)Z", at = @At("HEAD"), cancellable = true)
+	private void hasLabel(T livingEntity, double d, CallbackInfoReturnable<Boolean> cir) {
 		if( !PlatformClient.nametagsVisible || ( livingEntity.isPlayer() && !PlatformClient.playerNametagsVisible ) ) {
 			cir.setReturnValue(false);
 		} // if

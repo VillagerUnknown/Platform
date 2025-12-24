@@ -33,7 +33,7 @@ public class WorldUtil {
 	}
 	
 	public static GameRules getGameRules( World world ) {
-		return getServerWorld( world ).getLevelProperties().getGameRules();
+		return getServerWorld( world ).getGameRules();
 	}
 	
 	public static Difficulty getDifficulty( World world ) {

@@ -13,21 +13,19 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.network.ServerPlayerEntity;
 
-import java.util.Optional;
-
 public class EnchantmentUtil {
 	
 	public static ItemEnchantmentsComponent.Builder buildEnchantmentEntry(ServerPlayerEntity player, RegistryKey<Enchantment> enchantment, Integer skillLevel) {
 		DynamicRegistryManager drm = player.getServerWorld().getRegistryManager();
-		Registry<Enchantment> reg = drm.get(RegistryKeys.ENCHANTMENT);
+		Registry<Enchantment> reg = drm.getOrThrow(RegistryKeys.ENCHANTMENT);
 		
-		Optional<RegistryEntry.Reference<Enchantment>> optional = reg.getEntry( enchantment );
-		RegistryEntry<Enchantment> enchantmentEntry = optional.orElseThrow();
+		Enchantment enchantmentEntryValue = reg.get( enchantment );
+		RegistryEntry<Enchantment> regEntry = reg.getEntry( enchantmentEntryValue );
 		
 		ItemEnchantmentsComponent.Builder IECBuilder = new ItemEnchantmentsComponent.Builder(
 				ItemEnchantmentsComponent.DEFAULT.withShowInTooltip(true)
 		);
-		IECBuilder.set(enchantmentEntry, skillLevel);
+		IECBuilder.set(regEntry, skillLevel);
 		
 		return IECBuilder;
 	}
