@@ -190,6 +190,20 @@ public class PositionUtil {
 		return nearbyBlocks;
 	}
 	
+	public static void breakNearbyBlocks(World world, BlockPos pos, int proximity, boolean dropBlock) {
+		Box nearbySearchArea = BoxUtil.createBox( pos, proximity );
+		
+		for (int x = (int) nearbySearchArea.minX; x <= nearbySearchArea.maxX; x++) {
+			for (int y = (int) nearbySearchArea.minY; y <= nearbySearchArea.maxY; y++) {
+				for (int z = (int) nearbySearchArea.minZ; z <= nearbySearchArea.maxZ; z++) {
+					BlockPos blockPos = new BlockPos(x, y, z);
+					
+					world.breakBlock( blockPos, dropBlock );
+				} // for
+			} // for
+		} // for
+	}
+	
 	public static boolean isNearFlameSource( List<Block> nearbyBlocks ) {
 		for (Block nearbyBlock : nearbyBlocks) {
 			if( ListUtil.FLAME_SOURCE_BLOCKS.contains( nearbyBlock ) ) {
