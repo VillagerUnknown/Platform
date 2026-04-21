@@ -379,7 +379,7 @@ public class HeadUtil {
 	}
 	
 	public static ItemStack buildHeadStack(String entityType, @NotNull String texture, SoundEvent sound ) {
-		String entityName = formatEntityName( entityType );
+		String entityName = entityType;
 		
 		if( entityType.contains("_") ) {
 			int lastUnderscore = entityType.lastIndexOf('_');
@@ -416,7 +416,7 @@ public class HeadUtil {
 			headStack.set(DataComponentTypes.PROFILE, profile);
 		} // if
 		
-		headStack.set(DataComponentTypes.ITEM_NAME, Text.of( formatEntityName( entityName ) + " Head" ));
+		headStack.set(DataComponentTypes.CUSTOM_NAME, Text.of( formatEntityName( entityName ) + " Head" ));
 		
 		return headStack;
 	}
