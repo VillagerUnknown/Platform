@@ -12,8 +12,8 @@ public record NametagVisibilityPayload( boolean visible, boolean playersVisible 
 	public static final Identifier NAMETAG_VISIBILITY_PACKET_ID = Identifier.of( Platform.MOD_ID, "nametag_visibility" );
 	public static final Id<NametagVisibilityPayload> ID = new Id<>(NAMETAG_VISIBILITY_PACKET_ID);
 	public static final PacketCodec<RegistryByteBuf, NametagVisibilityPayload> CODEC = PacketCodec.tuple(
-			PacketCodecs.BOOL, NametagVisibilityPayload::visible,
-			PacketCodecs.BOOL, NametagVisibilityPayload::playersVisible,
+			PacketCodecs.BOOLEAN, NametagVisibilityPayload::visible,
+			PacketCodecs.BOOLEAN, NametagVisibilityPayload::playersVisible,
 			NametagVisibilityPayload::new
 	);
 	
