@@ -14,6 +14,7 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.Uuids;
 import net.minecraft.world.PersistentStateManager;
+import net.minecraft.world.PersistentStateType;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,9 +35,10 @@ public class PersistentProfileResultData extends AbstractPersistentData {
 			).fieldOf("players").forGetter( PersistentProfileResultData::getPlayers )
 	).apply( instance, PersistentProfileResultData::new ));
 	
-	private static final Type<PersistentProfileResultData> type = new Type<>(
-			PersistentProfileResultData::new,
-			PersistentProfileResultData::createFromNbt,
+	private static final PersistentStateType<PersistentProfileResultData> type = new PersistentStateType<>(
+			MOD_ID,
+			(context) -> new PersistentProfileResultData(),
+			ctx -> CODEC,
 			null
 	);
 	
@@ -46,21 +48,6 @@ public class PersistentProfileResultData extends AbstractPersistentData {
 		players = new HashMap<>(playerDataMap);
 	}
 	
-	@Override
-	public NbtCompound writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
-		nbt.putString("players", gson.toJson( players, new TypeToken<Map<UUID, ProfileResultData>>() {}.getType() ));
-		
-		return nbt;
-	}
-	
-	public static PersistentProfileResultData createFromNbt(NbtCompound tag, RegistryWrapper.WrapperLookup registryLookup) {
-		PersistentProfileResultData state = new PersistentProfileResultData();
-
-		state.players = gson.fromJson( tag.getString("players"), new TypeToken<Map<UUID, ProfileResultData>>() {}.getType() );
-		
-		return state;
-	}
-	
 	public HashMap<UUID, ProfileResultData> getPlayers() {
 		return players;
 	}
@@ -68,7 +55,7 @@ public class PersistentProfileResultData extends AbstractPersistentData {
 	public static PersistentProfileResultData getServerState(MinecraftServer server) {
 		PersistentStateManager persistentStateManager = getStateManager( server );
 		
-		PersistentProfileResultData state = persistentStateManager.getOrCreate(type, MOD_ID);
+		PersistentProfileResultData state = persistentStateManager.getOrCreate(type);
 		state.markDirty();
 		
 		return state;

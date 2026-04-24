@@ -69,9 +69,19 @@ public class HeadUtil {
 		put( "black_cat", new Head( SoundEvents.ENTITY_CAT_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjJjMWU4MWZmMDNlODJhM2U3MWUwY2Q1ZmJlYzYwN2UxMTM2MTA4OWFhNDdmMjkwZDQ2YzhhMmMwNzQ2MGQ5MiJ9fX0=" ) );
 		
 		put( "cave_spider", new Head( SoundEvents.ENTITY_SPIDER_STEP, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTZhMWMyNTk5ZmM5MTIwM2E2NWEwM2Q0NzljOGRjODdmNjYyZGVhYzM2NjNjMTZjNWUwNGQ2MjViMzk3OGEyNSJ9fX0=" ) );
+		
 		put( "chicken", new Head( SoundEvents.ENTITY_CHICKEN_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDJhZjZlNTg0N2VlYTA5OWUxYjBhYjhjMjBhOWU1ZjNjNzE5MDE1OGJkYTU0ZTI4MTMzZDliMjcxZWMwY2I0YiJ9fX0=" ) );
+		put( "cold_chicken", new Head( SoundEvents.ENTITY_CHICKEN_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTkxMWZjZDhiMjI2YTk4ZjhiNmQ2MDVmZjI3YTg4ZWQ5NzIzMGJiNzE2NzhlNGEwMDY2OTA5NWQ2OWQzZjJiNCJ9fX0=" ) );
+		put( "temperate_chicken", new Head( SoundEvents.ENTITY_CHICKEN_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTYzODQ2OWE1OTljZWVmNzIwNzUzNzYwMzI0OGE5YWIxMWZmNTkxZmQzNzhiZWE0NzM1YjM0NmE3ZmFlODkzIn19fQ==" ) );
+		put( "warm_chicken", new Head( SoundEvents.ENTITY_CHICKEN_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNThjMjMxYmY0NjRmOWE2YzY3ODZhMjJhNGQxMTllYTVlNTA1NzYyNGM1YTM5MTQ3MGQzNWZhMmI2ZmZhNTE4MyJ9fX0=" ) );
+		
 		put( "cod", new Head( SoundEvents.ENTITY_COD_FLOP, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjI0NmUxOWIzMmNmNzg0NTQ5NDQ3ZTA3Yjk2MDcyZTFmNjU2ZDc4ZTkzY2NjYTU2Mzc0ODVlNjc0OTczNDY1MiJ9fX0=" ) );
+		
 		put( "cow", new Head( SoundEvents.ENTITY_COW_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjNkNjIxMTAwZmVhNTg4MzkyMmU3OGJiNDQ4MDU2NDQ4Yzk4M2UzZjk3ODQxOTQ4YTJkYTc0N2Q2YjA4YjhhYiJ9fX0=" ) );
+		put( "cold_cow", new Head( SoundEvents.ENTITY_COW_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTMzMjIxNDg0ZDM5ZjBkNGVjZGZmYTcyOTU2N2NlNzdmYThjZTA1YjA5MWRiNzZkZDViMDc5YTIwZjdiZjMzOSJ9fX0=" ) );
+		put( "temperate_cow", new Head( SoundEvents.ENTITY_COW_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWQ2YzZlZGE5NDJmN2Y1ZjcxYzMxNjFjNzMwNmY0YWVkMzA3ZDgyODk1ZjlkMmIwN2FiNDUyNTcxOGVkYzUifX19" ) );
+		put( "warm_cow", new Head( SoundEvents.ENTITY_COW_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjNiMzM3NmZhZjI4MWMxNGJhNDcyZDJlN2Y2YjZkMDE2OWU0YmMyMzc0ODM1YTlmOGQwNzg4ZTA0ZDgxMzQzZCJ9fX0=" ) );
+		
 		put( "creaking", new Head( SoundEvents.ENTITY_CREAKING_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmMwNzdjOTc1ZjEzZGJkYWVkYTVmMGQyMDE2ZWIzYWY1MWU0YzI3ZDk3MTRhMTIzYzQxMjg5MDE1MDVjNzg4YyJ9fX0=" ) );
 		
 		put( "creeper", new Head( SoundEvents.ENTITY_GENERIC_EXPLODE.value(), "" ) );
@@ -150,7 +160,12 @@ public class HeadUtil {
 		put( "gray_parrot", new Head( SoundEvents.ENTITY_PARROT_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzFiZTcyM2FhMTczOTNkOTlkYWRkYzExOWM5OGIyYzc5YzU0YjM1ZGViZTA1YzcxMzhlZGViOGQwMjU2ZGM0NiJ9fX0=" ) );
 		
 		put( "phantom", new Head( SoundEvents.ENTITY_PHANTOM_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2U5NTE1M2VjMjMyODRiMjgzZjAwZDE5ZDI5NzU2ZjI0NDMxM2EwNjFiNzBhYzAzYjk3ZDIzNmVlNTdiZDk4MiJ9fX0=" ) );
+		
 		put( "pig", new Head( SoundEvents.ENTITY_PIG_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDFlZTc2ODFhZGYwMDA2N2YwNGJmNDI2MTFjOTc2NDEwNzVhNDRhZTJiMWMwMzgxZDVhYzZiMzI0NjIxMWJmZSJ9fX0=" ) );
+		put( "cold_pig", new Head( SoundEvents.ENTITY_PIG_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmExOGQ0MDQzY2Q2YzkwMzg2Njc4ODkxNGZkNTM0MzE1MjgxYWY5ZjI1OWUzNDgzN2UzZTE3NWU1NDVjMmVkZSJ9fX0=" ) );
+		put( "temperate_pig", new Head( SoundEvents.ENTITY_PIG_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjIxNjY4ZWY3Y2I3OWRkOWMyMmNlM2QxZjNmNGNiNmUyNTU5ODkzYjZkZjRhNDY5NTE0ZTY2N2MxNmFhNCJ9fX0=" ) );
+		put( "warm_pig", new Head( SoundEvents.ENTITY_PIG_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2JlYmExYTJkNTZlODRmOGU1MWZlZDY2NTlmMmNiN2MxNGZlZDQzODU5YWY1ODQ3Mzc4OTdiZjcwYzAzOTQ3NSJ9fX0=" ) );
+		
 		put( "piglin", new Head( SoundEvents.ENTITY_PIGLIN_AMBIENT, "" ) );
 		put( "piglin_brute", new Head( SoundEvents.ENTITY_PIGLIN_BRUTE_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjQ4ODc5OWM4M2VjYjI5NDUyY2ViYTg5YzNjMDA5OTIxOTI3NGNlNWIyYmZiOGFkMGIzZWE0YzY1ZmFjNDYzMCJ9fX0=" ) );
 		put( "pillager", new Head( SoundEvents.ENTITY_PILLAGER_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzIyNWYwYjQ5YzUyOTUwNDhhNDA5YzljNjAxY2NhNzlhYThlYjUyYWZmNWUyMDMzZWJiODY1ZjQzNjdlZjQzZSJ9fX0=" ) );
@@ -242,25 +257,25 @@ public class HeadUtil {
 		put( "wither_projectile", new Head( SoundEvents.ENTITY_WITHER_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjM3YzU4MTRhOTJmOGVjMGY2YWU5OTMzYWJlOTU0MmUxNjUxOTA3NjhlNzYwNDc4NTQzYWViZWVkNDAyN2MyNyJ9fX0=" ) );
 		put( "blue_wither_projectile", new Head( SoundEvents.ENTITY_WITHER_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDM2ODJiMDYyMDNiOWRlNGMyODU0MTA3MWEyNmNkYzM0MGRkMjVkNGMzNzJiNzAyM2VjMmY0MTIwMjFkNjJmNyJ9fX0=" ) );
 		
-		put( "wolf", new Head( SoundEvents.ENTITY_WOLF_AMBIENT, "" ) );
-		put( "ashen_wolf", new Head( SoundEvents.ENTITY_WOLF_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzIzODRjNWNmMTg5NDhiODNhODk1NDhkYmE1YTk5NDVlZGVlZmM1ZTk2NTRjNWQ2ZDM4YWUxMGE1ZDUwMmU3NSJ9fX0=" ) );
-		put( "angry_ashen_wolf", new Head( SoundEvents.ENTITY_WOLF_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2NiYzMwNjZkMzFjNDM5MDM1MDM4ZmQ2ODc1ZDVkYmVlYzM5NjhjMWI4MDA2ZmZiZmI1ZjY3NGQ3NmM4OWNkZSJ9fX0=" ) );
-		put( "black_wolf", new Head( SoundEvents.ENTITY_WOLF_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzVhNjZhNDJiMjVmODIyYTdlMTZhMjE4NzUyOGQxYTJlMjk0YTAxZDlmODUwNjcxYjk0Yzk1NzQyYmI0OTE2ZSJ9fX0=" ) );
-		put( "angry_black_wolf", new Head( SoundEvents.ENTITY_WOLF_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTVlZDQ3ZGVkMjcwOGIxM2Q5MmViNTBmYjY4ZThjMWUxMWIzOWEwY2Q0NWIzOTM3MmVlYWQ4NzJjNDllZWFlYiJ9fX0=" ) );
-		put( "chestnut_wolf", new Head( SoundEvents.ENTITY_WOLF_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2I5YjBkNDg0NDIyMDRmZjZmZDM5ZmEwNzQxNjcxMThlOWMwNjZjZGUzODg4OTc3ZDBmNjAzNmUxZDhhNjllZSJ9fX0=" ) );
-		put( "angry_chestnut_wolf", new Head( SoundEvents.ENTITY_WOLF_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjg0YjI4ZjIzMmIxNGE1OWI2Y2I3NzU3MzIzOTc0ZWE1MDJiMWJjYjk4NGRlYTMwMDkzZWMyMWVkMmFkZTMxMiJ9fX0=" ) );
-		put( "pale_wolf", new Head( SoundEvents.ENTITY_WOLF_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMWVlMzNjMmRjMDdkNzZiNGYwM2U2NjQyN2EwOGNiYTJlODE3OWQwNzVhZTY0YjljZTE1MGFhNDIwOWM1YWYzOSJ9fX0=" ) );
-		put( "angry_pale_wolf", new Head( SoundEvents.ENTITY_WOLF_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjg4N2E0Mjc4NzkwMGU2NzE2ZmE0NjJmYmFkOGRlYjU1MjZiOTQzOTg3OTc0MTRmMDNmNjAxM2VmODg1YTFkYiJ9fX0=" ) );
-		put( "rusty_wolf", new Head( SoundEvents.ENTITY_WOLF_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjM0NTVmNjA0OGE2ODA5OGNkMjc2MzRlMzE0NmM4MWM4MjY5YWVlZmNmMGFmZjkxY2M5NzZlZmEwYmFhMTE0NiJ9fX0=" ) );
-		put( "angry_rusty_wolf", new Head( SoundEvents.ENTITY_WOLF_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDFmMWMzMmU1MjU4ZjNkOGY4ZDE4MWZiMzBkZjYxZTA2OTNlNTVkNTM4YTEzZWVhYmRmNjMwMGYzODA4M2FkYyJ9fX0=" ) );
-		put( "snowy_wolf", new Head( SoundEvents.ENTITY_WOLF_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGVjYWRhYjUwYWE4ZDQxZmE5YjM2OWEyZjg0Zjk3NDU2YmU3OTAwYjIyMGVjZTNiOTVlOGEwMDk2ODY2MGQ1In19fQ==" ) );
-		put( "angry_snowy_wolf", new Head( SoundEvents.ENTITY_WOLF_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTJiN2MyODZjMjMwODI2YjI5ZTdmZDM3ZjI1NzNiOTAxNWM0MjJiYzM4ZmViMTRkOWEzMTdjNjg1NWFkYTNmNiJ9fX0=" ) );
-		put( "spotted_wolf", new Head( SoundEvents.ENTITY_WOLF_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTczYjlhNjQzMWFmMjZiY2IzMTgyNmViNmZkOWY0YjM1Yjk0N2JhNTg4MmM2ZTRhYTkzNTg4NjMzZjdiOGQ5ZCJ9fX0=" ) );
-		put( "angry_spotted_wolf", new Head( SoundEvents.ENTITY_WOLF_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTc4NmI3MzkzNDhhYTg1MDJlYTE4NWRmYjE0YmY1YWIwMWUyOWUwODJkMWZlYjg2MTNiM2ZlOTNlMGRlYmQ4ZSJ9fX0=" ) );
-		put( "striped_wolf", new Head( SoundEvents.ENTITY_WOLF_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2ZjNTJmYjNjZGZjNmFlYjAwZTY3YzFiN2E1OWQ4ZDMyMGRmNDQ2NTZjN2FmNjgyNGIxM2NhNjA3OTJhYTdkNyJ9fX0=" ) );
-		put( "angry_striped_wolf", new Head( SoundEvents.ENTITY_WOLF_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOGQ2MGMyNTQ4OGIwNjcyNzY2OWE2OTE1ZDFkYWRhYTlhN2QyODMxYjQ2MGJlZTMwZTVkYTQwNzg3NDcwNTAwMSJ9fX0=" ) );
-		put( "woods_wolf", new Head( SoundEvents.ENTITY_WOLF_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOGQxMmFiMTc2NDdiNjljOTQyMTc2OTU3MmFjNjc0ZGUxOTkxMjRjMjg0YjllZDFmNjVhMjg1YzM4Y2QyYTUwNCJ9fX0=" ) );
-		put( "angry_woods_wolf", new Head( SoundEvents.ENTITY_WOLF_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTMwNTgzZGJhOGVhNjE0MzA1ZGIwMTBiYWJkYzViYjQ0ZTlhMjAwMzMxMWIzOTlkODk2NWU3NzJkZDAxOTFmYiJ9fX0=" ) );
+		put( "wolf", new Head( SoundEvents.WOLF_SOUNDS.get(WolfSoundVariants.Type.CLASSIC).ambientSound().value(), "" ) );
+		put( "ashen_wolf", new Head( SoundEvents.WOLF_SOUNDS.get(WolfSoundVariants.Type.CLASSIC).ambientSound().value(), "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzIzODRjNWNmMTg5NDhiODNhODk1NDhkYmE1YTk5NDVlZGVlZmM1ZTk2NTRjNWQ2ZDM4YWUxMGE1ZDUwMmU3NSJ9fX0=" ) );
+		put( "angry_ashen_wolf", new Head( SoundEvents.WOLF_SOUNDS.get(WolfSoundVariants.Type.CLASSIC).ambientSound().value(), "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2NiYzMwNjZkMzFjNDM5MDM1MDM4ZmQ2ODc1ZDVkYmVlYzM5NjhjMWI4MDA2ZmZiZmI1ZjY3NGQ3NmM4OWNkZSJ9fX0=" ) );
+		put( "black_wolf", new Head( SoundEvents.WOLF_SOUNDS.get(WolfSoundVariants.Type.CLASSIC).ambientSound().value(), "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzVhNjZhNDJiMjVmODIyYTdlMTZhMjE4NzUyOGQxYTJlMjk0YTAxZDlmODUwNjcxYjk0Yzk1NzQyYmI0OTE2ZSJ9fX0=" ) );
+		put( "angry_black_wolf", new Head( SoundEvents.WOLF_SOUNDS.get(WolfSoundVariants.Type.CLASSIC).ambientSound().value(), "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTVlZDQ3ZGVkMjcwOGIxM2Q5MmViNTBmYjY4ZThjMWUxMWIzOWEwY2Q0NWIzOTM3MmVlYWQ4NzJjNDllZWFlYiJ9fX0=" ) );
+		put( "chestnut_wolf", new Head( SoundEvents.WOLF_SOUNDS.get(WolfSoundVariants.Type.CLASSIC).ambientSound().value(), "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2I5YjBkNDg0NDIyMDRmZjZmZDM5ZmEwNzQxNjcxMThlOWMwNjZjZGUzODg4OTc3ZDBmNjAzNmUxZDhhNjllZSJ9fX0=" ) );
+		put( "angry_chestnut_wolf", new Head( SoundEvents.WOLF_SOUNDS.get(WolfSoundVariants.Type.CLASSIC).ambientSound().value(), "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjg0YjI4ZjIzMmIxNGE1OWI2Y2I3NzU3MzIzOTc0ZWE1MDJiMWJjYjk4NGRlYTMwMDkzZWMyMWVkMmFkZTMxMiJ9fX0=" ) );
+		put( "pale_wolf", new Head( SoundEvents.WOLF_SOUNDS.get(WolfSoundVariants.Type.CLASSIC).ambientSound().value(), "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMWVlMzNjMmRjMDdkNzZiNGYwM2U2NjQyN2EwOGNiYTJlODE3OWQwNzVhZTY0YjljZTE1MGFhNDIwOWM1YWYzOSJ9fX0=" ) );
+		put( "angry_pale_wolf", new Head( SoundEvents.WOLF_SOUNDS.get(WolfSoundVariants.Type.CLASSIC).ambientSound().value(), "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjg4N2E0Mjc4NzkwMGU2NzE2ZmE0NjJmYmFkOGRlYjU1MjZiOTQzOTg3OTc0MTRmMDNmNjAxM2VmODg1YTFkYiJ9fX0=" ) );
+		put( "rusty_wolf", new Head( SoundEvents.WOLF_SOUNDS.get(WolfSoundVariants.Type.CLASSIC).ambientSound().value(), "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjM0NTVmNjA0OGE2ODA5OGNkMjc2MzRlMzE0NmM4MWM4MjY5YWVlZmNmMGFmZjkxY2M5NzZlZmEwYmFhMTE0NiJ9fX0=" ) );
+		put( "angry_rusty_wolf", new Head( SoundEvents.WOLF_SOUNDS.get(WolfSoundVariants.Type.CLASSIC).ambientSound().value(), "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDFmMWMzMmU1MjU4ZjNkOGY4ZDE4MWZiMzBkZjYxZTA2OTNlNTVkNTM4YTEzZWVhYmRmNjMwMGYzODA4M2FkYyJ9fX0=" ) );
+		put( "snowy_wolf", new Head( SoundEvents.WOLF_SOUNDS.get(WolfSoundVariants.Type.CLASSIC).ambientSound().value(), "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGVjYWRhYjUwYWE4ZDQxZmE5YjM2OWEyZjg0Zjk3NDU2YmU3OTAwYjIyMGVjZTNiOTVlOGEwMDk2ODY2MGQ1In19fQ==" ) );
+		put( "angry_snowy_wolf", new Head( SoundEvents.WOLF_SOUNDS.get(WolfSoundVariants.Type.CLASSIC).ambientSound().value(), "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTJiN2MyODZjMjMwODI2YjI5ZTdmZDM3ZjI1NzNiOTAxNWM0MjJiYzM4ZmViMTRkOWEzMTdjNjg1NWFkYTNmNiJ9fX0=" ) );
+		put( "spotted_wolf", new Head( SoundEvents.WOLF_SOUNDS.get(WolfSoundVariants.Type.CLASSIC).ambientSound().value(), "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTczYjlhNjQzMWFmMjZiY2IzMTgyNmViNmZkOWY0YjM1Yjk0N2JhNTg4MmM2ZTRhYTkzNTg4NjMzZjdiOGQ5ZCJ9fX0=" ) );
+		put( "angry_spotted_wolf", new Head( SoundEvents.WOLF_SOUNDS.get(WolfSoundVariants.Type.CLASSIC).ambientSound().value(), "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTc4NmI3MzkzNDhhYTg1MDJlYTE4NWRmYjE0YmY1YWIwMWUyOWUwODJkMWZlYjg2MTNiM2ZlOTNlMGRlYmQ4ZSJ9fX0=" ) );
+		put( "striped_wolf", new Head( SoundEvents.WOLF_SOUNDS.get(WolfSoundVariants.Type.CLASSIC).ambientSound().value(), "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2ZjNTJmYjNjZGZjNmFlYjAwZTY3YzFiN2E1OWQ4ZDMyMGRmNDQ2NTZjN2FmNjgyNGIxM2NhNjA3OTJhYTdkNyJ9fX0=" ) );
+		put( "angry_striped_wolf", new Head( SoundEvents.WOLF_SOUNDS.get(WolfSoundVariants.Type.CLASSIC).ambientSound().value(), "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOGQ2MGMyNTQ4OGIwNjcyNzY2OWE2OTE1ZDFkYWRhYTlhN2QyODMxYjQ2MGJlZTMwZTVkYTQwNzg3NDcwNTAwMSJ9fX0=" ) );
+		put( "woods_wolf", new Head( SoundEvents.WOLF_SOUNDS.get(WolfSoundVariants.Type.CLASSIC).ambientSound().value(), "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOGQxMmFiMTc2NDdiNjljOTQyMTc2OTU3MmFjNjc0ZGUxOTkxMjRjMjg0YjllZDFmNjVhMjg1YzM4Y2QyYTUwNCJ9fX0=" ) );
+		put( "angry_woods_wolf", new Head( SoundEvents.WOLF_SOUNDS.get(WolfSoundVariants.Type.CLASSIC).ambientSound().value(), "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTMwNTgzZGJhOGVhNjE0MzA1ZGIwMTBiYWJkYzViYjQ0ZTlhMjAwMzMxMWIzOTlkODk2NWU3NzJkZDAxOTFmYiJ9fX0=" ) );
 		
 		put( "zoglin", new Head( SoundEvents.ENTITY_ZOGLIN_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmUzNDkzYTk1NmJmZDc1ODhlZDFhOGVhODU4NzU5NjY3NjU5ZDU4MTAwY2JlY2Q2ZDk2Y2NjMGNhOWIzNjkyMyJ9fX0=" ) );
 		put( "zombie", new Head( SoundEvents.ENTITY_ZOMBIE_AMBIENT, "" ) );
@@ -513,8 +528,28 @@ public class HeadUtil {
 	public static String getCatVariant(@NotNull CatEntity entity ) {
 		String entityName = getEntityName( entity );
 		
-		if( !entity.getVariant().value().texture().getPath().isEmpty() ) {
-			return formatEntityId( entity.getVariant().value().texture().getPath().replace("textures/entity/cat/","").replace(".png",""), entityName );
+		if( !entity.getVariant().value().assetInfo().texturePath().getPath().isEmpty() ) {
+			return formatEntityId( entity.getVariant().value().assetInfo().texturePath().getPath().replace("textures/entity/cat/","").replace(".png",""), entityName );
+		} // if
+		
+		return entityName;
+	}
+	
+	public static String getChickenVariant(@NotNull ChickenEntity entity ) {
+		String entityName = getEntityName( entity );
+		
+		if( !entity.getVariant().value().modelAndTexture().asset().texturePath().getPath().isEmpty() ) {
+			return entity.getVariant().value().modelAndTexture().asset().texturePath().getPath().replace("textures/entity/chicken/","").replace(".png","");
+		} // if
+		
+		return entityName;
+	}
+	
+	public static String getCowVariant(@NotNull CowEntity entity ) {
+		String entityName = getEntityName( entity );
+		
+		if( !entity.getVariant().value().modelAndTexture().asset().texturePath().getPath().isEmpty() ) {
+			return entity.getVariant().value().modelAndTexture().asset().texturePath().getPath().replace("textures/entity/cow/","").replace(".png","");
 		} // if
 		
 		return entityName;
@@ -543,8 +578,8 @@ public class HeadUtil {
 	public static String getFrogVariant(@NotNull FrogEntity entity ) {
 		String entityName = getEntityName( entity );
 		
-		if( !entity.getVariant().value().texture().getPath().isEmpty() ) {
-			return entity.getVariant().value().texture().getPath().replace("textures/entity/frog/","").replace(".png","");
+		if( !entity.getVariant().value().assetInfo().id().getPath().isEmpty() ) {
+			return entity.getVariant().value().assetInfo().id().getPath().replace("entity/frog/","");
 		} // if
 		
 		return entityName;
@@ -553,7 +588,7 @@ public class HeadUtil {
 	public static String getGoatVariant(@NotNull GoatEntity entity ) {
 		String entityName = getEntityName( entity );
 		
-		if( MathUtil.hasChance( Platform.CONFIG.headVariationChance ) ) {
+		if( MathUtil.hasChance( 0.5F ) ) {
 			return formatEntityId( "screaming", entityName );
 		} // if
 		
@@ -563,8 +598,8 @@ public class HeadUtil {
 	public static String getHorseVariant(@NotNull HorseEntity entity ) {
 		String entityName = getEntityName( entity );
 		
-		if( !entity.getVariant().name().isEmpty() ) {
-			return formatEntityId( entity.getVariant().name(), entityName );
+		if( !entity.getHorseColor().name().isEmpty() ) {
+			return formatEntityId( entity.getHorseColor().name(), entityName );
 		} // if
 		
 		return entityName;
@@ -610,6 +645,16 @@ public class HeadUtil {
 		return entityName;
 	}
 	
+	public static String getPigVariant(@NotNull PigEntity entity ) {
+		String entityName = getEntityName( entity );
+		
+		if( !entity.getVariant().value().modelAndTexture().asset().texturePath().getPath().isEmpty() ) {
+			return entity.getVariant().value().modelAndTexture().asset().texturePath().getPath().replace("textures/entity/pig/","").replace(".png","");
+		} // if
+		
+		return entityName;
+	}
+	
 	public static String getRabbitVariant(@NotNull RabbitEntity entity ) {
 		String entityName = getEntityName( entity );
 		
@@ -617,7 +662,7 @@ public class HeadUtil {
 			return formatEntityId( "toast", entityName );
 		} // if
 		
-		if( entity.getVariant().getId() == 99 ) {
+		if( entity.getVariant().getIndex() == 99 ) {
 			return formatEntityId( "killer", entityName );
 		} // if
 		
@@ -665,8 +710,8 @@ public class HeadUtil {
 	public static String getVillagerVariant(@NotNull VillagerEntity entity ) {
 		String entityName = getEntityName( entity );
 		
-		if( !entity.getVillagerData().getProfession().id().equals("none") ) {
-			return formatEntityId( entity.getVillagerData().getProfession().id(), entityName );
+		if( !entity.getVillagerData().profession().value().id().toString().equals("none") ) {
+			return formatEntityId( entity.getVillagerData().profession().value().id().toString(), entityName );
 		} // if
 		
 		return entityName;
@@ -675,42 +720,37 @@ public class HeadUtil {
 	public static String getWitherVariant(@NotNull WitherEntity entity ) {
 		String entityName = getEntityName( entity );
 		
-		if( Platform.CONFIG.headVariationChance >= 1 ) {
-			if( MathUtil.hasChance( 0.5F ) ) {
-				return formatEntityId( "wither_projectile", entityName );
-			} else {
-				return formatEntityId( "blue_wither_projectile", entityName );
-			} // if, else
-		} else {
-			if( MathUtil.hasChance( Platform.CONFIG.headVariationChance ) ) {
-				return formatEntityId( "wither_projectile", entityName );
-			} else if( MathUtil.hasChance( Platform.CONFIG.headVariationChance ) ) {
-				return formatEntityId( "blue_wither_projectile", entityName );
-			} // if, else if
-		} // if, else
+		if( MathUtil.hasChance( 0.5F ) ) {
+			return formatEntityId( "wither_projectile", entityName );
+		} else if( MathUtil.hasChance( 0.5F ) ) {
+			return formatEntityId( "blue_wither_projectile", entityName );
+		} // if, else if
 		
 		return entityName;
 	}
 	
 	public static String getWolfVariant(@NotNull WolfEntity entity ) {
 		String entityName = getEntityName( entity );
+		String variantName;
 		
-		if( !entity.getVariant().getIdAsString().isEmpty() ) {
-			if( entity.hasAngerTime() ) {
-				return formatEntityId( "angry_" + entity.getVariant().getIdAsString(), entityName );
-			} // if
-			
-			return formatEntityId( entity.getVariant().getIdAsString(), entityName );
-		} // if
+		String variant = entity.getTextureId().getPath().split("wolf/")[1].replace("wolf_", "").replace(".png", "");
 		
-		return entityName;
+		if( entity.hasAngerTime() ) {
+			variantName = formatEntityId( "angry_" + variant, entityName );
+		} else if( variant.equals("wolf") ) {
+			variantName = formatEntityId( "pale", entityName );
+		} else {
+			variantName = formatEntityId( variant, entityName );
+		} // if, else if, else
+		
+		return variantName;
 	}
 	
 	public static String getZombieVillagerVariant(@NotNull ZombieVillagerEntity entity ) {
 		String entityName = getEntityName( entity );
 		
-		if( !entity.getVillagerData().getProfession().id().equals("none") ) {
-			return formatEntityId( entityName, entity.getVillagerData().getProfession().id() );
+		if( !entity.getVillagerData().profession().value().id().toString().equals("none") ) {
+			return formatEntityId( entityName, entity.getVillagerData().profession().value().id().toString() );
 		} // if
 		
 		return entityName;

@@ -154,7 +154,7 @@ public class VillagerUtil {
 	}
 	
 	public static void resetTrades( VillagerEntity villager, int minLevel ) {
-		int level = villager.getVillagerData().getLevel();
+		int level = villager.getVillagerData().level();
 		TradeOfferList offers = new TradeOfferList();
 		
 		if( minLevel == level ) {
