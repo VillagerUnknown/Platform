@@ -457,6 +457,8 @@ public class HeadUtil {
 			case "axolotl" -> getAxolotlVariant((AxolotlEntity) entity);
 			case "bee" -> getBeeVariant((BeeEntity) entity);
 			case "cat" -> getCatVariant((CatEntity) entity);
+			case "chicken" -> getChickenVariant((ChickenEntity) entity);
+			case "cow" -> getCowVariant((CowEntity) entity);
 			case "creeper" -> getCreeperVariant((CreeperEntity) entity);
 			case "fox" -> getFoxVariant((FoxEntity) entity);
 			case "frog" -> getFrogVariant((FrogEntity) entity);
@@ -466,6 +468,7 @@ public class HeadUtil {
 			case "mooshroom" -> getMooshroomVariant((MooshroomEntity) entity);
 			case "panda" -> getPandaVariant((PandaEntity) entity);
 			case "parrot" -> getParrotVariant((ParrotEntity) entity);
+			case "pig" -> getPigVariant((PigEntity) entity);
 			case "rabbit" -> getRabbitVariant((RabbitEntity) entity);
 			case "sheep" -> getSheepVariant((SheepEntity) entity);
 			case "strider" -> getStriderVariant((StriderEntity) entity);
