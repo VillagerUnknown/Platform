@@ -99,7 +99,7 @@ public class EntityUtil {
 	}
 	
 	public static List<Block> getNearbyBlocks(Entity entity, int proximity) {
-		return PositionUtil.getNearbyBlocks( entity.getEntityWorld(), entity.getBlockPos(), proximity );
+		return PositionUtil.getNearbyBlocks( entity.getWorld(), entity.getBlockPos(), proximity );
 	}
 	
 	public static void causeExplosion(World world, Entity entity, float power, boolean createFire, boolean breakBlocks ) {

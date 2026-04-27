@@ -65,8 +65,9 @@ public class PlatformClientPayloads {
 			context.client().execute(() -> {
 				MinecraftClient client = MinecraftClient.getInstance();
 				if( client.isInSingleplayer() ) {
-					client.world.disconnect();
-					client.disconnect(new MessageScreen(Text.of("Saving world")));
+					assert client.world != null;
+					client.world.disconnect(Text.of("Show main menu"));
+					client.disconnect(new MessageScreen(Text.of("Saving world")), false);
 					client.setScreen(new TitleScreen(true));
 				}
 			});

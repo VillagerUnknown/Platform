@@ -16,7 +16,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 public class EnchantmentUtil {
 	
 	public static ItemEnchantmentsComponent.Builder buildEnchantmentEntry(ServerPlayerEntity player, RegistryKey<Enchantment> enchantment, Integer skillLevel) {
-		DynamicRegistryManager drm = player.getServerWorld().getRegistryManager();
+		DynamicRegistryManager drm = player.getRegistryManager();
 		Registry<Enchantment> reg = drm.getOrThrow(RegistryKeys.ENCHANTMENT);
 		
 		Enchantment enchantmentEntryValue = reg.get( enchantment );
