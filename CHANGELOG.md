@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [1.3.3+1.21.6]
 
+### Added
+
+- Added Happy Ghast to HeadUtil.
+
 ### Changed
 
 - Changed supported Minecraft version number.
