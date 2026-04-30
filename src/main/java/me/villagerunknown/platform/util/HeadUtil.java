@@ -1,12 +1,16 @@
 package me.villagerunknown.platform.util;
 
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.minecraft.MinecraftSessionService;
 import com.mojang.authlib.properties.Property;
+import com.mojang.authlib.properties.PropertyMap;
 import com.mojang.authlib.yggdrasil.ProfileResult;
 import me.villagerunknown.platform.Platform;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.Oxidizable;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ProfileComponent;
 import net.minecraft.entity.Entity;
@@ -76,6 +80,11 @@ public class HeadUtil {
 		put( "warm_chicken", new Head( SoundEvents.ENTITY_CHICKEN_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNThjMjMxYmY0NjRmOWE2YzY3ODZhMjJhNGQxMTllYTVlNTA1NzYyNGM1YTM5MTQ3MGQzNWZhMmI2ZmZhNTE4MyJ9fX0=" ) );
 		
 		put( "cod", new Head( SoundEvents.ENTITY_COD_FLOP, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjI0NmUxOWIzMmNmNzg0NTQ5NDQ3ZTA3Yjk2MDcyZTFmNjU2ZDc4ZTkzY2NjYTU2Mzc0ODVlNjc0OTczNDY1MiJ9fX0=" ) );
+		
+		put( "copper_golem", new Head( SoundEvents.ENTITY_COPPER_GOLEM_SPIN, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWY0MGMxYmVjMTIyMjY1ZTk3OWU0Mzc4ZGM4ZDhiMTNiZDkyNmVkMmFkODk4NGY0OTNlYjQ2Zjc1NDQ3NDcxNyJ9fX0=" ) );
+		put( "exposed_copper_golem", new Head( SoundEvents.ENTITY_COPPER_GOLEM_WEATHERED_SPIN, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWFjMjg0NGMzMDA5N2M5NjQ2MmQ0OGFkYTA2NGNmOWFhZTM2NmFhMTFmZGMxNTY5ZWNlODYwZjcyMGQxYzllMCJ9fX0=" ) );
+		put( "weathered_copper_golem", new Head( SoundEvents.ENTITY_COPPER_GOLEM_WEATHERED_SPIN, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDUxNzk1YzQzOWY1ZTJjNGIwOGQ5MDI3MjEyN2YyOWNiNGUwYjFhN2Q0ZWViNjg3NTkxYWE1ODAwMzgwMmExYSJ9fX0=" ) );
+		put( "oxidized_copper_golem", new Head( SoundEvents.ENTITY_COPPER_GOLEM_OXIDIZED_SPIN, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjZhNDU5ODQyMGMzZjIwNDk5NjJkZTQ5MzYzMTdhMzZkMjUwZDEzZDY1MDJhYzdjY2M2MmY1NWExMzdiZGUzNyJ9fX0=" ) );
 		
 		put( "cow", new Head( SoundEvents.ENTITY_COW_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjNkNjIxMTAwZmVhNTg4MzkyMmU3OGJiNDQ4MDU2NDQ4Yzk4M2UzZjk3ODQxOTQ4YTJkYTc0N2Q2YjA4YjhhYiJ9fX0=" ) );
 		put( "cold_cow", new Head( SoundEvents.ENTITY_COW_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTMzMjIxNDg0ZDM5ZjBkNGVjZGZmYTcyOTU2N2NlNzdmYThjZTA1YjA5MWRiNzZkZDViMDc5YTIwZjdiZjMzOSJ9fX0=" ) );
@@ -307,6 +316,7 @@ public class HeadUtil {
 			"bee",
 			"cat",
 			"chicken",
+			"copper_golem",
 			"cow",
 			"creeper",
 			"fox",
@@ -338,7 +348,7 @@ public class HeadUtil {
 	);
 	
 	public static ItemStack getPlayerHeadStack( PlayerEntity player ) {
-		return getPlayerHeadStack( player.getServer(), player.getUuid() );
+		return getPlayerHeadStack( player.getEntityWorld().getServer(), player.getUuid() );
 	}
 	
 	public static ItemStack getPlayerHeadStack( MinecraftServer server, UUID uuid ) {
@@ -347,11 +357,11 @@ public class HeadUtil {
 		headStack.set(DataComponentTypes.NOTE_BLOCK_SOUND, SoundEvents.ENTITY_PLAYER_BURP.id());
 		
 		if( null != server ) {
-			MinecraftSessionService sessionService = server.getSessionService();
+			MinecraftSessionService sessionService = server.getApiServices().sessionService();
 			ProfileResult profile = sessionService.fetchProfile(uuid, false);
 			
 			if( null != profile ) {
-				ProfileComponent profileComponent = new ProfileComponent(profile.profile());
+				ProfileComponent profileComponent = ProfileComponent.ofStatic(profile.profile());
 				
 				headStack.set(DataComponentTypes.PROFILE, profileComponent );
 			} // if
@@ -428,12 +438,17 @@ public class HeadUtil {
 		if( !texture.isEmpty() ) {
 			GameProfile gameProfile = new GameProfile( attackerUuid, entityType );
 			
-			Property property = new Property("textures", texture);
-			gameProfile.getProperties().put("textures", property);
+			PropertyMap properties = gameProfile.properties();
+			Multimap<String, Property> propertiesMap = HashMultimap.create( properties );
 			
-			ProfileComponent profile = new ProfileComponent(gameProfile);
+			Property textureProperty = new Property("textures", texture);
+			propertiesMap.put("textures", textureProperty);
 			
-			headStack.set(DataComponentTypes.PROFILE, profile);
+			GameProfile texturedGameProfile = new GameProfile( attackerUuid, entityType, new PropertyMap( propertiesMap ) );
+			
+			ProfileComponent profileComponent = ProfileComponent.ofStatic( texturedGameProfile );
+			
+			headStack.set(DataComponentTypes.PROFILE, profileComponent);
 		} // if
 		
 		headStack.set(DataComponentTypes.CUSTOM_NAME, Text.of( formatEntityName( entityName ) + " Head" ));
@@ -462,6 +477,7 @@ public class HeadUtil {
 			case "bee" -> getBeeVariant((BeeEntity) entity);
 			case "cat" -> getCatVariant((CatEntity) entity);
 			case "chicken" -> getChickenVariant((ChickenEntity) entity);
+			case "copper_golem" -> getCopperGolemVariant((CopperGolemEntity) entity);
 			case "cow" -> getCowVariant((CowEntity) entity);
 			case "creeper" -> getCreeperVariant((CreeperEntity) entity);
 			case "fox" -> getFoxVariant((FoxEntity) entity);
@@ -548,6 +564,18 @@ public class HeadUtil {
 		if( !entity.getVariant().value().modelAndTexture().asset().texturePath().getPath().isEmpty() ) {
 			return entity.getVariant().value().modelAndTexture().asset().texturePath().getPath().replace("textures/entity/chicken/","").replace(".png","");
 		} // if
+		
+		return entityName;
+	}
+	
+	public static String getCopperGolemVariant(@NotNull CopperGolemEntity entity ) {
+		String entityName = getEntityName( entity );
+		
+		switch( entity.getOxidationLevel() ) {
+			case Oxidizable.OxidationLevel.EXPOSED -> entityName = "exposed_copper_golem";
+			case Oxidizable.OxidationLevel.WEATHERED -> entityName = "weathered_copper_golem";
+			case Oxidizable.OxidationLevel.OXIDIZED -> entityName = "oxidized_copper_golem";
+		} // switch
 		
 		return entityName;
 	}

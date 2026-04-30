@@ -58,7 +58,7 @@ public class EntityUtil {
 	}
 	
 	public static void reportAttackToChat( ServerPlayerEntity entity, Entity damageSourceEntity ) {
-		MinecraftServer server = entity.getServer();
+		MinecraftServer server = entity.getEntityWorld().getServer();
 		if( null != server) {
 			MessageUtil.broadcastChatMessage(server, formActionMessage(entity, damageSourceEntity, "attacked"));
 		} // if
@@ -69,7 +69,7 @@ public class EntityUtil {
 	}
 	
 	public static void reportKillToChat( ServerPlayerEntity entity, Entity damageSourceEntity ) {
-		MinecraftServer server = entity.getServer();
+		MinecraftServer server = entity.getEntityWorld().getServer();
 		if( null != server) {
 			MessageUtil.broadcastChatMessage(server, formActionMessage(entity, damageSourceEntity, "killed"));
 		} // if
@@ -80,7 +80,7 @@ public class EntityUtil {
 	}
 	
 	public static void reportConversionToChat( ServerPlayerEntity entity, Entity damageSourceEntity ) {
-		MinecraftServer server = entity.getServer();
+		MinecraftServer server = entity.getEntityWorld().getServer();
 		if( null != server) {
 			MessageUtil.broadcastChatMessage(server, formActionMessage(entity, damageSourceEntity, "converted"));
 		} // if
@@ -99,7 +99,7 @@ public class EntityUtil {
 	}
 	
 	public static List<Block> getNearbyBlocks(Entity entity, int proximity) {
-		return PositionUtil.getNearbyBlocks( entity.getWorld(), entity.getBlockPos(), proximity );
+		return PositionUtil.getNearbyBlocks( entity.getEntityWorld(), entity.getBlockPos(), proximity );
 	}
 	
 	public static void causeExplosion(World world, Entity entity, float power, boolean createFire, boolean breakBlocks ) {
@@ -122,7 +122,7 @@ public class EntityUtil {
 	}
 	
 	public static void spawnParticles(Entity entity, float heightAdjust, ParticleEffect particle, int count, double deltaX, double deltaY, double deltaZ, double speed) {
-		ServerWorld serverWorld = Objects.requireNonNull(entity.getServer()).getWorld( entity.getWorld().getRegistryKey() );
+		ServerWorld serverWorld = Objects.requireNonNull(entity.getEntityWorld().getServer()).getWorld( entity.getEntityWorld().getRegistryKey() );
 		if( null != serverWorld ) {
 			serverWorld.spawnParticles( particle, entity.getX(), entity.getY() + heightAdjust, entity.getZ(), count, deltaX, deltaY, deltaZ, speed );
 		} // if

@@ -104,13 +104,13 @@ public class PositionUtil {
 	
 	public static BlockPos findNearestBlock(Entity entity, Block block, int radius) {
 		BlockPos entityPos = entity.getBlockPos();
-		MinecraftServer server = entity.getServer();
+		MinecraftServer server = entity.getEntityWorld().getServer();
 		
 		if( null == server ) {
 			return entity.getBlockPos();
 		} // if
 		
-		ServerWorld world = server.getWorld(entity.getWorld().getRegistryKey());
+		ServerWorld world = server.getWorld(entity.getEntityWorld().getRegistryKey());
 		
 		if( null == world ) {
 			return entity.getBlockPos();
@@ -138,13 +138,13 @@ public class PositionUtil {
 	
 	public static BlockPos findNearestBed(Entity entity, int radius) {
 		BlockPos entityPos = entity.getBlockPos();
-		MinecraftServer server = entity.getServer();
+		MinecraftServer server = entity.getEntityWorld().getServer();
 		
 		if( null == server ) {
 			return entity.getBlockPos();
 		} // if
 		
-		ServerWorld world = server.getWorld( entity.getWorld().getRegistryKey() );
+		ServerWorld world = server.getWorld( entity.getEntityWorld().getRegistryKey() );
 		
 		if( null == world ) {
 			return entity.getBlockPos();

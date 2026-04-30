@@ -18,7 +18,7 @@ public class sleepNoticeFeature {
 					|| ( WeatherUtil.isRaining( minecraftServer.getOverworld() ) && 12010L == time )
 				) {
 					for (ServerPlayerEntity player : minecraftServer.getPlayerManager().getPlayerList()) {
-						if( player.getWorld().equals( minecraftServer.getOverworld() ) ) {
+						if( player.getEntityWorld().equals( minecraftServer.getOverworld() ) ) {
 							MessageUtil.sendChatMessage(player, MessageUtil.formComment( Platform.CONFIG.sleepNoticeMessage ) );
 						} // if
 					} // for

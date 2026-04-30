@@ -12,7 +12,7 @@ public class ProfileUtil {
 	public static final UUID DEFAULT_UUID = UUID.fromString("5aa7ebdf-c67b-4643-9214-3015d269dedb");
 	
 	public static ProfileResult fetchProfile(MinecraftServer server, UUID uuid, boolean requireSecure ) {
-		MinecraftSessionService sessionService = server.getSessionService();
+		MinecraftSessionService sessionService = server.getApiServices().sessionService();
 		ProfileResult profileResult = sessionService.fetchProfile(uuid, requireSecure);
 		
 		if( null == profileResult ) {

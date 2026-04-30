@@ -5,8 +5,10 @@ import me.villagerunknown.platform.Platform;
 import me.villagerunknown.platform.PlatformMod;
 import me.villagerunknown.platform.client.PlatformClient;
 import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.render.command.OrderedRenderCommandQueue;
 import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.client.render.entity.state.EntityRenderState;
+import net.minecraft.client.render.state.CameraRenderState;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
 import net.minecraft.text.Text;
@@ -19,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class EntityRendererMixin<T extends Entity, S extends EntityRenderState> {
 	
 	@Inject(method = "renderLabelIfPresent", at = @At("HEAD"), cancellable = true)
-	private void renderLabelIfPresent(S state, Text text, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, CallbackInfo ci) {
+	private void renderLabelIfPresent(S state, MatrixStack matrices, OrderedRenderCommandQueue queue, CameraRenderState cameraRenderState, CallbackInfo ci) {
 		if( !PlatformClient.nametagsVisible || ( !PlatformClient.playerNametagsVisible ) ) {
 			ci.cancel();
 		} // if

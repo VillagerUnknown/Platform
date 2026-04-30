@@ -104,7 +104,7 @@ public class playerCacheFeature {
 	
 	@Nullable
 	public static ProfileResultData cachePlayer( PlayerEntity player ) {
-		MinecraftServer server = player.getServer();
+		MinecraftServer server = player.getEntityWorld().getServer();
 		
 		if( null != server ) {
 			ProfileResult profileResult = getUncachedProfileResult(server, player.getUuid(), server.shouldEnforceSecureProfile());

@@ -17,7 +17,7 @@ import java.util.Optional;
 public class LocatorUtil {
 	
 	public static Pair<BlockPos, RegistryEntry<Biome>> locateBiome( PlayerEntity player, RegistryKey<Biome> registryKey, int searchRadius, int horizontalBlockCheckInterval, int verticalBlockCheckInterval ) {
-		return LocatorUtil.locateBiome( WorldUtil.getServerWorld( player.getWorld() ), player.getBlockPos(), registryKey, searchRadius, horizontalBlockCheckInterval, verticalBlockCheckInterval );
+		return LocatorUtil.locateBiome( WorldUtil.getServerWorld( player.getEntityWorld() ), player.getBlockPos(), registryKey, searchRadius, horizontalBlockCheckInterval, verticalBlockCheckInterval );
 	}
 	
 	public static Pair<BlockPos, RegistryEntry<Biome>> locateBiome( ServerWorld serverWorld, BlockPos blockPos, RegistryKey<Biome> registryKey, int searchRadius, int horizontalBlockCheckInterval, int verticalBlockCheckInterval ) {
@@ -37,7 +37,7 @@ public class LocatorUtil {
 	}
 	
 	public static Pair<BlockPos, RegistryEntry<Structure>> locateStructure( PlayerEntity player, RegistryKey<Structure> registryKey, int searchRadius ) {
-		return LocatorUtil.locateStructure( WorldUtil.getServerWorld( player.getWorld() ), player.getBlockPos(), registryKey, searchRadius );
+		return LocatorUtil.locateStructure( WorldUtil.getServerWorld( player.getEntityWorld() ), player.getBlockPos(), registryKey, searchRadius );
 	}
 	
 	public static Pair<BlockPos, RegistryEntry<Structure>> locateStructure( ServerWorld serverWorld, BlockPos blockPos, RegistryKey<Structure> registryKey, int searchRadius ) {

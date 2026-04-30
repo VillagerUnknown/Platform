@@ -12,7 +12,7 @@ import java.util.UUID;
 public class ProfileResultData {
 	
 	public static final Codec<ProfileResult> PROFILE_RESULT_CODEC = RecordCodecBuilder.create(instance -> instance.group(
-			Codecs.GAME_PROFILE_WITH_PROPERTIES.fieldOf("profile").forGetter(ProfileResult::profile)
+			Codecs.GAME_PROFILE_CODEC.fieldOf("profile").forGetter(ProfileResult::profile)
 	).apply(instance, ProfileResultData::buildProfileResult));
 	
 	public static final Codec<ProfileResultData> CODEC = RecordCodecBuilder.create(instance -> instance.group(

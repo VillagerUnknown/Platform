@@ -62,7 +62,7 @@ public class PersistentProfileResultData extends AbstractPersistentData {
 	}
 	
 	public static ProfileResultData getPlayerState(LivingEntity player) {
-		MinecraftServer server = player.getServer();
+		MinecraftServer server = player.getEntityWorld().getServer();
 		
 		if( null != server ) {
 			PersistentProfileResultData serverState = getServerState(server);
