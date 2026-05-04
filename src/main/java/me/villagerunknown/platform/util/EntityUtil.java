@@ -108,15 +108,20 @@ public class EntityUtil {
 	
 	public static void playSound(Entity entity, SoundEvent sound, SoundCategory category, float volume, float pitch, boolean toPlayer) {
 		if( entity.isPlayer() ) {
-			ServerPlayerEntity player = (ServerPlayerEntity) entity;
+			PlayerEntity playerEntity = (PlayerEntity) entity;
+			MinecraftServer server = entity.getEntityWorld().getServer();
 			
-			if( toPlayer ) {
-				player.playSound( sound, volume, pitch );
-			} else {
-				player.playSound( sound, volume, pitch );
-			} // if, else
+			if( null != server ) {
+				ServerPlayerEntity player = server.getPlayerManager().getPlayer( playerEntity.getUuid() );
+				
+				if( toPlayer && null != player ) {
+					player.playSound( sound, volume, pitch );
+				} else {
+					entity.playSound( sound, volume, pitch );
+				} // if, else
+			} // if
 		} else {
-			entity.playSound(sound, volume, pitch);
+			entity.playSound( sound, volume, pitch );
 		} // if, else
 	}
 	
