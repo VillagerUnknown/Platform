@@ -10,9 +10,9 @@ import net.minecraft.util.TypeFilter;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.Difficulty;
-import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import net.minecraft.world.dimension.DimensionType;
+import net.minecraft.world.rule.GameRules;
 
 import java.util.List;
 
@@ -32,7 +32,7 @@ public class WorldUtil {
 		return server.getWorld( registryKey );
 	}
 	
-	public static GameRules getGameRules( World world ) {
+	public static GameRules getGameRules(World world ) {
 		return getServerWorld( world ).getGameRules();
 	}
 	

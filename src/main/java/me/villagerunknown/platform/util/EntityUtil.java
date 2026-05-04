@@ -111,9 +111,8 @@ public class EntityUtil {
 			ServerPlayerEntity player = (ServerPlayerEntity) entity;
 			
 			if( toPlayer ) {
-				player.playSoundToPlayer( sound, category, volume, pitch );
+				player.playSound( sound, volume, pitch );
 			} else {
-				player.playSoundToPlayer( sound, category, volume, pitch ); // @todo Resolve sound issue requiring playSoundToPlayer here
 				player.playSound( sound, volume, pitch );
 			} // if, else
 		} else {

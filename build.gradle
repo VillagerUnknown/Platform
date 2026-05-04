@@ -50,8 +50,8 @@ dependencies {
 
     // Additional dependencies
     modImplementation "com.google.code.gson:gson:2.11.0"
-    modImplementation "me.shedaniel.cloth:cloth-config-fabric:20.0.149"
-    modImplementation "com.terraformersmc:modmenu:16.0.1"
+    modImplementation "me.shedaniel.cloth:cloth-config-fabric:21.11.153"
+    modImplementation "com.terraformersmc:modmenu:17.0.0"
 }
 
 processResources {

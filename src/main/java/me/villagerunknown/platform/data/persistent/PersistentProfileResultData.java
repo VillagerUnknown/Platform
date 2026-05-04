@@ -37,8 +37,8 @@ public class PersistentProfileResultData extends AbstractPersistentData {
 	
 	private static final PersistentStateType<PersistentProfileResultData> type = new PersistentStateType<>(
 			MOD_ID,
-			(context) -> new PersistentProfileResultData(),
-			ctx -> CODEC,
+			PersistentProfileResultData::new,
+			CODEC,
 			null
 	);
 	

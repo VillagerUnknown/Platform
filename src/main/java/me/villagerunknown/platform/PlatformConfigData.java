@@ -4,7 +4,7 @@ import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
 
 @Config(name = "villagerunknown-platform")
-public class PlatformConfigData implements me.shedaniel.autoconfig.ConfigData {
+public final class PlatformConfigData implements me.shedaniel.autoconfig.ConfigData {
 	
 	/**
 	 * General
