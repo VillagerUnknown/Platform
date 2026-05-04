@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ## [1.3.3+1.21.11]
 
+### Added
+
+- Added Camel Husk to HeadUtil.
+- Added Nautilus to HeadUtil.
+- Added Parched to HeadUtil.
+- Added Zombie Nautilus to HeadUtil.
+
 ### Changed
 
 - Changed supported Minecraft version number.

@@ -15,9 +15,7 @@ import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ProfileComponent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.boss.WitherEntity;
-import net.minecraft.entity.mob.CreeperEntity;
-import net.minecraft.entity.mob.VexEntity;
-import net.minecraft.entity.mob.ZombieVillagerEntity;
+import net.minecraft.entity.mob.*;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -57,7 +55,9 @@ public class HeadUtil {
 		put( "blaze", new Head( SoundEvents.ENTITY_BLAZE_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGVlMjNkYzdhMTBjNmE4N2VmOTM3NDU0YzBlOTRlZDQyYzIzYWE2NDFhOTFlZDg0NzBhMzA0MmQwNWM1MmM1MiJ9fX0=" ) );
 		put( "bogged", new Head( SoundEvents.ENTITY_BOGGED_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGY4MDdhMTg3MDc3ZjgzNmI5MzgyMGIzMmQ4ZDgzNDFkNGQzMmNkNGM4YzExMTVjZjFkYTYzNzRlMGZiZDNmZiJ9fX0=" ) );
 		put( "breeze", new Head( SoundEvents.ENTITY_BREEZE_IDLE_AIR, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTI3NTcyOGFmN2U2YTI5Yzg4MTI1YjY3NWEzOWQ4OGFlOTkxOWJiNjFmZGMyMDAzMzdmZWQ2YWIwYzQ5ZDY1YyJ9fX0=" ) );
+		
 		put( "camel", new Head( SoundEvents.ENTITY_CAMEL_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTY3ZDQ1OTczNDAxNjZlMTk3OGE2NjhhMDZiZjU3NTZjMTdiNGNiNWI0MGFiOGZmMjQ0MDkzYjZiOGJjNzVkMyJ9fX0=" ) );
+		put( "camel_husk", new Head( SoundEvents.ENTITY_CAMEL_HUSK_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzdkNDM0NjNkODQ4OTQxMTU5NDMwYTIzMmI0ZDVjMTdiM2I4NDJmODY2YjU0YTMzZTc0ODQ3NmU0MDg3NDc0NyJ9fX0=" ) );
 		
 		put( "cat", new Head( SoundEvents.ENTITY_CAT_AMBIENT, "" ) );
 		put( "tabby_cat", new Head( SoundEvents.ENTITY_CAT_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGUyOGQzMGRiM2Y4YzNmZTUwY2E0ZjI2ZjMwNzVlMzZmMDAzYWU4MDI4MTM1YThjZDY5MmYyNGM5YTk4YWUxYiJ9fX0=" ) );
@@ -152,6 +152,9 @@ public class HeadUtil {
 		put( "red_mooshroom", new Head( SoundEvents.ENTITY_COW_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGE4MDYwNmU4MmM2NDJmMTQxNTg3NzMzZTMxODBhZTU3ZjY0NjQ0MmM5ZmZmZDRlNTk5NzQ1N2UzNDMxMWEyOSJ9fX0=" ) );
 		
 		put( "mule", new Head( SoundEvents.ENTITY_MULE_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDFjMjI0YTEwMzFiZTQzNGQyNWFlMTg4NWJmNGZmNDAwYzk4OTRjNjliZmVmNTZhNDkzNTRjNTYyNWMwYzA5YyJ9fX0=" ) );
+		
+		put( "nautilus", new Head( SoundEvents.ENTITY_NAUTILUS_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjcwOGNmOTkwMDM5OTA2MGM5MjgwYzZiM2I4OGNiZTUzNmU3MjJjMGVlYmM5MzJhOWM1ZmEwMTQwZDAzNjJmYyJ9fX0=" ) );
+		
 		put( "ocelot", new Head( SoundEvents.ENTITY_OCELOT_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTE3NWNjNDNlYThhZTIwMTY4YTFmMTcwODEwYjRkYTRkOWI0ZWJkM2M5OTc2ZTlmYzIyZTlmOTk1YzNjYmMzYyJ9fX0=" ) );
 		
 		put( "panda", new Head( SoundEvents.ENTITY_PANDA_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTlkZjQ3ZTAxNWQ1YzFjNjhkNzJiZTExYmI2NTYzODBmYzZkYjUzM2FhYjM4OTQxYTkxYjFkM2Q1ZTM5NjQ5NyJ9fX0=" ) );
@@ -161,6 +164,8 @@ public class HeadUtil {
 		put( "worried_panda", new Head( SoundEvents.ENTITY_PANDA_WORRIED_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmI4NmZkMWJmOGNiY2UyM2JjMDhmYjkwNjkxNzE3NjExYWRkYzg1YWI4MjNiNzcxNGFlYzk4YTU2NjBlZmYxNSJ9fX0=" ) );
 		put( "brown_panda", new Head( SoundEvents.ENTITY_PANDA_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMWQ1ZjZkNjEyNjcyODY3MWI0NGMxYzc3NWY5OTYxNzQyNGUzMzYxMWI1ZDMxYWQyYWNmZjI4MDRlYjk2ZWIwNiJ9fX0=" ) );
 		put( "weak_panda", new Head( SoundEvents.ENTITY_PANDA_SNEEZE, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2M1NmEzNTVmYmUwZTJmYmQyOGU4NWM0ZDgxNWZmYTVkMWY5ZDVmODc5OGRiYzI1OWZmODhjNGFkZGIyMDJhZSJ9fX0=" ) );
+		
+		put( "parched", new Head( SoundEvents.ENTITY_PARCHED_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjRhZWNlZmY1ZjI2ZGQ4NDEzYzVjMDM1NDdjMjM0YWMwMzEwOGQxODdhZjBiOWNkODM0YThjZTEyNTk4NTkxYyJ9fX0=" ) );
 		
 		put( "parrot", new Head( SoundEvents.ENTITY_PARROT_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDBhM2Q0N2Y1NGU3MWE1OGJmOGY1N2M1MjUzZmIyZDIxM2Y0ZjU1YmI3OTM0YTE5MTA0YmZiOTRlZGM3NmVhYSJ9fX0=" ) );
 		put( "red_parrot", new Head( SoundEvents.ENTITY_PARROT_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDBhM2Q0N2Y1NGU3MWE1OGJmOGY1N2M1MjUzZmIyZDIxM2Y0ZjU1YmI3OTM0YTE5MTA0YmZiOTRlZGM3NmVhYSJ9fX0=" ) );
@@ -308,6 +313,9 @@ public class HeadUtil {
 		put( "zombie_toolsmith", new Head( SoundEvents.ENTITY_ZOMBIE_VILLAGER_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmI1NTJjOTBmMjEyZTg1NWQxMjI1NWQ1Y2Q2MmVkMzhiOWNkN2UzMGU3M2YwZWE3NzlkMTc2NDMzMGU2OTI2NCJ9fX0=" ) );
 		put( "zombie_weaponsmith", new Head( SoundEvents.ENTITY_ZOMBIE_VILLAGER_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDM3MDg5NGI1Y2MzMDVkODdhYTA4YzNiNGIwODU4N2RiNjhmZjI5ZTdhM2VmMzU0Y2FkNmFiY2E1MGU1NTI4YiJ9fX0=" ) );
 		
+		put( "zombie_nautilus", new Head( SoundEvents.ENTITY_ZOMBIE_NAUTILUS_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWI2ZDE2YmNiYzg1ODMyMGU0ZWVjYjgxOGFiZjI5YWY4MjViY2Y5MWZhYzc5ODlhYmE1NTM2YWI4YmE0MGMwZiJ9fX0=" ) );
+		put( "coral_zombie_nautilus", new Head( SoundEvents.ENTITY_ZOMBIE_NAUTILUS_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTUyYWMyYWNjNWU5Y2EyMzcyN2Y0NDg3OTI0MmIxMDRmZGQ2ZTA0NGY3ZmIyZDI5ZmVmY2E0YmMyZjRkNGMzIn19fQ==" ) );
+		
 		put( "zombified_piglin", new Head( SoundEvents.ENTITY_ZOMBIFIED_PIGLIN_AMBIENT, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmRmMDMxMjhiMDAyYTcwNzA4ZDY4MjVlZDZjZjU0ZGRmNjk0YjM3NjZkNzhkNTY0OTAzMGIxY2I4YjM0YzZmYSJ9fX0=" ) );
 	}};
 	
@@ -336,6 +344,7 @@ public class HeadUtil {
 			"villager",
 			"wither",
 			"wolf",
+			"zombie_nautilus",
 			"zombie_villager"
 	);
 	
@@ -497,6 +506,7 @@ public class HeadUtil {
 			case "villager" -> getVillagerVariant((VillagerEntity) entity);
 			case "wither" -> getWitherVariant((WitherEntity) entity);
 			case "wolf" -> getWolfVariant((WolfEntity) entity);
+			case "zombie_nautilus" -> getZombieNautilusVariant((ZombieNautilusEntity) entity);
 			case "zombie_villager" -> getZombieVillagerVariant((ZombieVillagerEntity) entity);
 			default -> entityName;
 		};
@@ -779,6 +789,16 @@ public class HeadUtil {
 		} // if, else if, else
 		
 		return variantName;
+	}
+	
+	public static String getZombieNautilusVariant(@NotNull ZombieNautilusEntity entity ) {
+		String entityName = getEntityName( entity );
+		
+		if( entity.getVariant().equals( ZombieNautilusVariants.WARM ) ) {
+			return formatEntityId( "coral", entityName );
+		} // if
+		
+		return entityName;
 	}
 	
 	public static String getZombieVillagerVariant(@NotNull ZombieVillagerEntity entity ) {
