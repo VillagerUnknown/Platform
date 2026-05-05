@@ -13,10 +13,7 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.potion.Potion;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.*;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.stat.StatFormatter;
@@ -58,7 +55,7 @@ public class RegistryUtil {
 	
 	public static SoundEvent registerSound(String id, @Nullable String modId) {
 		Identifier identifier = identifier(modId, id);
-		return Registry.register(Registries.SOUND_EVENT, identifier, SoundEvent.of(identifier));
+		return Registry.register(Registries.SOUND_EVENT, identifier, SoundEvent.of(identifier, 16.0F));
 	}
 	
 	public static Block registerBlock(String id, Block block, @Nullable String modId) {
