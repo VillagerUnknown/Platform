@@ -4,17 +4,14 @@ import me.villagerunknown.platform.Platform;
 import me.villagerunknown.platform.util.MessageUtil;
 import me.villagerunknown.platform.util.PlayerUtil;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.world.World;
+import net.minecraft.server.level.ServerPlayer;
 
 public class welcomeMessageFeature {
 	
 	public static void execute() {
 		ServerPlayConnectionEvents.JOIN.register((serverPlayNetworkHandler, packetSender, minecraftServer) -> {
 			if( Platform.CONFIG.enableWelcomeMessage ) {
-				ServerPlayerEntity player = serverPlayNetworkHandler.player;
+				ServerPlayer player = serverPlayNetworkHandler.player;
 				if (PlayerUtil.isNewPlayer(player)) {
 					MessageUtil.sendChatMessage(player, Platform.CONFIG.welcomeMessageNew);
 				} else {

@@ -1,88 +1,95 @@
 package me.villagerunknown.platform.util;
 
-import net.minecraft.block.Block;
-import net.minecraft.entity.Entity;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.TypeFilter;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Box;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Difficulty;
-import net.minecraft.world.World;
-import net.minecraft.world.dimension.DimensionType;
-import net.minecraft.world.rule.GameRules;
-
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.dimension.DimensionType;
+import net.minecraft.world.level.entity.EntityTypeTest;
+import net.minecraft.world.level.gamerules.GameRules;
+import net.minecraft.world.level.saveddata.WeatherData;
+import net.minecraft.world.phys.AABB;
 import java.util.List;
 
 public class WorldUtil {
 	
-	public static ServerWorld getServerWorld( World world ) {
+	public static ServerLevel getServerWorld( Level world ) {
 		MinecraftServer server = world.getServer();
 		
 		assert server != null;
-		return server.getWorld( world.getRegistryKey() );
+		return server.getLevel( world.dimension() );
 	}
 	
-	public static ServerWorld getServerWorld( World world, RegistryKey<World> registryKey ) {
+	public static ServerLevel getServerWorld( Level world, ResourceKey<Level> registryKey ) {
 		MinecraftServer server = world.getServer();
 		
 		assert server != null;
-		return server.getWorld( registryKey );
+		return server.getLevel( registryKey );
 	}
 	
-	public static GameRules getGameRules(World world ) {
+	public static GameRules getGameRules(Level world ) {
 		return getServerWorld( world ).getGameRules();
 	}
 	
-	public static Difficulty getDifficulty( World world ) {
-		return getServerWorld( world ).getLevelProperties().getDifficulty();
+	public static Difficulty getDifficulty( Level world ) {
+		return world.getLevelData().getDifficulty();
 	}
 	
-	public static void setRaining( World world, boolean raining ) {
-		getServerWorld( world ).getLevelProperties().setRaining( raining );
+	public static void setRaining( Level world, boolean raining ) {
+		ServerLevel serverWorld = getServerWorld(world);
+		WeatherData weatherData = serverWorld.getWeatherData();
+		
+		weatherData.setRaining( raining );
 	}
 	
-	public static boolean isRaining( World world ) {
-		return getServerWorld( world ).getLevelProperties().isRaining();
+	public static void setRainLevel( Level world, Integer rainLevel ) {
+		world.setRainLevel( rainLevel );
 	}
 	
-	public static boolean isThundering( World world ) {
-		return getServerWorld( world ).getLevelProperties().isThundering();
+	public static boolean isRaining( Level world ) {
+		return world.isRaining();
 	}
 	
-	public static boolean isHardcore( World world ) {
-		return getServerWorld( world ).getLevelProperties().isHardcore();
+	public static boolean isThundering( Level world ) {
+		return world.isThundering();
 	}
 	
-	public static Block getBlock( World world, BlockPos pos ) {
-		return getServerWorld( world ).getBlockState( pos ).getBlock();
+	public static boolean isHardcore( Level world ) {
+		return world.getLevelData().isHardcore();
 	}
 	
-	public static <T extends Entity> List<T> getEntitiesByType(ServerWorld world, Box box, Class<T> entityClass ) {
-		TypeFilter<Entity, T> typeFilter = TypeFilter.instanceOf(entityClass);
-		return world.getEntitiesByType(
+	public static Block getBlock( Level world, BlockPos pos ) {
+		return world.getBlockState( pos ).getBlock();
+	}
+	
+	public static <T extends Entity> List<T> getEntitiesByType(ServerLevel world, AABB box, Class<T> entityClass ) {
+		EntityTypeTest<Entity, T> typeFilter = EntityTypeTest.forClass(entityClass);
+		return world.getEntities(
 				typeFilter,
 				box,
 				entity -> true
 		);
 	}
 	
-	public static <T extends Entity> List<T> getEntitiesByType( ServerWorld world, Class<T> entityClass ) {
-		TypeFilter<Entity, T> typeFilter = TypeFilter.instanceOf(entityClass);
-		return (List<T>) world.getEntitiesByType(
+	public static <T extends Entity> List<T> getEntitiesByType( ServerLevel world, Class<T> entityClass ) {
+		EntityTypeTest<Entity, T> typeFilter = EntityTypeTest.forClass(entityClass);
+		return (List<T>) world.getEntities(
 				typeFilter,
 				entity -> true
 		);
 	}
 	
-	public static boolean dimensionEquals( World world, RegistryEntry<DimensionType> id ) {
-		return getServerWorld( world ).getDimensionEntry().equals( id );
+	public static boolean dimensionEquals( Level world, Holder<DimensionType> id ) {
+		return world.dimensionTypeRegistration().equals( id );
 	}
 	
-	public static boolean dimensionEquals( World world, String id ) {
-		return getServerWorld( world ).getDimensionEntry().getIdAsString().equals( id );
+	public static boolean dimensionEquals( Level world, String id ) {
+		return world.dimensionTypeRegistration().getRegisteredName().equals( id );
 	}
 	
 }

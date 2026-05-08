@@ -1,30 +1,26 @@
 package me.villagerunknown.platform.util;
 
-import net.minecraft.entity.passive.MerchantEntity;
-import net.minecraft.entity.passive.VillagerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.village.TradeOffer;
-import net.minecraft.village.TradeOfferList;
-import net.minecraft.village.TradedItem;
-import net.minecraft.village.VillagerData;
-
 import java.util.Optional;
+import net.minecraft.world.entity.npc.villager.AbstractVillager;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.trading.ItemCost;
+import net.minecraft.world.item.trading.MerchantOffer;
 
 public class MerchantEntityUtil {
 	
-	public static TradeOffer addTrade(MerchantEntity entity, TradedItem tradedItem1, ItemStack sellItem, int maxUses, int xpValue, float priceMultiplier ) {
-		TradeOffer customTrade = new TradeOffer(tradedItem1, sellItem, maxUses, xpValue, priceMultiplier);
+	public static MerchantOffer addTrade(AbstractVillager entity, ItemCost tradedItem1, ItemStack sellItem, int maxUses, int xpValue, float priceMultiplier ) {
+		MerchantOffer customTrade = new MerchantOffer(tradedItem1, sellItem, maxUses, xpValue, priceMultiplier);
 		entity.getOffers().add(customTrade);
 		return customTrade;
 	}
 	
-	public static TradeOffer addTrade(MerchantEntity entity, TradedItem tradedItem1, TradedItem tradedItem2, ItemStack sellItem, int maxUses, int xpValue, float priceMultiplier ) {
-		TradeOffer customTrade = new TradeOffer(tradedItem1, Optional.ofNullable(tradedItem2), sellItem, maxUses, xpValue, priceMultiplier);
+	public static MerchantOffer addTrade(AbstractVillager entity, ItemCost tradedItem1, ItemCost tradedItem2, ItemStack sellItem, int maxUses, int xpValue, float priceMultiplier ) {
+		MerchantOffer customTrade = new MerchantOffer(tradedItem1, Optional.ofNullable(tradedItem2), sellItem, maxUses, xpValue, priceMultiplier);
 		entity.getOffers().add(customTrade);
 		return customTrade;
 	}
 	
-	public static void clearTrades( MerchantEntity entity ) {
+	public static void clearTrades( AbstractVillager entity ) {
 		entity.getOffers().clear();
 	}
 	

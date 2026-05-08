@@ -6,10 +6,9 @@ import com.google.gson.JsonParser;
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import net.minecraft.util.math.GlobalPos;
-
 import java.io.IOException;
 import java.util.Optional;
+import net.minecraft.core.GlobalPos;
 
 public class OptionalGlobalPosTypeAdapter extends TypeAdapter<Optional<GlobalPos>> {
 	

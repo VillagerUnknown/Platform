@@ -4,20 +4,19 @@ import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.yggdrasil.ProfileResult;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.util.Uuids;
-import net.minecraft.util.dynamic.Codecs;
-
 import java.util.UUID;
+import net.minecraft.core.UUIDUtil;
+import net.minecraft.util.ExtraCodecs;
 
 public class ProfileResultData {
 	
 	public static final Codec<ProfileResult> PROFILE_RESULT_CODEC = RecordCodecBuilder.create(instance -> instance.group(
-			Codecs.GAME_PROFILE_CODEC.fieldOf("profile").forGetter(ProfileResult::profile)
+			ExtraCodecs.AUTHLIB_GAME_PROFILE.fieldOf("profile").forGetter(ProfileResult::profile)
 	).apply(instance, ProfileResultData::buildProfileResult));
 	
 	public static final Codec<ProfileResultData> CODEC = RecordCodecBuilder.create(instance -> instance.group(
 			Codec.STRING.fieldOf("name").forGetter(player -> player.name),
-			Uuids.CODEC.fieldOf("uuid").forGetter(player -> player.uuid),
+			UUIDUtil.AUTHLIB_CODEC.fieldOf("uuid").forGetter(player -> player.uuid),
 			PROFILE_RESULT_CODEC.fieldOf("profile").forGetter( p -> p.result )
 	).apply(instance, ProfileResultData::new));
 	

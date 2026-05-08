@@ -7,11 +7,11 @@ public class PlatformPayloads {
 	
 	public static void registerPayloads() {
 		// # Register Network Payloads
-		PayloadTypeRegistry.playS2C().register(ToastMessagePayload.ID, ToastMessagePayload.CODEC);
-		PayloadTypeRegistry.playS2C().register(NarratorMessagePayload.ID, NarratorMessagePayload.CODEC);
-		PayloadTypeRegistry.playS2C().register(ShowPlayerGameMenuPayload.ID, ShowPlayerGameMenuPayload.CODEC);
-		PayloadTypeRegistry.playS2C().register(SendPlayerToMainMenuPayload.ID, SendPlayerToMainMenuPayload.CODEC);
-		PayloadTypeRegistry.playS2C().register(NametagVisibilityPayload.ID, NametagVisibilityPayload.CODEC);
+		PayloadTypeRegistry.clientboundPlay().register(ToastMessagePayload.ID, ToastMessagePayload.CODEC);
+		PayloadTypeRegistry.clientboundPlay().register(NarratorMessagePayload.ID, NarratorMessagePayload.CODEC);
+		PayloadTypeRegistry.clientboundPlay().register(ShowPlayerGameMenuPayload.ID, ShowPlayerGameMenuPayload.CODEC);
+		PayloadTypeRegistry.clientboundPlay().register(SendPlayerToMainMenuPayload.ID, SendPlayerToMainMenuPayload.CODEC);
+		PayloadTypeRegistry.clientboundPlay().register(NametagVisibilityPayload.ID, NametagVisibilityPayload.CODEC);
 	}
 	
 }

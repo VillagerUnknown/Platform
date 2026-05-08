@@ -7,9 +7,9 @@ import me.villagerunknown.platform.data.persistent.PersistentProfileResultData;
 import me.villagerunknown.platform.util.ProfileUtil;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
@@ -46,8 +46,8 @@ public class playerCacheFeature {
 	private static void registerPlayerJoinEvent() {
 		ServerPlayConnectionEvents.JOIN.register((serverPlayNetworkHandler, packetSender, minecraftServer) -> {
 			if( Platform.CONFIG.enablePlayerCaching ) {
-				ServerPlayerEntity player = serverPlayNetworkHandler.player;
-				UUID playerUuid = player.getUuid();
+				ServerPlayer player = serverPlayNetworkHandler.player;
+				UUID playerUuid = player.getUUID();
 				
 				if( !isCached(playerUuid) ) {
 					ProfileResultData playerState = PersistentProfileResultData.getPlayerState( player );
@@ -60,7 +60,7 @@ public class playerCacheFeature {
 						cachePlayer( player );
 					} // if, else
 				} else {
-					Platform.LOGGER.info( "Player cache loaded from instance: {} ({})", player.getNameForScoreboard(), player.getUuidAsString() );
+					Platform.LOGGER.info( "Player cache loaded from instance: {} ({})", player.getScoreboardName(), player.getStringUUID() );
 				} // if, else
 			} // if
 		});
@@ -80,7 +80,7 @@ public class playerCacheFeature {
 	
 	@Nullable
 	public static ProfileResultData cachePlayer( MinecraftServer minecraftServer, String playerName, UUID playerUuid ) {
-		ProfileResult profileResult = getUncachedProfileResult(minecraftServer, playerUuid, minecraftServer.shouldEnforceSecureProfile());
+		ProfileResult profileResult = getUncachedProfileResult(minecraftServer, playerUuid, minecraftServer.enforceSecureProfile());
 		
 		if( null != profileResult ) {
 			return cachePlayer( playerName, playerUuid, profileResult );
@@ -103,13 +103,13 @@ public class playerCacheFeature {
 	}
 	
 	@Nullable
-	public static ProfileResultData cachePlayer( PlayerEntity player ) {
-		MinecraftServer server = player.getEntityWorld().getServer();
+	public static ProfileResultData cachePlayer( Player player ) {
+		MinecraftServer server = player.level().getServer();
 		
 		if( null != server ) {
-			ProfileResult profileResult = getUncachedProfileResult(server, player.getUuid(), server.shouldEnforceSecureProfile());
+			ProfileResult profileResult = getUncachedProfileResult(server, player.getUUID(), server.enforceSecureProfile());
 			
-			return cachePlayer( player.getNameForScoreboard(), player.getUuid(), profileResult );
+			return cachePlayer( player.getScoreboardName(), player.getUUID(), profileResult );
 		} // if
 		
 		return null;

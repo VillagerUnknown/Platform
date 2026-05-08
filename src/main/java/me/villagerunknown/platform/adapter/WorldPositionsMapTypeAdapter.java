@@ -4,17 +4,16 @@ import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.Level;
 
 public class WorldPositionsMapTypeAdapter extends TypeAdapter<Map<String, Set<BlockPos>>> {
 	
@@ -55,7 +54,7 @@ public class WorldPositionsMapTypeAdapter extends TypeAdapter<Map<String, Set<Bl
 			Identifier id = Identifier.tryParse(keyString);
 			
 			if( null != id && !id.toString().contains("null") ) {
-				RegistryKey<World> key = RegistryKey.of(RegistryKeys.WORLD, id);
+				ResourceKey<Level> key = ResourceKey.create(Registries.DIMENSION, id);
 				
 				Set<BlockPos> blockPosSet = new HashSet<>();
 				

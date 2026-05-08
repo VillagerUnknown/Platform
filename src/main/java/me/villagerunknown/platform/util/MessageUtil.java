@@ -1,13 +1,12 @@
 package me.villagerunknown.platform.util;
 
 import me.villagerunknown.platform.Platform;
-import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.network.chat.ClickEvent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.text.ClickEvent;
-import net.minecraft.text.Style;
-import net.minecraft.text.Text;
-
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
 import java.net.URI;
 import java.util.List;
 
@@ -39,31 +38,31 @@ public class MessageUtil {
 		return ListUtil.chooseRandomFromList(VILLAGER_COMMENTS) + " (" + message + ")";
 	}
 	
-	public static Text formClickableMessage(String message, String url ) {
-		return Text.literal( message )
+	public static Component formClickableMessage(String message, String url ) {
+		return Component.literal( message )
 				.setStyle(Style.EMPTY.withClickEvent(new ClickEvent.OpenUrl(URI.create( url ))));
 	}
 	
-	public static void showActionBarMessage(ServerPlayerEntity player, String message) {
-		player.sendMessageToClient( Text.of( message ), true );
+	public static void showActionBarMessage(ServerPlayer player, String message) {
+		player.sendSystemMessage( Component.nullToEmpty( message ), true );
 	}
 	
-	public static void showActionBarMessage(PlayerEntity player, String message) {
-		player.sendMessage( Text.of( message ), true );
+	public static void showActionBarMessage(Player player, String message) {
+		player.sendSystemMessage( Component.nullToEmpty( message ) );
 	}
 	
-	public static void sendChatMessage(ServerPlayerEntity player, String message) {
-		player.sendMessage( Text.of( message ), false );
+	public static void sendChatMessage(ServerPlayer player, String message) {
+		player.sendSystemMessage( Component.nullToEmpty( message ) );
 	}
 	
-	public static void sendChatMessage(PlayerEntity player, String message) {
-		player.sendMessage( Text.of( message ), false );
+	public static void sendChatMessage(Player player, String message) {
+		player.sendSystemMessage( Component.nullToEmpty( message ) );
 	}
 	
 	public static void broadcastChatMessage(MinecraftServer server, String message) {
-		List<ServerPlayerEntity> players = server.getPlayerManager().getPlayerList();
+		List<ServerPlayer> players = server.getPlayerList().getPlayers();
 		
-		for (ServerPlayerEntity player : players) {
+		for (ServerPlayer player : players) {
 			sendChatMessage( player, message );
 		} // for
 	}

@@ -10,10 +10,9 @@ import me.villagerunknown.platform.adapter.OptionalGlobalPosTypeAdapter;
 import me.villagerunknown.platform.adapter.ProfileResultMapTypeAdapter;
 import me.villagerunknown.platform.adapter.WorldPositionsMapTypeAdapter;
 import me.villagerunknown.platform.data.ProfileResultData;
-import net.minecraft.item.Item;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.GlobalPos;
-
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.GlobalPos;
+import net.minecraft.world.item.Item;
 import java.lang.reflect.Type;
 import java.util.*;
 

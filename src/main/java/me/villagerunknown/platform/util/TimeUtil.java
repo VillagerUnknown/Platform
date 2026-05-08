@@ -1,6 +1,6 @@
 package me.villagerunknown.platform.util;
 
-import net.minecraft.world.World;
+import net.minecraft.world.level.Level;
 
 public class TimeUtil {
 	
@@ -13,27 +13,27 @@ public class TimeUtil {
 	
 	public static final long LENGTH_DAY = 24000L;
 	
-	public static long getTime(World world) {
-		return world.getTime();
+	public static long getTime(Level world) {
+		return world.getGameTime();
 	}
 	
-	public static long getTimeOfDay(World world) {
-		return world.getTimeOfDay();
+	public static long getTimeOfDay(Level world) {
+		return world.getOverworldClockTime();
 	}
 	
-	public static boolean isDay(World world) {
-		return world.isDay();
+	public static boolean isDay(Level world) {
+		return world.isBrightOutside();
 	}
 	
-	public static boolean isNight(World world) {
-		return world.isNight();
+	public static boolean isNight(Level world) {
+		return world.isDarkOutside();
 	}
 	
-	public static boolean isDayTime( World world ) {
-		return ( world.getTimeOfDay() < TIME_SUNSET || world.getTimeOfDay() >= TIME_SUNRISE );
+	public static boolean isDayTime( Level world ) {
+		return ( getTimeOfDay(world) < TIME_SUNSET || getTimeOfDay(world) >= TIME_SUNRISE );
 	}
 	
-	public static boolean isNightTime( World world ) {
+	public static boolean isNightTime( Level world ) {
 		return !isDayTime( world );
 	}
 	

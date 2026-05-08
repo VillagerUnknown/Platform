@@ -1,9 +1,7 @@
 package me.villagerunknown.platform.list;
 
 import me.villagerunknown.platform.util.MathUtil;
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-
+import net.minecraft.world.level.block.Block;
 import java.util.ArrayList;
 
 public class BlocksList {

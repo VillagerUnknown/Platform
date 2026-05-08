@@ -1,18 +1,16 @@
 package me.villagerunknown.platform.util;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.Entity;
+import net.minecraft.core.BlockPos;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Box;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.BlockView;
-import net.minecraft.world.World;
-import net.minecraft.world.chunk.Chunk;
-
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.chunk.ChunkAccess;
+import net.minecraft.world.phys.AABB;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -21,7 +19,7 @@ public class PositionUtil {
 	
 	private static final Random rand = new Random();
 	
-	public static BlockPos findSafeSpawnPosition(World world, BlockPos startPos, int range) {
+	public static BlockPos findSafeSpawnPosition(Level world, BlockPos startPos, int range) {
 		List<BlockPos> safePositions = new ArrayList<>();
 		
 		if( isSafeSpawnLocation( world, startPos ) && hasSafeBlockBelow( world, startPos ) ) {
@@ -31,9 +29,9 @@ public class PositionUtil {
 		for (int dx = -range; dx <= range; dx++) {
 			for (int dy = -range; dy <= range; dy++) {
 				for (int dz = -range; dz <= range; dz++) {
-					BlockPos checkPos = startPos.add(dx, dy, dz);
+					BlockPos checkPos = startPos.offset(dx, dy, dz);
 					if (isSafeSpawnLocation(world, checkPos)) {
-						BlockPos safeBlockPos = findSafeBlockBelow( world, checkPos, world.getBottomY() );
+						BlockPos safeBlockPos = findSafeBlockBelow( world, checkPos, world.getMinY() );
 						if( !safePositions.contains( safeBlockPos ) ) {
 							safePositions.add(safeBlockPos);
 						} // if
@@ -49,71 +47,71 @@ public class PositionUtil {
 		return startPos;
 	}
 	
-	private static boolean isSafeSpawnLocation(World world, BlockPos pos) {
+	private static boolean isSafeSpawnLocation(Level world, BlockPos pos) {
 		return isClearSpace(world, pos) && !isDangerousPosition(world, pos);
 	}
 	
-	private static boolean isClearSpace(World world, BlockPos pos) {
-		Chunk chunk = world.getChunk( pos );
-		BlockView blockView = world.getChunkAsView( chunk.getPos().x, chunk.getPos().z );
+	private static boolean isClearSpace(Level world, BlockPos pos) {
+		ChunkAccess chunk = world.getChunk( pos );
+		BlockGetter blockView = world.getChunkForCollisions( chunk.getPos().x(), chunk.getPos().z() );
 		
-		return !world.getBlockState( pos ).shouldSuffocate( blockView, pos )
-				&& !world.getBlockState( pos.up() ).shouldSuffocate( blockView, pos.up() );
+		return !world.getBlockState( pos ).isSuffocating( blockView, pos )
+				&& !world.getBlockState( pos.above() ).isSuffocating( blockView, pos.above() );
 	}
 	
-	private static boolean isDangerousPosition(World world, BlockPos pos) {
-		return world.getBlockState(pos).isOf(Blocks.LAVA) || world.getBlockState(pos).isOf(Blocks.FIRE);
+	private static boolean isDangerousPosition(Level world, BlockPos pos) {
+		return world.getBlockState(pos).is(Blocks.LAVA) || world.getBlockState(pos).is(Blocks.FIRE);
 	}
 	
-	public static BlockPos findSolidBlockBelow(World world, BlockPos startPos, int bottomYLimit) {
-		BlockPos currentPos = startPos.down();
+	public static BlockPos findSolidBlockBelow(Level world, BlockPos startPos, int bottomYLimit) {
+		BlockPos currentPos = startPos.below();
 		
 		for(int y = startPos.getY(); y > bottomYLimit; y--) {
 			if( hasSolidBlockBelow( world, currentPos ) ) {
-				return currentPos.up();
+				return currentPos.above();
 			}
 			
-			currentPos = currentPos.down();
+			currentPos = currentPos.below();
 		}
 		
 		return startPos;
 	}
 	
-	public static boolean hasSolidBlockBelow(World world, BlockPos pos) {
-		return ( world.getBlockState( pos.down() ).isSolidBlock( world, pos.down() ) );
+	public static boolean hasSolidBlockBelow(Level world, BlockPos pos) {
+		return ( world.getBlockState( pos.below() ).isRedstoneConductor( world, pos.below() ) );
 	}
 	
-	public static BlockPos findSafeBlockBelow(World world, BlockPos startPos, int bottomYLimit) {
-		BlockPos currentPos = startPos.down();
+	public static BlockPos findSafeBlockBelow(Level world, BlockPos startPos, int bottomYLimit) {
+		BlockPos currentPos = startPos.below();
 		
 		for(int y = startPos.getY(); y > bottomYLimit; y--) {
 			
 			if( hasSafeBlockBelow( world, currentPos ) ) {
-				return currentPos.up();
+				return currentPos.above();
 			}
 			
-			currentPos = currentPos.down();
+			currentPos = currentPos.below();
 		}
 		
 		return startPos;
 	}
 	
-	public static boolean hasSafeBlockBelow(World world, BlockPos pos) {
-		return ( ( hasSolidBlockBelow( world, pos ) || !world.getBlockState( pos.down() ).isAir() ) && world.getBlockState( pos.down() ).getBlock() != Blocks.LAVA );
+	public static boolean hasSafeBlockBelow(Level world, BlockPos pos) {
+		return ( ( hasSolidBlockBelow( world, pos ) || !world.getBlockState( pos.below() ).isAir() ) && world.getBlockState( pos.below() ).getBlock() != Blocks.LAVA );
 	}
 	
 	public static BlockPos findNearestBlock(Entity entity, Block block, int radius) {
-		BlockPos entityPos = entity.getBlockPos();
-		MinecraftServer server = entity.getEntityWorld().getServer();
+		BlockPos entityPos = entity.blockPosition();
+		MinecraftServer server = entity.level().getServer();
 		
 		if( null == server ) {
-			return entity.getBlockPos();
+			return entity.blockPosition();
 		} // if
 		
-		ServerWorld world = server.getWorld(entity.getEntityWorld().getRegistryKey());
+		ServerLevel world = server.getLevel(entity.level().dimension());
 		
 		if( null == world ) {
-			return entity.getBlockPos();
+			return entity.blockPosition();
 		} // if
 		
 		BlockPos closestBlockPos = null;
@@ -124,7 +122,7 @@ public class PositionUtil {
 				for (int y = entityPos.getY() - 2; y <= entityPos.getY() + 2; y++) {
 					BlockPos pos = new BlockPos(x, y, z);
 					if ( world.getBlockState(pos).getBlock() == block ) {
-						double distance = entityPos.getSquaredDistance(pos);
+						double distance = entityPos.distSqr(pos);
 						if (distance < closestDistance) {
 							closestDistance = distance;
 							closestBlockPos = pos;
@@ -137,17 +135,17 @@ public class PositionUtil {
 	}
 	
 	public static BlockPos findNearestBed(Entity entity, int radius) {
-		BlockPos entityPos = entity.getBlockPos();
-		MinecraftServer server = entity.getEntityWorld().getServer();
+		BlockPos entityPos = entity.blockPosition();
+		MinecraftServer server = entity.level().getServer();
 		
 		if( null == server ) {
-			return entity.getBlockPos();
+			return entity.blockPosition();
 		} // if
 		
-		ServerWorld world = server.getWorld( entity.getEntityWorld().getRegistryKey() );
+		ServerLevel world = server.getLevel( entity.level().dimension() );
 		
 		if( null == world ) {
-			return entity.getBlockPos();
+			return entity.blockPosition();
 		} // if
 		
 		BlockPos closestBedPos = null;
@@ -158,7 +156,7 @@ public class PositionUtil {
 				for (int y = entityPos.getY() - 2; y <= entityPos.getY() + 2; y++) {
 					BlockPos pos = new BlockPos(x, y, z);
 					if ( ListUtil.BEDS.contains( world.getBlockState(pos).getBlock() ) ) {
-						double distance = entityPos.getSquaredDistance(pos);
+						double distance = entityPos.distSqr(pos);
 						if (distance < closestDistance) {
 							closestDistance = distance;
 							closestBedPos = pos;
@@ -170,8 +168,8 @@ public class PositionUtil {
 		return closestBedPos;
 	}
 	
-	public static List<Block> getNearbyBlocks(World world, BlockPos pos, int proximity) {
-		Box nearbySearchArea = BoxUtil.createBox( pos, proximity );
+	public static List<Block> getNearbyBlocks(Level world, BlockPos pos, int proximity) {
+		AABB nearbySearchArea = BoxUtil.createBox( pos, proximity );
 		
 		List<Block> nearbyBlocks = new ArrayList<>();
 		
@@ -190,15 +188,15 @@ public class PositionUtil {
 		return nearbyBlocks;
 	}
 	
-	public static void breakNearbyBlocks(World world, BlockPos pos, int proximity, boolean dropBlock) {
-		Box nearbySearchArea = BoxUtil.createBox( pos, proximity );
+	public static void breakNearbyBlocks(Level world, BlockPos pos, int proximity, boolean dropBlock) {
+		AABB nearbySearchArea = BoxUtil.createBox( pos, proximity );
 		
 		for (int x = (int) nearbySearchArea.minX; x <= nearbySearchArea.maxX; x++) {
 			for (int y = (int) nearbySearchArea.minY; y <= nearbySearchArea.maxY; y++) {
 				for (int z = (int) nearbySearchArea.minZ; z <= nearbySearchArea.maxZ; z++) {
 					BlockPos blockPos = new BlockPos(x, y, z);
 					
-					world.breakBlock( blockPos, dropBlock );
+					world.destroyBlock( blockPos, dropBlock );
 				} // for
 			} // for
 		} // for

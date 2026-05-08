@@ -1,18 +1,16 @@
 package me.villagerunknown.platform.util;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.village.VillagerProfession;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.structure.Structure;
-
 import java.util.*;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.npc.villager.VillagerProfession;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.structure.Structure;
 
 public class ListUtil {
 	
@@ -557,37 +555,37 @@ public class ListUtil {
 	);
 	
 	public static List<VillagerProfession> VILLAGER_PROFESSIONS = List.of(
-			Objects.requireNonNull(Registries.VILLAGER_PROFESSION.get(VillagerProfession.ARMORER)),
-			Objects.requireNonNull(Registries.VILLAGER_PROFESSION.get(VillagerProfession.BUTCHER)),
-			Objects.requireNonNull(Registries.VILLAGER_PROFESSION.get(VillagerProfession.CARTOGRAPHER)),
-			Objects.requireNonNull(Registries.VILLAGER_PROFESSION.get(VillagerProfession.CLERIC)),
-			Objects.requireNonNull(Registries.VILLAGER_PROFESSION.get(VillagerProfession.FARMER)),
-			Objects.requireNonNull(Registries.VILLAGER_PROFESSION.get(VillagerProfession.FISHERMAN)),
-			Objects.requireNonNull(Registries.VILLAGER_PROFESSION.get(VillagerProfession.FLETCHER)),
-			Objects.requireNonNull(Registries.VILLAGER_PROFESSION.get(VillagerProfession.LEATHERWORKER)),
-			Objects.requireNonNull(Registries.VILLAGER_PROFESSION.get(VillagerProfession.LIBRARIAN)),
-			Objects.requireNonNull(Registries.VILLAGER_PROFESSION.get(VillagerProfession.MASON)),
-			Objects.requireNonNull(Registries.VILLAGER_PROFESSION.get(VillagerProfession.NITWIT)),
-			Objects.requireNonNull(Registries.VILLAGER_PROFESSION.get(VillagerProfession.SHEPHERD)),
-			Objects.requireNonNull(Registries.VILLAGER_PROFESSION.get(VillagerProfession.TOOLSMITH)),
-			Objects.requireNonNull(Registries.VILLAGER_PROFESSION.get(VillagerProfession.WEAPONSMITH))
+			Objects.requireNonNull(BuiltInRegistries.VILLAGER_PROFESSION.getValue(VillagerProfession.ARMORER)),
+			Objects.requireNonNull(BuiltInRegistries.VILLAGER_PROFESSION.getValue(VillagerProfession.BUTCHER)),
+			Objects.requireNonNull(BuiltInRegistries.VILLAGER_PROFESSION.getValue(VillagerProfession.CARTOGRAPHER)),
+			Objects.requireNonNull(BuiltInRegistries.VILLAGER_PROFESSION.getValue(VillagerProfession.CLERIC)),
+			Objects.requireNonNull(BuiltInRegistries.VILLAGER_PROFESSION.getValue(VillagerProfession.FARMER)),
+			Objects.requireNonNull(BuiltInRegistries.VILLAGER_PROFESSION.getValue(VillagerProfession.FISHERMAN)),
+			Objects.requireNonNull(BuiltInRegistries.VILLAGER_PROFESSION.getValue(VillagerProfession.FLETCHER)),
+			Objects.requireNonNull(BuiltInRegistries.VILLAGER_PROFESSION.getValue(VillagerProfession.LEATHERWORKER)),
+			Objects.requireNonNull(BuiltInRegistries.VILLAGER_PROFESSION.getValue(VillagerProfession.LIBRARIAN)),
+			Objects.requireNonNull(BuiltInRegistries.VILLAGER_PROFESSION.getValue(VillagerProfession.MASON)),
+			Objects.requireNonNull(BuiltInRegistries.VILLAGER_PROFESSION.getValue(VillagerProfession.NITWIT)),
+			Objects.requireNonNull(BuiltInRegistries.VILLAGER_PROFESSION.getValue(VillagerProfession.SHEPHERD)),
+			Objects.requireNonNull(BuiltInRegistries.VILLAGER_PROFESSION.getValue(VillagerProfession.TOOLSMITH)),
+			Objects.requireNonNull(BuiltInRegistries.VILLAGER_PROFESSION.getValue(VillagerProfession.WEAPONSMITH))
 	);
 	
 	public static List<String> VILLAGER_PROFESSION_STRINGS = new ArrayList<String>(){{
-		add( VillagerProfession.ARMORER.getValue().getPath().toLowerCase() );
-		add( VillagerProfession.BUTCHER.getValue().getPath().toLowerCase() );
-		add( VillagerProfession.CARTOGRAPHER.getValue().getPath().toLowerCase() );
-		add( VillagerProfession.CLERIC.getValue().getPath().toLowerCase() );
-		add( VillagerProfession.FARMER.getValue().getPath().toLowerCase() );
-		add( VillagerProfession.FISHERMAN.getValue().getPath().toLowerCase() );
-		add( VillagerProfession.FLETCHER.getValue().getPath().toLowerCase() );
-		add( VillagerProfession.LEATHERWORKER.getValue().getPath().toLowerCase() );
-		add( VillagerProfession.LIBRARIAN.getValue().getPath().toLowerCase() );
-		add( VillagerProfession.MASON.getValue().getPath().toLowerCase() );
-		add( VillagerProfession.NITWIT.getValue().getPath().toLowerCase() );
-		add( VillagerProfession.SHEPHERD.getValue().getPath().toLowerCase() );
-		add( VillagerProfession.TOOLSMITH.getValue().getPath().toLowerCase() );
-		add( VillagerProfession.WEAPONSMITH.getValue().getPath().toLowerCase() );
+		add( VillagerProfession.ARMORER.identifier().getPath().toLowerCase() );
+		add( VillagerProfession.BUTCHER.identifier().getPath().toLowerCase() );
+		add( VillagerProfession.CARTOGRAPHER.identifier().getPath().toLowerCase() );
+		add( VillagerProfession.CLERIC.identifier().getPath().toLowerCase() );
+		add( VillagerProfession.FARMER.identifier().getPath().toLowerCase() );
+		add( VillagerProfession.FISHERMAN.identifier().getPath().toLowerCase() );
+		add( VillagerProfession.FLETCHER.identifier().getPath().toLowerCase() );
+		add( VillagerProfession.LEATHERWORKER.identifier().getPath().toLowerCase() );
+		add( VillagerProfession.LIBRARIAN.identifier().getPath().toLowerCase() );
+		add( VillagerProfession.MASON.identifier().getPath().toLowerCase() );
+		add( VillagerProfession.NITWIT.identifier().getPath().toLowerCase() );
+		add( VillagerProfession.SHEPHERD.identifier().getPath().toLowerCase() );
+		add( VillagerProfession.TOOLSMITH.identifier().getPath().toLowerCase() );
+		add( VillagerProfession.WEAPONSMITH.identifier().getPath().toLowerCase() );
 	}};
 	
 	public static final List<Block> BEDS = List.of(
@@ -657,55 +655,55 @@ public class ListUtil {
 			Blocks.WHITE_CANDLE_CAKE
 	);
 	
-	public static List<RegistryEntry<StatusEffect>> NEUTRAL_EFFECTS = List.of(
-			StatusEffects.GLOWING,
-			StatusEffects.SLOW_FALLING
+	public static List<Holder<MobEffect>> NEUTRAL_EFFECTS = List.of(
+			MobEffects.GLOWING,
+			MobEffects.SLOW_FALLING
 	);
 	
-	public static List<RegistryEntry<StatusEffect>> POSITIVE_EFFECTS = List.of(
-			StatusEffects.ABSORPTION,
-			StatusEffects.RESISTANCE,
-			StatusEffects.SPEED,
-			StatusEffects.HASTE,
-			StatusEffects.STRENGTH,
-			StatusEffects.INSTANT_HEALTH,
-			StatusEffects.JUMP_BOOST,
-			StatusEffects.REGENERATION,
-			StatusEffects.FIRE_RESISTANCE,
-			StatusEffects.WATER_BREATHING,
-			StatusEffects.NIGHT_VISION,
-			StatusEffects.INVISIBILITY,
-			StatusEffects.HEALTH_BOOST,
-			StatusEffects.SATURATION,
-			StatusEffects.LUCK,
-			StatusEffects.CONDUIT_POWER,
-			StatusEffects.DOLPHINS_GRACE,
-			StatusEffects.HERO_OF_THE_VILLAGE
+	public static List<Holder<MobEffect>> POSITIVE_EFFECTS = List.of(
+			MobEffects.ABSORPTION,
+			MobEffects.RESISTANCE,
+			MobEffects.SPEED,
+			MobEffects.HASTE,
+			MobEffects.STRENGTH,
+			MobEffects.INSTANT_HEALTH,
+			MobEffects.JUMP_BOOST,
+			MobEffects.REGENERATION,
+			MobEffects.FIRE_RESISTANCE,
+			MobEffects.WATER_BREATHING,
+			MobEffects.NIGHT_VISION,
+			MobEffects.INVISIBILITY,
+			MobEffects.HEALTH_BOOST,
+			MobEffects.SATURATION,
+			MobEffects.LUCK,
+			MobEffects.CONDUIT_POWER,
+			MobEffects.DOLPHINS_GRACE,
+			MobEffects.HERO_OF_THE_VILLAGE
 	);
 	
-	public static List<RegistryEntry<StatusEffect>> NEGATIVE_EFFECTS = List.of(
-			StatusEffects.NAUSEA,
-			StatusEffects.WEAKNESS,
-			StatusEffects.BLINDNESS,
-			StatusEffects.HUNGER,
-			StatusEffects.SLOWNESS,
-			StatusEffects.MINING_FATIGUE,
-			StatusEffects.LEVITATION,
-			StatusEffects.UNLUCK,
-			StatusEffects.BAD_OMEN,
-			StatusEffects.DARKNESS,
-			StatusEffects.TRIAL_OMEN,
-			StatusEffects.RAID_OMEN,
-			StatusEffects.WIND_CHARGED,
-			StatusEffects.WEAVING,
-			StatusEffects.OOZING,
-			StatusEffects.INFESTED
+	public static List<Holder<MobEffect>> NEGATIVE_EFFECTS = List.of(
+			MobEffects.NAUSEA,
+			MobEffects.WEAKNESS,
+			MobEffects.BLINDNESS,
+			MobEffects.HUNGER,
+			MobEffects.SLOWNESS,
+			MobEffects.MINING_FATIGUE,
+			MobEffects.LEVITATION,
+			MobEffects.UNLUCK,
+			MobEffects.BAD_OMEN,
+			MobEffects.DARKNESS,
+			MobEffects.TRIAL_OMEN,
+			MobEffects.RAID_OMEN,
+			MobEffects.WIND_CHARGED,
+			MobEffects.WEAVING,
+			MobEffects.OOZING,
+			MobEffects.INFESTED
 	);
 	
-	public static List<RegistryEntry<StatusEffect>> HARMFUL_EFFECTS = List.of(
-			StatusEffects.INSTANT_DAMAGE,
-			StatusEffects.WITHER,
-			StatusEffects.POISON
+	public static List<Holder<MobEffect>> HARMFUL_EFFECTS = List.of(
+			MobEffects.INSTANT_DAMAGE,
+			MobEffects.WITHER,
+			MobEffects.POISON
 	);
 	
 	private static final Random rand = new Random();
@@ -719,18 +717,18 @@ public class ListUtil {
 	}
 	
 	@SafeVarargs
-	public static List<RegistryKey<Biome>> buildRegistryKeyBiomeList(List<RegistryKey<Biome>> primary, List<RegistryKey<Biome>>... secondary ) {
-		ArrayList<RegistryKey<Biome>> arrayList = new ArrayList<>(primary);
-		for (List<RegistryKey<Biome>> list : secondary) {
+	public static List<ResourceKey<Biome>> buildRegistryKeyBiomeList(List<ResourceKey<Biome>> primary, List<ResourceKey<Biome>>... secondary ) {
+		ArrayList<ResourceKey<Biome>> arrayList = new ArrayList<>(primary);
+		for (List<ResourceKey<Biome>> list : secondary) {
 			arrayList.addAll( list );
 		} // for
 		return Collections.unmodifiableList( arrayList );
 	}
 	
 	@SafeVarargs
-	public static List<RegistryKey<Structure>> buildRegistryKeyStructureList(List<RegistryKey<Structure>> primary, List<RegistryKey<Structure>>... secondary ) {
-		ArrayList<RegistryKey<Structure>> arrayList = new ArrayList<>(primary);
-		for (List<RegistryKey<Structure>> list : secondary) {
+	public static List<ResourceKey<Structure>> buildRegistryKeyStructureList(List<ResourceKey<Structure>> primary, List<ResourceKey<Structure>>... secondary ) {
+		ArrayList<ResourceKey<Structure>> arrayList = new ArrayList<>(primary);
+		for (List<ResourceKey<Structure>> list : secondary) {
 			arrayList.addAll( list );
 		} // for
 		return Collections.unmodifiableList( arrayList );

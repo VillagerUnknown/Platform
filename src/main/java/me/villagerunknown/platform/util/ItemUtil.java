@@ -1,10 +1,9 @@
 package me.villagerunknown.platform.util;
 
-import net.minecraft.item.Item;
-import net.minecraft.registry.Registries;
-import net.minecraft.util.Identifier;
-
 import java.util.List;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.Item;
 
 public class ItemUtil {
 	
@@ -15,8 +14,8 @@ public class ItemUtil {
 	 */
 	public static Item getItemFromString(String string ){
 		String[] parts = string.split(":");
-		Identifier id = Identifier.of( parts[0], parts[1] );
-		return Registries.ITEM.get( id );
+		Identifier id = Identifier.fromNamespaceAndPath( parts[0], parts[1] );
+		return BuiltInRegistries.ITEM.getValue( id );
 	}
 	
 }

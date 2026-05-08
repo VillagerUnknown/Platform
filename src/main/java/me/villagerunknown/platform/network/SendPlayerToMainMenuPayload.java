@@ -1,28 +1,28 @@
 package me.villagerunknown.platform.network;
 
 import me.villagerunknown.platform.Platform;
-import net.minecraft.network.PacketByteBuf;
-import net.minecraft.network.RegistryByteBuf;
-import net.minecraft.network.codec.PacketCodec;
-import net.minecraft.network.packet.CustomPayload;
-import net.minecraft.util.Identifier;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.resources.Identifier;
 
-public record SendPlayerToMainMenuPayload() implements CustomPayload {
+public record SendPlayerToMainMenuPayload() implements CustomPacketPayload {
 	
-	public static final Identifier SEND_TO_MAIN_MENU_PACKET_ID = Identifier.of( Platform.MOD_ID, "send_to_main_menu" );
-	public static final Id<SendPlayerToMainMenuPayload> ID = new Id<>(SEND_TO_MAIN_MENU_PACKET_ID);
-	public static final PacketCodec<RegistryByteBuf, SendPlayerToMainMenuPayload> CODEC = PacketCodec.of( SendPlayerToMainMenuPayload::encode, SendPlayerToMainMenuPayload::decode );
+	public static final Identifier SEND_TO_MAIN_MENU_PACKET_ID = Identifier.fromNamespaceAndPath( Platform.MOD_ID, "send_to_main_menu" );
+	public static final Type<SendPlayerToMainMenuPayload> ID = new Type<>(SEND_TO_MAIN_MENU_PACKET_ID);
+	public static final StreamCodec<RegistryFriendlyByteBuf, SendPlayerToMainMenuPayload> CODEC = StreamCodec.ofMember( SendPlayerToMainMenuPayload::encode, SendPlayerToMainMenuPayload::decode );
 	
 	@Override
-	public Id<? extends CustomPayload> getId() {
+	public Type<? extends CustomPacketPayload> type() {
 		return ID;
 	}
 	
-	public static void encode(SendPlayerToMainMenuPayload payload, PacketByteBuf buf) {
+	public static void encode(SendPlayerToMainMenuPayload payload, FriendlyByteBuf buf) {
 	
 	}
 	
-	public static SendPlayerToMainMenuPayload decode(PacketByteBuf buf) {
+	public static SendPlayerToMainMenuPayload decode(FriendlyByteBuf buf) {
 		return new SendPlayerToMainMenuPayload();
 	}
 	

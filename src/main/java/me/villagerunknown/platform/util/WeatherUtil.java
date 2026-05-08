@@ -1,9 +1,9 @@
 package me.villagerunknown.platform.util;
 
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LightningEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LightningBolt;
+import net.minecraft.world.level.Level;
 
 public class WeatherUtil {
 	
@@ -12,15 +12,15 @@ public class WeatherUtil {
 	public static final String SUMMER = "summer";
 	public static final String FALL = "fall";
 	
-	public static void setRaining( World world, boolean status ) {
+	public static void setRaining( Level world, boolean status ) {
 		WorldUtil.setRaining( world, status );
 	}
 	
-	public static boolean isRaining( World world ) {
+	public static boolean isRaining( Level world ) {
 		return WorldUtil.isRaining( world );
 	}
 	
-	public static boolean isThundering( World world ) {
+	public static boolean isThundering( Level world ) {
 		return WorldUtil.isThundering( world );
 	}
 	
@@ -29,12 +29,12 @@ public class WeatherUtil {
 		return (yearTime % 4) == 0 ? SUMMER : (yearTime % 4) == 1 ? FALL : (yearTime % 4) == 2 ? WINTER : SPRING;
 	}
 	
-	public static LightningEntity lightning( World world, BlockPos pos, boolean spawn ) {
-		LightningEntity lightning = new LightningEntity( EntityType.LIGHTNING_BOLT, world );
-		lightning.setPos( pos.getX(), pos.getY(), pos.getZ() );
+	public static LightningBolt lightning( Level world, BlockPos pos, boolean spawn ) {
+		LightningBolt lightning = new LightningBolt( EntityType.LIGHTNING_BOLT, world );
+		lightning.setPosRaw( pos.getX(), pos.getY(), pos.getZ() );
 		
 		if( spawn ) {
-			world.spawnEntity( lightning );
+			world.addFreshEntity( lightning );
 		} // if
 		
 		return lightning;

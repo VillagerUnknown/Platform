@@ -2,7 +2,7 @@ package me.villagerunknown.platform.util;
 
 import me.villagerunknown.platform.Platform;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.util.Identifier;
+import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
@@ -15,7 +15,7 @@ import static me.villagerunknown.platform.Platform.PLATFORM_PREFIX;
 public class PlatformUtil {
 	
 	public static Identifier formIdentifier( String modString ) {
-		return Identifier.of( PLATFORM_ID, modString );
+		return Identifier.fromNamespaceAndPath( PLATFORM_ID, modString );
 	}
 	
 	public static String getModIdOrDefault( @Nullable String modId ) {

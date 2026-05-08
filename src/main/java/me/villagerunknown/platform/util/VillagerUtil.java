@@ -1,15 +1,18 @@
 package me.villagerunknown.platform.util;
 
 import com.google.common.collect.ImmutableList;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.passive.VillagerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.sound.SoundEvent;
-import net.minecraft.util.Identifier;
-import net.minecraft.village.*;
-
+import net.minecraft.core.Holder;
+import net.minecraft.resources.Identifier;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.entity.npc.villager.Villager;
+import net.minecraft.world.entity.npc.villager.VillagerData;
+import net.minecraft.world.entity.npc.villager.VillagerProfession;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.trading.ItemCost;
+import net.minecraft.world.item.trading.MerchantOffer;
+import net.minecraft.world.item.trading.MerchantOffers;
+import net.minecraft.world.level.block.state.BlockState;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -30,8 +33,8 @@ public class VillagerUtil {
 	public static final float LOW_PRICE_MULTIPLIER = 0.05F;
 	public static final float HIGH_PRICE_MULTIPLIER = 0.2F;
 	
-	public static TradeOffer buyTradeOffer( int level, TradedItem demand, ItemStack supply ) {
-		return new TradeOffer(
+	public static MerchantOffer buyTradeOffer( int level, ItemCost demand, ItemStack supply ) {
+		return new MerchantOffer(
 				demand,
 				supply,
 				getMaxTrades( level ),
@@ -40,8 +43,8 @@ public class VillagerUtil {
 		);
 	}
 	
-	public static TradeOffer buyTradeOffer( int level, TradedItem demand, TradedItem demand2, ItemStack supply ) {
-		return new TradeOffer(
+	public static MerchantOffer buyTradeOffer( int level, ItemCost demand, ItemCost demand2, ItemStack supply ) {
+		return new MerchantOffer(
 				demand,
 				Optional.of(demand2),
 				supply,
@@ -51,11 +54,11 @@ public class VillagerUtil {
 		);
 	}
 	
-	public static TradeOffer buyTradeOffer( int level, Item costItem, int costAmount, Item saleItem, int saleAmount ) {
-		TradedItem demand = new TradedItem( costItem, costAmount );
+	public static MerchantOffer buyTradeOffer( int level, Item costItem, int costAmount, Item saleItem, int saleAmount ) {
+		ItemCost demand = new ItemCost( costItem, costAmount );
 		ItemStack supply = new ItemStack( saleItem, saleAmount );
 		
-		return new TradeOffer(
+		return new MerchantOffer(
 				demand,
 				supply,
 				getMaxTrades( level ),
@@ -64,12 +67,12 @@ public class VillagerUtil {
 		);
 	}
 	
-	public static TradeOffer buyTradeOffer( int level, Item costItem, int costAmount, Item costItem2, int costAmount2, Item saleItem, int saleAmount ) {
-		TradedItem demand = new TradedItem( costItem, costAmount );
-		TradedItem demand2 = new TradedItem( costItem2, costAmount2 );
+	public static MerchantOffer buyTradeOffer( int level, Item costItem, int costAmount, Item costItem2, int costAmount2, Item saleItem, int saleAmount ) {
+		ItemCost demand = new ItemCost( costItem, costAmount );
+		ItemCost demand2 = new ItemCost( costItem2, costAmount2 );
 		ItemStack supply = new ItemStack( saleItem, saleAmount );
 		
-		return new TradeOffer(
+		return new MerchantOffer(
 				demand,
 				Optional.of(demand2),
 				supply,
@@ -79,8 +82,8 @@ public class VillagerUtil {
 		);
 	}
 	
-	public static TradeOffer sellTradeOffer( int level, TradedItem demand, ItemStack supply ) {
-		return new TradeOffer(
+	public static MerchantOffer sellTradeOffer( int level, ItemCost demand, ItemStack supply ) {
+		return new MerchantOffer(
 				demand,
 				supply,
 				getMaxTrades( level ),
@@ -89,8 +92,8 @@ public class VillagerUtil {
 		);
 	}
 	
-	public static TradeOffer sellTradeOffer( int level, TradedItem demand, TradedItem demand2, ItemStack supply ) {
-		return new TradeOffer(
+	public static MerchantOffer sellTradeOffer( int level, ItemCost demand, ItemCost demand2, ItemStack supply ) {
+		return new MerchantOffer(
 				demand,
 				Optional.of(demand2),
 				supply,
@@ -100,11 +103,11 @@ public class VillagerUtil {
 		);
 	}
 	
-	public static TradeOffer sellTradeOffer( int level, Item costItem, int costAmount, Item saleItem, int saleAmount ) {
-		TradedItem demand = new TradedItem( costItem, costAmount );
+	public static MerchantOffer sellTradeOffer( int level, Item costItem, int costAmount, Item saleItem, int saleAmount ) {
+		ItemCost demand = new ItemCost( costItem, costAmount );
 		ItemStack supply = new ItemStack( saleItem, saleAmount );
 		
-		return new TradeOffer(
+		return new MerchantOffer(
 				demand,
 				supply,
 				getMaxTrades( level ),
@@ -113,12 +116,12 @@ public class VillagerUtil {
 		);
 	}
 	
-	public static TradeOffer sellTradeOffer( int level, Item costItem, int costAmount, Item costItem2, int costAmount2, Item saleItem, int saleAmount ) {
-		TradedItem demand = new TradedItem( costItem, costAmount );
-		TradedItem demand2 = new TradedItem( costItem2, costAmount2 );
+	public static MerchantOffer sellTradeOffer( int level, Item costItem, int costAmount, Item costItem2, int costAmount2, Item saleItem, int saleAmount ) {
+		ItemCost demand = new ItemCost( costItem, costAmount );
+		ItemCost demand2 = new ItemCost( costItem2, costAmount2 );
 		ItemStack supply = new ItemStack( saleItem, saleAmount );
 		
-		return new TradeOffer(
+		return new MerchantOffer(
 				demand,
 				Optional.of(demand2),
 				supply,
@@ -153,12 +156,12 @@ public class VillagerUtil {
 		};
 	}
 	
-	public static void resetTrades( VillagerEntity villager, int minLevel ) {
+	public static void resetTrades( Villager villager, int minLevel ) {
 		int level = villager.getVillagerData().level();
-		TradeOfferList offers = new TradeOfferList();
+		MerchantOffers offers = new MerchantOffers();
 		
 		if( minLevel == level ) {
-			TradeOfferList villagerOffers = villager.getOffers().copy();
+			MerchantOffers villagerOffers = villager.getOffers().copy();
 			villagerOffers.removeLast();
 			villagerOffers.removeLast();
 			
@@ -178,8 +181,8 @@ public class VillagerUtil {
 		villager.setOffers( offers );
 	}
 	
-	public static void resetAllTrades( VillagerEntity villager ) {
-		resetTrades( villager, VillagerData.MIN_LEVEL );
+	public static void resetAllTrades( Villager villager ) {
+		resetTrades( villager, VillagerData.MIN_VILLAGER_LEVEL );
 	}
 	
 	public static class CustomVillager {
@@ -190,7 +193,7 @@ public class VillagerUtil {
 		
 		public SoundEvent SOUND;
 		
-		public RegistryEntry<VillagerProfession> REGISTRY_ENTRY;
+		public Holder<VillagerProfession> REGISTRY_ENTRY;
 		
 		public VillagerProfession PROFESSION;
 	

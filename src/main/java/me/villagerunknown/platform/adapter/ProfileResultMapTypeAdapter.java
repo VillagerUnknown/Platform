@@ -14,11 +14,6 @@ import com.mojang.serialization.Dynamic;
 import com.mojang.serialization.JsonOps;
 import me.villagerunknown.platform.data.ProfileResultData;
 import me.villagerunknown.platform.util.GsonUtil;
-import net.minecraft.item.Item;
-import net.minecraft.registry.Registries;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.math.BlockPos;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;

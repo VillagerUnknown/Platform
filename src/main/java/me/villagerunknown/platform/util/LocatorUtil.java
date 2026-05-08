@@ -1,32 +1,31 @@
 package me.villagerunknown.platform.util;
 
 import com.mojang.datafixers.util.Pair;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.registry.entry.RegistryEntryList;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.structure.Structure;
-
 import java.util.Optional;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.core.HolderSet;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.levelgen.structure.Structure;
 
 public class LocatorUtil {
 	
-	public static Pair<BlockPos, RegistryEntry<Biome>> locateBiome( PlayerEntity player, RegistryKey<Biome> registryKey, int searchRadius, int horizontalBlockCheckInterval, int verticalBlockCheckInterval ) {
-		return LocatorUtil.locateBiome( WorldUtil.getServerWorld( player.getEntityWorld() ), player.getBlockPos(), registryKey, searchRadius, horizontalBlockCheckInterval, verticalBlockCheckInterval );
+	public static Pair<BlockPos, Holder<Biome>> locateBiome( Player player, ResourceKey<Biome> registryKey, int searchRadius, int horizontalBlockCheckInterval, int verticalBlockCheckInterval ) {
+		return LocatorUtil.locateBiome( WorldUtil.getServerWorld( player.level() ), player.blockPosition(), registryKey, searchRadius, horizontalBlockCheckInterval, verticalBlockCheckInterval );
 	}
 	
-	public static Pair<BlockPos, RegistryEntry<Biome>> locateBiome( ServerWorld serverWorld, BlockPos blockPos, RegistryKey<Biome> registryKey, int searchRadius, int horizontalBlockCheckInterval, int verticalBlockCheckInterval ) {
-		Registry<Biome> registry = serverWorld.getRegistryManager().getOrThrow(RegistryKeys.BIOME);
+	public static Pair<BlockPos, Holder<Biome>> locateBiome( ServerLevel serverWorld, BlockPos blockPos, ResourceKey<Biome> registryKey, int searchRadius, int horizontalBlockCheckInterval, int verticalBlockCheckInterval ) {
+		Registry<Biome> registry = serverWorld.registryAccess().lookupOrThrow(Registries.BIOME);
 		
-		RegistryEntry<Biome> biome = registry.getEntry( registry.get( registryKey ) );
+		Holder<Biome> biome = registry.wrapAsHolder( registry.getValue( registryKey ) );
 		
 		if( null != biome ) {
-			Pair<BlockPos, RegistryEntry<Biome>> pair = serverWorld.locateBiome( (b) -> b == biome, blockPos, searchRadius, horizontalBlockCheckInterval, verticalBlockCheckInterval );
+			Pair<BlockPos, Holder<Biome>> pair = serverWorld.findClosestBiome3d( (b) -> b == biome, blockPos, searchRadius, horizontalBlockCheckInterval, verticalBlockCheckInterval );
 			
 			if( null != pair ) {
 				return pair;
@@ -36,19 +35,19 @@ public class LocatorUtil {
 		return null;
 	}
 	
-	public static Pair<BlockPos, RegistryEntry<Structure>> locateStructure( PlayerEntity player, RegistryKey<Structure> registryKey, int searchRadius ) {
-		return LocatorUtil.locateStructure( WorldUtil.getServerWorld( player.getEntityWorld() ), player.getBlockPos(), registryKey, searchRadius );
+	public static Pair<BlockPos, Holder<Structure>> locateStructure( Player player, ResourceKey<Structure> registryKey, int searchRadius ) {
+		return LocatorUtil.locateStructure( WorldUtil.getServerWorld( player.level() ), player.blockPosition(), registryKey, searchRadius );
 	}
 	
-	public static Pair<BlockPos, RegistryEntry<Structure>> locateStructure( ServerWorld serverWorld, BlockPos blockPos, RegistryKey<Structure> registryKey, int searchRadius ) {
-		Registry<Structure> registry = serverWorld.getRegistryManager().getOrThrow(RegistryKeys.STRUCTURE);
+	public static Pair<BlockPos, Holder<Structure>> locateStructure( ServerLevel serverWorld, BlockPos blockPos, ResourceKey<Structure> registryKey, int searchRadius ) {
+		Registry<Structure> registry = serverWorld.registryAccess().lookupOrThrow(Registries.STRUCTURE);
 		
-		Optional<RegistryEntry.Reference<Structure>> structure = registry.getEntry( registryKey.getValue() );
+		Optional<Holder.Reference<Structure>> structure = registry.get( registryKey.identifier() );
 		
 		if( structure.isPresent() ) {
-			RegistryEntryList<Structure> registryEntryList = RegistryEntryList.of(structure.get());
+			HolderSet<Structure> registryEntryList = HolderSet.direct(structure.get());
 			
-			Pair<BlockPos, RegistryEntry<Structure>> pair = serverWorld.getChunkManager().getChunkGenerator().locateStructure(serverWorld, registryEntryList, blockPos, searchRadius, false);
+			Pair<BlockPos, Holder<Structure>> pair = serverWorld.getChunkSource().getGenerator().findNearestMapStructure(serverWorld, registryEntryList, blockPos, searchRadius, false);
 			
 			if( null != pair ) {
 				return pair;

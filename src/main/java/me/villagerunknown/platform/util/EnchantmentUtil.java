@@ -1,52 +1,52 @@
 package me.villagerunknown.platform.util;
 
-import net.minecraft.component.ComponentMap;
-import net.minecraft.component.DataComponentTypes;
-import net.minecraft.component.type.ItemEnchantmentsComponent;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.item.ItemStack;
-import net.minecraft.registry.DynamicRegistryManager;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.component.DataComponentMap;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.ItemEnchantments;
 
 public class EnchantmentUtil {
 	
-	public static ItemEnchantmentsComponent.Builder buildEnchantmentEntry(ServerPlayerEntity player, RegistryKey<Enchantment> enchantment, Integer skillLevel) {
-		DynamicRegistryManager drm = player.getRegistryManager();
-		Registry<Enchantment> reg = drm.getOrThrow(RegistryKeys.ENCHANTMENT);
+	public static ItemEnchantments.Mutable buildEnchantmentEntry(ServerPlayer player, ResourceKey<Enchantment> enchantment, Integer skillLevel) {
+		RegistryAccess drm = player.registryAccess();
+		Registry<Enchantment> reg = drm.lookupOrThrow(Registries.ENCHANTMENT);
 		
-		Enchantment enchantmentEntryValue = reg.get( enchantment );
-		RegistryEntry<Enchantment> regEntry = reg.getEntry( enchantmentEntryValue );
+		Enchantment enchantmentEntryValue = reg.getValue( enchantment );
+		Holder<Enchantment> regEntry = reg.wrapAsHolder( enchantmentEntryValue );
 		
-		ItemEnchantmentsComponent.Builder IECBuilder = new ItemEnchantmentsComponent.Builder(
-				ItemEnchantmentsComponent.DEFAULT
+		ItemEnchantments.Mutable IECBuilder = new ItemEnchantments.Mutable(
+				ItemEnchantments.EMPTY
 		);
 		IECBuilder.set(regEntry, skillLevel);
 		
 		return IECBuilder;
 	}
 	
-	public static boolean canReceiveEnchantment( ItemStack stack, RegistryEntry<Enchantment> enchantmentEntry ) {
+	public static boolean canReceiveEnchantment( ItemStack stack, Holder<Enchantment> enchantmentEntry ) {
 		return stack.getItem().canBeEnchantedWith( stack, enchantmentEntry, null );
 	}
 	
-	public static int getEnchantmentLevel( ItemStack stack, RegistryEntry<Enchantment> enchantmentEntry ) {
-		return EnchantmentHelper.getEnchantments( stack ).getLevel( enchantmentEntry );
+	public static int getEnchantmentLevel( ItemStack stack, Holder<Enchantment> enchantmentEntry ) {
+		return EnchantmentHelper.getEnchantmentsForCrafting( stack ).getLevel( enchantmentEntry );
 	}
 	
-	public static void applyEnchantment( ItemEnchantmentsComponent.Builder builder, ItemStack stack, RegistryEntry<Enchantment> enchantmentEntry, Integer skillLevel ) {
-		ItemEnchantmentsComponent currentEnchantments = stack.getEnchantments();
+	public static void applyEnchantment( ItemEnchantments.Mutable builder, ItemStack stack, Holder<Enchantment> enchantmentEntry, Integer skillLevel ) {
+		ItemEnchantments currentEnchantments = stack.getEnchantments();
 		Integer currentLevel = getEnchantmentLevel( stack, enchantmentEntry );
 		
 		if( currentLevel < skillLevel ) {
-			stack.applyComponentsFrom(
-					ComponentMap.builder()
-							.add(DataComponentTypes.ENCHANTMENTS, currentEnchantments)
-							.add(DataComponentTypes.ENCHANTMENTS, builder.build())
+			stack.applyComponents(
+					DataComponentMap.builder()
+							.set(DataComponents.ENCHANTMENTS, currentEnchantments)
+							.set(DataComponents.ENCHANTMENTS, builder.toImmutable())
 							.build()
 			);
 		} // if

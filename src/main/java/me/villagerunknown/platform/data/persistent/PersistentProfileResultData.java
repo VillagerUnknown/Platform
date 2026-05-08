@@ -7,20 +7,21 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import me.villagerunknown.platform.data.ProfileResultData;
 import me.villagerunknown.platform.feature.playerCacheFeature;
 import me.villagerunknown.platform.util.GsonUtil;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.core.UUIDUtil;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.Uuids;
-import net.minecraft.world.PersistentStateManager;
-import net.minecraft.world.PersistentStateType;
+import net.minecraft.util.datafix.DataFixTypes;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.saveddata.SavedDataType;
+import net.minecraft.world.level.storage.SavedDataStorage;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
 import static me.villagerunknown.platform.Platform.MOD_ID;
+import static me.villagerunknown.platform.Platform.PLATFORM_ID;
 
 public class PersistentProfileResultData extends AbstractPersistentData {
 	
@@ -30,13 +31,13 @@ public class PersistentProfileResultData extends AbstractPersistentData {
 	
 	private static final Codec<PersistentProfileResultData> CODEC = RecordCodecBuilder.create(instance -> instance.group(
 			Codec.unboundedMap(
-					Uuids.CODEC,
+					UUIDUtil.AUTHLIB_CODEC,
 					ProfileResultData.CODEC
 			).fieldOf("players").forGetter( PersistentProfileResultData::getPlayers )
 	).apply( instance, PersistentProfileResultData::new ));
 	
-	private static final PersistentStateType<PersistentProfileResultData> type = new PersistentStateType<>(
-			MOD_ID,
+	private static final SavedDataType<PersistentProfileResultData> type = new SavedDataType<>(
+			Identifier.fromNamespaceAndPath( MOD_ID, "profile_result_data" ),
 			PersistentProfileResultData::new,
 			CODEC,
 			null
@@ -53,34 +54,34 @@ public class PersistentProfileResultData extends AbstractPersistentData {
 	}
 	
 	public static PersistentProfileResultData getServerState(MinecraftServer server) {
-		PersistentStateManager persistentStateManager = getStateManager( server );
+		SavedDataStorage persistentStateManager = getStateManager( server );
 		
-		PersistentProfileResultData state = persistentStateManager.getOrCreate(type);
-		state.markDirty();
+		PersistentProfileResultData state = persistentStateManager.computeIfAbsent(type);
+		state.setDirty();
 		
 		return state;
 	}
 	
 	public static ProfileResultData getPlayerState(LivingEntity player) {
-		MinecraftServer server = player.getEntityWorld().getServer();
+		MinecraftServer server = player.level().getServer();
 		
 		if( null != server ) {
 			PersistentProfileResultData serverState = getServerState(server);
 			
-			if( serverState.players.containsKey( player.getUuid() ) ) {
-				return serverState.players.get( player.getUuid() );
+			if( serverState.players.containsKey( player.getUUID() ) ) {
+				return serverState.players.get( player.getUUID() );
 			} // if
 			
-			ProfileResultData playerData = playerCacheFeature.cachePlayer( (PlayerEntity) player );
+			ProfileResultData playerData = playerCacheFeature.cachePlayer( (Player) player );
 			
 			if( null != playerData ) {
-				serverState.players.put( player.getUuid(), playerData );
+				serverState.players.put( player.getUUID(), playerData );
 			} // if
 			
 			return playerData;
 		} // if
 		
-		return playerCacheFeature.cachePlayer( (PlayerEntity) player );
+		return playerCacheFeature.cachePlayer( (Player) player );
 	}
 	
 }

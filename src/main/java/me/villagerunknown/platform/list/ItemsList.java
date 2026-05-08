@@ -1,8 +1,7 @@
 package me.villagerunknown.platform.list;
 
 import me.villagerunknown.platform.util.MathUtil;
-import net.minecraft.item.Item;
-
+import net.minecraft.world.item.Item;
 import java.util.ArrayList;
 
 public class ItemsList {

@@ -1,7 +1,7 @@
 package me.villagerunknown.platform.util;
 
-import net.minecraft.text.MutableText;
-import net.minecraft.text.Text;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 
 public class LanguageUtil {
 	
@@ -9,12 +9,12 @@ public class LanguageUtil {
 		return type + "." + modId + "." + value;
 	}
 	
-	public static MutableText translate( String string ) {
-		return Text.translatable( string );
+	public static MutableComponent translate( String string ) {
+		return Component.translatable( string );
 	}
 	
-	public static MutableText translate( String string, Object... args ) {
-		return Text.translatable( string, args );
+	public static MutableComponent translate( String string, Object... args ) {
+		return Component.translatable( string, args );
 	}
 	
 	public static String translateToString( String string ) {

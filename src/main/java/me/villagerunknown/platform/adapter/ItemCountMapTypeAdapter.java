@@ -3,13 +3,12 @@ package me.villagerunknown.platform.adapter;
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import net.minecraft.item.Item;
-import net.minecraft.registry.Registries;
-import net.minecraft.util.Identifier;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.Item;
 
 public class ItemCountMapTypeAdapter extends TypeAdapter<Map<Item, Integer>> {
 	
@@ -18,7 +17,7 @@ public class ItemCountMapTypeAdapter extends TypeAdapter<Map<Item, Integer>> {
 		out.beginObject();
 		
 		value.forEach(( item, count ) -> {
-			Identifier itemId = Registries.ITEM.getId( item );
+			Identifier itemId = BuiltInRegistries.ITEM.getKey( item );
 			
 			try {
 				out.name( itemId.toString() );
@@ -38,7 +37,7 @@ public class ItemCountMapTypeAdapter extends TypeAdapter<Map<Item, Integer>> {
 		in.beginObject();
 		
 		while (in.hasNext()) {
-			itemCounts.put( Registries.ITEM.get(Identifier.of(in.nextName())), in.nextInt() );
+			itemCounts.put( BuiltInRegistries.ITEM.getValue(Identifier.parse(in.nextName())), in.nextInt() );
 		} // while
 		
 		in.endObject();
