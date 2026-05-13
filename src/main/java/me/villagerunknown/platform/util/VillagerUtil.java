@@ -1,8 +1,10 @@
 package me.villagerunknown.platform.util;
 
 import com.google.common.collect.ImmutableList;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.npc.villager.Villager;
 import net.minecraft.world.entity.npc.villager.VillagerData;
@@ -12,7 +14,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.trading.ItemCost;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.item.trading.MerchantOffers;
+import net.minecraft.world.item.trading.TradeSet;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.Objects;
 import java.util.Optional;
 
@@ -197,11 +202,11 @@ public class VillagerUtil {
 		
 		public VillagerProfession PROFESSION;
 	
-		public CustomVillager( Identifier id, ImmutableList<BlockState> workstations, String professionKey, SoundEvent workSound ) {
+		public CustomVillager( Identifier id, ImmutableList<BlockState> workstations, String professionKey, SoundEvent workSound, @Nullable Int2ObjectMap<ResourceKey<TradeSet>> tradeSetsByLevel ) {
 			IDENTIFIER = id;
 			WORKSTATIONS = workstations;
 			SOUND = workSound;
-			REGISTRY_ENTRY = RegistryUtil.registerVillager( id, workstations, professionKey, workSound );
+			REGISTRY_ENTRY = RegistryUtil.registerVillager( id, workstations, professionKey, workSound, tradeSetsByLevel );
 			PROFESSION = REGISTRY_ENTRY.value();
 		}
 		

@@ -23,6 +23,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.trading.TradeSet;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
@@ -96,14 +97,14 @@ public class RegistryUtil {
 		return Registry.register( BuiltInRegistries.ENTITY_TYPE, identifier( modId, id ), entity );
 	}
 	
-	public static Holder<VillagerProfession> registerVillager(Identifier id, ImmutableList<BlockState> workstations, String professionKey, SoundEvent workSound ) {
+	public static Holder<VillagerProfession> registerVillager(Identifier id, ImmutableList<BlockState> workstations, String professionKey, SoundEvent workSound, @Nullable Int2ObjectMap<ResourceKey<TradeSet>> tradeSetsByLevel ) {
 		registerPointOfInterest( id, workstations, 1, 1 );
-		return registerVillagerProfession( id, professionKey, workSound );
+		return registerVillagerProfession( id, professionKey, workSound, tradeSetsByLevel );
 	}
 	
-	public static Holder<VillagerProfession> registerVillager(Identifier id, ImmutableList<BlockState> workstations, String professionKey, SoundEvent workSound, int ticketCount, int searchDistance ) {
+	public static Holder<VillagerProfession> registerVillager(Identifier id, ImmutableList<BlockState> workstations, String professionKey, SoundEvent workSound, @Nullable Int2ObjectMap<ResourceKey<TradeSet>> tradeSetsByLevel, int ticketCount, int searchDistance ) {
 		registerPointOfInterest( id, workstations, ticketCount, searchDistance );
-		return registerVillagerProfession( id, professionKey, workSound );
+		return registerVillagerProfession( id, professionKey, workSound, tradeSetsByLevel );
 	}
 	
 	public static Holder<PoiType> registerPointOfInterest(Identifier id, ImmutableList<BlockState> workstations, int ticketCount, int searchDistance ) {
@@ -116,12 +117,24 @@ public class RegistryUtil {
 		return BuiltInRegistries.POINT_OF_INTEREST_TYPE.wrapAsHolder( poiType );
 	}
 	
-	public static Holder<VillagerProfession> registerVillagerProfession(Identifier id, String professionKey, SoundEvent workSound ) {
+	public static Holder<VillagerProfession> registerVillagerProfession(Identifier id, String professionKey, SoundEvent workSound, @Nullable Int2ObjectMap<ResourceKey<TradeSet>> tradeSetsByLevel ) {
+		if( null == tradeSetsByLevel ) {
+			tradeSetsByLevel = Int2ObjectMap.ofEntries();
+		} // if
+		
 		ResourceKey<PoiType> poiRegistryKey = ResourceKey.create( Registries.POINT_OF_INTEREST_TYPE, id );
 		
 		Predicate<Holder<PoiType>> predicate = (entry) -> entry.is( poiRegistryKey );
 		
-		VillagerProfession profession = new VillagerProfession( Component.translatable("entity.minecraft.villager." + professionKey ), predicate, predicate, ImmutableSet.of(), ImmutableSet.of(), workSound, Int2ObjectMap.ofEntries());
+		VillagerProfession profession = new VillagerProfession(
+				Component.translatable("entity.minecraft.villager." + professionKey ),
+				predicate,
+				predicate,
+				ImmutableSet.of(),
+				ImmutableSet.of(),
+				workSound,
+				tradeSetsByLevel
+		);
 		
 		Registry.register( BuiltInRegistries.VILLAGER_PROFESSION, id, profession );
 		
