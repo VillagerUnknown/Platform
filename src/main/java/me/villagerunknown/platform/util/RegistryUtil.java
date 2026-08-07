@@ -108,23 +108,23 @@ public class RegistryUtil {
 	}
 	
 	public static Holder<PoiType> registerPointOfInterest(Identifier id, ImmutableList<BlockState> workstations, int ticketCount, int searchDistance ) {
-//		ResourceKey<PoiType> resourceKey = ResourceKey.create(Registries.POINT_OF_INTEREST_TYPE, id);
+		ResourceKey<PoiType> resourceKey = ResourceKey.create( Registries.POINT_OF_INTEREST_TYPE, id );
 		
 		PoiType poiType = new PoiType(new LinkedHashSet<>(workstations), ticketCount, searchDistance);
 		
-//		Registry.register(Registries.POINT_OF_INTEREST_TYPE, resourceKey, poiType);
+		Registry.register(BuiltInRegistries.POINT_OF_INTEREST_TYPE, resourceKey, poiType);
 		
-		return BuiltInRegistries.POINT_OF_INTEREST_TYPE.wrapAsHolder( poiType );
+		return BuiltInRegistries.POINT_OF_INTEREST_TYPE.wrapAsHolder(poiType);
 	}
 	
 	public static Holder<VillagerProfession> registerVillagerProfession(Identifier id, String professionKey, SoundEvent workSound, @Nullable Int2ObjectMap<ResourceKey<TradeSet>> tradeSetsByLevel ) {
 		if( null == tradeSetsByLevel ) {
-			tradeSetsByLevel = Int2ObjectMap.ofEntries();
+			tradeSetsByLevel = Int2ObjectMap.ofEntries(new Int2ObjectMap.Entry[0]);
 		} // if
 		
-		ResourceKey<PoiType> poiRegistryKey = ResourceKey.create( Registries.POINT_OF_INTEREST_TYPE, id );
+//		ResourceKey<PoiType> poiRegistryKey = ResourceKey.create( BuiltInRegistries.POINT_OF_INTEREST_TYPE.key(), id );
 		
-		Predicate<Holder<PoiType>> predicate = (entry) -> entry.is( poiRegistryKey );
+		Predicate<Holder<PoiType>> predicate = (entry) -> entry.is( id );
 		
 		VillagerProfession profession = new VillagerProfession(
 				Component.translatable("entity.minecraft.villager." + professionKey ),

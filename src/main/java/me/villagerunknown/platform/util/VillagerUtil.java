@@ -3,18 +3,18 @@ package me.villagerunknown.platform.util;
 import com.google.common.collect.ImmutableList;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.npc.villager.Villager;
 import net.minecraft.world.entity.npc.villager.VillagerData;
 import net.minecraft.world.entity.npc.villager.VillagerProfession;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.trading.ItemCost;
-import net.minecraft.world.item.trading.MerchantOffer;
-import net.minecraft.world.item.trading.MerchantOffers;
-import net.minecraft.world.item.trading.TradeSet;
+import net.minecraft.world.item.trading.*;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
@@ -188,6 +188,14 @@ public class VillagerUtil {
 	
 	public static void resetAllTrades( Villager villager ) {
 		resetTrades( villager, VillagerData.MIN_VILLAGER_LEVEL );
+	}
+	
+	public static TagKey<VillagerTrade> createVillagerTradeTagKey(String modId, String path) {
+		return (TagKey<VillagerTrade>) TagUtil.createTagKey(Registries.VILLAGER_TRADE, Identifier.fromNamespaceAndPath(modId, path));
+	}
+	
+	public static ResourceKey<TradeSet> createVillagerTradeSetResourceKey(String modId, String path) {
+		return ResourceKey.create(Registries.TRADE_SET, Identifier.fromNamespaceAndPath(modId, path));
 	}
 	
 	public static class CustomVillager {
