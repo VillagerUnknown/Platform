@@ -27,7 +27,7 @@ public class PlatformClientPayloads {
 		ClientPlayNetworking.registerGlobalReceiver(ToastMessagePayload.ID, (payload, context) -> {
 			context.client().execute(() -> {
 				Minecraft client = context.client();
-				ToastManager toastManager = client.getToastManager();
+				ToastManager toastManager = client.gui.toastManager();
 				
 				Long duration = payload.duration();
 				
@@ -52,8 +52,8 @@ public class PlatformClientPayloads {
 		ClientPlayNetworking.registerGlobalReceiver(ShowPlayerGameMenuPayload.ID, (payload, context) -> {
 			context.client().execute(() -> {
 				Minecraft client = context.client();
-				if( client.isSingleplayer() ) {
-					client.setScreen(new PauseScreen(true));
+				if( client.hasSingleplayerServer() ) {
+					client.setScreenAndShow(new PauseScreen(true));
 				}
 			});
 		});
@@ -63,10 +63,10 @@ public class PlatformClientPayloads {
 		ClientPlayNetworking.registerGlobalReceiver(SendPlayerToMainMenuPayload.ID, (payload, context) -> {
 			context.client().execute(() -> {
 				Minecraft client = context.client();
-				if( client.isSingleplayer() ) {
+				if( client.hasSingleplayerServer() ) {
 					client.level.disconnect((Component) FormattedText.of("Show main menu"));
 					client.disconnect(new GenericMessageScreen((Component) FormattedText.of("Saving world")), false);
-					client.setScreen(new TitleScreen(true));
+					client.setScreenAndShow(new TitleScreen(true));
 				}
 			});
 		});

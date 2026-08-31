@@ -2,6 +2,7 @@ package me.villagerunknown.platform.util;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.level.Level;
 
@@ -30,7 +31,7 @@ public class WeatherUtil {
 	}
 	
 	public static LightningBolt lightning( Level world, BlockPos pos, boolean spawn ) {
-		LightningBolt lightning = new LightningBolt( EntityType.LIGHTNING_BOLT, world );
+		LightningBolt lightning = new LightningBolt( EntityTypes.LIGHTNING_BOLT, world );
 		lightning.setPosRaw( pos.getX(), pos.getY(), pos.getZ() );
 		
 		if( spawn ) {
