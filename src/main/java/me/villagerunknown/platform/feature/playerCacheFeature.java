@@ -1,6 +1,6 @@
 package me.villagerunknown.platform.feature;
 
-import com.mojang.authlib.yggdrasil.ProfileResult;
+import com.mojang.authlib.services.ProfileResult;
 import me.villagerunknown.platform.Platform;
 import me.villagerunknown.platform.data.ProfileResultData;
 import me.villagerunknown.platform.data.persistent.PersistentProfileResultData;

@@ -4,7 +4,6 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
-import net.fabricmc.fabric.api.registry.FabricPotionBrewingBuilder;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -84,13 +83,7 @@ public class RegistryUtil {
 	}
 	
 	public static void registerBrewingRecipe( Holder<Potion> potionIngredient, Item itemIngredient, Holder<Potion> potionResult ) {
-		FabricPotionBrewingBuilder.BUILD.register(builder -> {
-			builder.addMix(
-					potionIngredient,
-					itemIngredient,
-					potionResult
-			);
-		});
+		// deprecated
 	}
 	
 	public static EntityType<? extends Entity> registerEntity(String id, EntityType<? extends Entity> entity, @Nullable String modId ) {

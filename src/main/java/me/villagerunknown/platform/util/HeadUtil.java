@@ -3,10 +3,10 @@ package me.villagerunknown.platform.util;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.authlib.minecraft.SessionService;
 import com.mojang.authlib.properties.Property;
 import com.mojang.authlib.properties.PropertyMap;
-import com.mojang.authlib.yggdrasil.ProfileResult;
+import com.mojang.authlib.services.ProfileResult;
 import me.villagerunknown.platform.Platform;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
@@ -395,7 +395,7 @@ public class HeadUtil {
 		headStack.set(DataComponents.NOTE_BLOCK_SOUND, SoundEvents.PLAYER_BURP.location());
 		
 		if( null != server ) {
-			MinecraftSessionService sessionService = server.services().sessionService();
+			SessionService sessionService = server.services().sessionService();
 			ProfileResult profile = sessionService.fetchProfile(uuid, false);
 			
 			if( null != profile ) {
